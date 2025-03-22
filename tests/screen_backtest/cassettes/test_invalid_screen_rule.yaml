@@ -1,0 +1,154 @@
+interactions:
+- request:
+    body: '{"apiKey": "MASKED", "apiId": "MASKED"}'
+    headers:
+      Content-Type:
+      - application/json
+      content-length:
+      - MASKED
+    method: POST
+    uri: https://api.portfolio123.com/auth
+  response:
+    body:
+      string: MASKED
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-length:
+      - '38'
+      content-type:
+      - text/plain;charset=UTF-8
+      date:
+      - Mon, 30 Dec 2024 03:02:41 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      x-content-type-options:
+      - nosniff
+      x-expires-in:
+      - '3600'
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+- request:
+    body: '{"nodes": "<RankingSystem RankType=\"Higher\"><StockFormula Weight=\"1\"
+      RankType=\"Higher\" Name=\"Close(0)\" Description=\"\" Scope=\"Universe\"><Formula>Close(0)</Formula></StockFormula></RankingSystem>",
+      "type": "stock"}'
+    headers:
+      Content-Type:
+      - application/json
+      authorization:
+      - MASKED
+      content-length:
+      - MASKED
+    method: POST
+    uri: https://api.portfolio123.com/rank
+  response:
+    body:
+      string: '{"cost": 1, "quotaRemaining": 6740}'
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      date:
+      - Mon, 30 Dec 2024 03:02:41 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      transfer-encoding:
+      - chunked
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+- request:
+    body: '{"apiKey": "MASKED", "apiId": "MASKED"}'
+    headers:
+      Content-Type:
+      - application/json
+      content-length:
+      - MASKED
+    method: POST
+    uri: https://api.portfolio123.com/auth
+  response:
+    body:
+      string: MASKED
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-length:
+      - '38'
+      content-type:
+      - text/plain;charset=UTF-8
+      date:
+      - Mon, 30 Dec 2024 03:02:43 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      x-content-type-options:
+      - nosniff
+      x-expires-in:
+      - '3600'
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+- request:
+    body: '{"startDt": "2022-01-01", "endDt": "2022-12-31", "pitMethod": "Prelim",
+      "precision": 2, "transPrice": 4, "slippage": 0.001, "longWeight": 100.0, "rankTolerance":
+      7, "rebalFreq": "Every Week", "riskStatsPeriod": "Monthly", "screen": {"type":
+      "stock", "universe": "01 SmallCap Bulls Rank US", "maxNumHoldings": 25, "method":
+      "long", "currency": "USD", "benchmark": "spy", "ranking": "ApiRankingSystem",
+      "rules": [{"formula": "Invalid(Formula"}]}}'
+    headers:
+      Content-Type:
+      - application/json
+      authorization:
+      - MASKED
+      content-length:
+      - MASKED
+    method: POST
+    uri: https://api.portfolio123.com/screen/backtest
+  response:
+    body:
+      string: 'ERROR: Invalid criteria in Rule 1. Error near ''Invalid'': Invalid
+        command ''Invalid'''
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-length:
+      - '82'
+      content-type:
+      - text/plain;charset=UTF-8
+      date:
+      - Mon, 30 Dec 2024 03:02:43 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 409
+      message: ''
+version: 1

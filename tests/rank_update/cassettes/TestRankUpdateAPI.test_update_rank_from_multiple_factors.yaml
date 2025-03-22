@@ -1,0 +1,668 @@
+interactions:
+- request:
+    body: '{"apiId": "MASKED", "apiKey": "MASKED"}'
+    headers:
+      Content-Length:
+      - '62'
+      Content-Type:
+      - application/json
+    method: POST
+    uri: https://api.portfolio123.com/auth
+  response:
+    body:
+      string: MASKED
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-length:
+      - '38'
+      content-type:
+      - text/plain;charset=UTF-8
+      date:
+      - Thu, 26 Dec 2024 05:40:20 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      x-content-type-options:
+      - nosniff
+      x-expires-in:
+      - '3600'
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+- request:
+    body: '{"nodes": "<RankingSystem RankType=\"Higher\">\n    <StockFormula Weight=\"0\"
+      RankType=\"Higher\" Name=\"Close(0)\" Description=\"Price momentum\" Scope=\"Universe\">\n        <Formula>Close(0)</Formula>\n    </StockFormula>\n    <StockFormula
+      Weight=\"0\" RankType=\"Lower\" Name=\"PERelative\" Description=\"PE relative
+      to industry\" Scope=\"Universe\">\n        <Formula>PERelative</Formula>\n    </StockFormula>\n</RankingSystem>",
+      "type": "stock"}'
+    headers:
+      Content-Length:
+      - '453'
+      Content-Type:
+      - application/json
+    method: POST
+    uri: https://api.portfolio123.com/rank
+  response:
+    body:
+      string: '{"cost": 1, "quotaRemaining": 7290}'
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      date:
+      - Thu, 26 Dec 2024 05:40:20 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      transfer-encoding:
+      - chunked
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+- request:
+    body: '{"apiId": "MASKED", "apiKey": "MASKED"}'
+    headers:
+      Content-Length:
+      - '62'
+      Content-Type:
+      - application/json
+    method: POST
+    uri: https://api.portfolio123.com/auth
+  response:
+    body:
+      string: MASKED
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-length:
+      - '38'
+      content-type:
+      - text/plain;charset=UTF-8
+      date:
+      - Thu, 26 Dec 2024 05:42:55 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      x-content-type-options:
+      - nosniff
+      x-expires-in:
+      - '3600'
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+- request:
+    body: '{"nodes": "<RankingSystem RankType=\"Higher\">\n    <StockFormula Weight=\"0\"
+      RankType=\"Higher\" Name=\"Close(0)\" Description=\"Price momentum\" Scope=\"Universe\">\n        <Formula>Close(0)</Formula>\n    </StockFormula>\n    <StockFormula
+      Weight=\"0\" RankType=\"Lower\" Name=\"PERelative\" Description=\"PE relative
+      to industry\" Scope=\"Universe\">\n        <Formula>PERelative</Formula>\n    </StockFormula>\n</RankingSystem>",
+      "type": "stock"}'
+    headers:
+      Content-Length:
+      - '453'
+      Content-Type:
+      - application/json
+    method: POST
+    uri: https://api.portfolio123.com/rank
+  response:
+    body:
+      string: '{"cost": 1, "quotaRemaining": 7241}'
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      date:
+      - Thu, 26 Dec 2024 05:42:55 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      transfer-encoding:
+      - chunked
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+- request:
+    body: '{"apiId": "MASKED", "apiKey": "MASKED"}'
+    headers:
+      Content-Length:
+      - '62'
+      Content-Type:
+      - application/json
+    method: POST
+    uri: https://api.portfolio123.com/auth
+  response:
+    body:
+      string: MASKED
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-length:
+      - '38'
+      content-type:
+      - text/plain;charset=UTF-8
+      date:
+      - Thu, 26 Dec 2024 05:43:46 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      x-content-type-options:
+      - nosniff
+      x-expires-in:
+      - '3600'
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+- request:
+    body: '{"nodes": "<RankingSystem RankType=\"Higher\">\n    <StockFormula Weight=\"0\"
+      RankType=\"Higher\" Name=\"Close(0)\" Description=\"Price momentum\" Scope=\"Universe\">\n        <Formula>Close(0)</Formula>\n    </StockFormula>\n    <StockFormula
+      Weight=\"0\" RankType=\"Lower\" Name=\"PERelative\" Description=\"PE relative
+      to industry\" Scope=\"Universe\">\n        <Formula>PERelative</Formula>\n    </StockFormula>\n</RankingSystem>",
+      "type": "stock"}'
+    headers:
+      Content-Length:
+      - '453'
+      Content-Type:
+      - application/json
+    method: POST
+    uri: https://api.portfolio123.com/rank
+  response:
+    body:
+      string: '{"cost": 1, "quotaRemaining": 7204}'
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      date:
+      - Thu, 26 Dec 2024 05:43:46 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      transfer-encoding:
+      - chunked
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+- request:
+    body: '{"apiId": "MASKED", "apiKey": "MASKED"}'
+    headers:
+      Content-Length:
+      - '62'
+      Content-Type:
+      - application/json
+    method: POST
+    uri: https://api.portfolio123.com/auth
+  response:
+    body:
+      string: MASKED
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-length:
+      - '38'
+      content-type:
+      - text/plain;charset=UTF-8
+      date:
+      - Thu, 26 Dec 2024 05:45:55 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      x-content-type-options:
+      - nosniff
+      x-expires-in:
+      - '3600'
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+- request:
+    body: '{"nodes": "<RankingSystem RankType=\"Higher\">\n    <StockFormula Weight=\"0\"
+      RankType=\"Higher\" Name=\"Close(0)\" Description=\"Price momentum\" Scope=\"Universe\">\n        <Formula>Close(0)</Formula>\n    </StockFormula>\n    <StockFormula
+      Weight=\"0\" RankType=\"Lower\" Name=\"PERelative\" Description=\"PE relative
+      to industry\" Scope=\"Universe\">\n        <Formula>PERelative</Formula>\n    </StockFormula>\n</RankingSystem>",
+      "type": "stock"}'
+    headers:
+      Content-Length:
+      - '453'
+      Content-Type:
+      - application/json
+    method: POST
+    uri: https://api.portfolio123.com/rank
+  response:
+    body:
+      string: '{"cost": 1, "quotaRemaining": 7176}'
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      date:
+      - Thu, 26 Dec 2024 05:45:55 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      transfer-encoding:
+      - chunked
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+- request:
+    body: '{"apiId": "MASKED", "apiKey": "MASKED"}'
+    headers:
+      Content-Length:
+      - '62'
+      Content-Type:
+      - application/json
+    method: POST
+    uri: https://api.portfolio123.com/auth
+  response:
+    body:
+      string: MASKED
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-length:
+      - '38'
+      content-type:
+      - text/plain;charset=UTF-8
+      date:
+      - Thu, 26 Dec 2024 05:47:24 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      x-content-type-options:
+      - nosniff
+      x-expires-in:
+      - '3600'
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+- request:
+    body: '{"nodes": "<RankingSystem RankType=\"Higher\">\n    <StockFormula Weight=\"0\"
+      RankType=\"Higher\" Name=\"Close(0)\" Description=\"Price momentum\" Scope=\"Universe\">\n        <Formula>Close(0)</Formula>\n    </StockFormula>\n    <StockFormula
+      Weight=\"0\" RankType=\"Lower\" Name=\"PERelative\" Description=\"PE relative
+      to industry\" Scope=\"Universe\">\n        <Formula>PERelative</Formula>\n    </StockFormula>\n</RankingSystem>",
+      "type": "stock"}'
+    headers:
+      Content-Length:
+      - '453'
+      Content-Type:
+      - application/json
+    method: POST
+    uri: https://api.portfolio123.com/rank
+  response:
+    body:
+      string: '{"cost": 1, "quotaRemaining": 7149}'
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      date:
+      - Thu, 26 Dec 2024 05:47:24 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      transfer-encoding:
+      - chunked
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+- request:
+    body: '{"apiId": "MASKED", "apiKey": "MASKED"}'
+    headers:
+      Content-Length:
+      - '62'
+      Content-Type:
+      - application/json
+    method: POST
+    uri: https://api.portfolio123.com/auth
+  response:
+    body:
+      string: MASKED
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-length:
+      - '38'
+      content-type:
+      - text/plain;charset=UTF-8
+      date:
+      - Thu, 26 Dec 2024 05:49:00 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      x-content-type-options:
+      - nosniff
+      x-expires-in:
+      - '3600'
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+- request:
+    body: '{"nodes": "<RankingSystem RankType=\"Higher\">\n    <StockFormula Weight=\"0\"
+      RankType=\"Higher\" Name=\"Close(0)\" Description=\"Price momentum\" Scope=\"Universe\">\n        <Formula>Close(0)</Formula>\n    </StockFormula>\n    <StockFormula
+      Weight=\"0\" RankType=\"Lower\" Name=\"PERelative\" Description=\"PE relative
+      to industry\" Scope=\"Universe\">\n        <Formula>PERelative</Formula>\n    </StockFormula>\n</RankingSystem>",
+      "type": "stock"}'
+    headers:
+      Content-Length:
+      - '453'
+      Content-Type:
+      - application/json
+    method: POST
+    uri: https://api.portfolio123.com/rank
+  response:
+    body:
+      string: '{"cost": 1, "quotaRemaining": 7112}'
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      date:
+      - Thu, 26 Dec 2024 05:49:00 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      transfer-encoding:
+      - chunked
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+- request:
+    body: '{"apiId": "MASKED", "apiKey": "MASKED"}'
+    headers:
+      Content-Length:
+      - '62'
+      Content-Type:
+      - application/json
+    method: POST
+    uri: https://api.portfolio123.com/auth
+  response:
+    body:
+      string: MASKED
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-length:
+      - '38'
+      content-type:
+      - text/plain;charset=UTF-8
+      date:
+      - Thu, 26 Dec 2024 05:57:44 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      x-content-type-options:
+      - nosniff
+      x-expires-in:
+      - '3600'
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+- request:
+    body: '{"nodes": "<RankingSystem RankType=\"Higher\">\n    <StockFormula Weight=\"0\"
+      RankType=\"Higher\" Name=\"Close(0)\" Description=\"Price momentum\" Scope=\"Universe\">\n        <Formula>Close(0)</Formula>\n    </StockFormula>\n    <StockFormula
+      Weight=\"0\" RankType=\"Lower\" Name=\"PERelative\" Description=\"PE relative
+      to industry\" Scope=\"Universe\">\n        <Formula>PERelative</Formula>\n    </StockFormula>\n</RankingSystem>",
+      "type": "stock"}'
+    headers:
+      Content-Length:
+      - '453'
+      Content-Type:
+      - application/json
+    method: POST
+    uri: https://api.portfolio123.com/rank
+  response:
+    body:
+      string: '{"cost": 1, "quotaRemaining": 6976}'
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      date:
+      - Thu, 26 Dec 2024 05:57:44 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      transfer-encoding:
+      - chunked
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+- request:
+    body: '{"apiId": "MASKED", "apiKey": "MASKED"}'
+    headers:
+      Content-Length:
+      - '62'
+      Content-Type:
+      - application/json
+    method: POST
+    uri: https://api.portfolio123.com/auth
+  response:
+    body:
+      string: MASKED
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-length:
+      - '38'
+      content-type:
+      - text/plain;charset=UTF-8
+      date:
+      - Thu, 26 Dec 2024 05:57:59 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      x-content-type-options:
+      - nosniff
+      x-expires-in:
+      - '3600'
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+- request:
+    body: '{"nodes": "<RankingSystem RankType=\"Higher\">\n    <StockFormula Weight=\"0\"
+      RankType=\"Higher\" Name=\"Close(0)\" Description=\"Price momentum\" Scope=\"Universe\">\n        <Formula>Close(0)</Formula>\n    </StockFormula>\n    <StockFormula
+      Weight=\"0\" RankType=\"Lower\" Name=\"PERelative\" Description=\"PE relative
+      to industry\" Scope=\"Universe\">\n        <Formula>PERelative</Formula>\n    </StockFormula>\n</RankingSystem>",
+      "type": "stock"}'
+    headers:
+      Content-Length:
+      - '453'
+      Content-Type:
+      - application/json
+    method: POST
+    uri: https://api.portfolio123.com/rank
+  response:
+    body:
+      string: '{"cost": 1, "quotaRemaining": 6973}'
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      date:
+      - Thu, 26 Dec 2024 05:57:59 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      transfer-encoding:
+      - chunked
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+- request:
+    body: '{"apiId": "MASKED", "apiKey": "MASKED"}'
+    headers:
+      Content-Length:
+      - '62'
+      Content-Type:
+      - application/json
+    method: POST
+    uri: https://api.portfolio123.com/auth
+  response:
+    body:
+      string: MASKED
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-length:
+      - '38'
+      content-type:
+      - text/plain;charset=UTF-8
+      date:
+      - Thu, 26 Dec 2024 05:58:54 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      x-content-type-options:
+      - nosniff
+      x-expires-in:
+      - '3600'
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+- request:
+    body: '{"nodes": "<RankingSystem RankType=\"Higher\">\n    <StockFormula Weight=\"0\"
+      RankType=\"Higher\" Name=\"Close(0)\" Description=\"Price momentum\" Scope=\"Universe\">\n        <Formula>Close(0)</Formula>\n    </StockFormula>\n    <StockFormula
+      Weight=\"0\" RankType=\"Lower\" Name=\"PERelative\" Description=\"PE relative
+      to industry\" Scope=\"Universe\">\n        <Formula>PERelative</Formula>\n    </StockFormula>\n</RankingSystem>",
+      "type": "stock"}'
+    headers:
+      Content-Length:
+      - '453'
+      Content-Type:
+      - application/json
+    method: POST
+    uri: https://api.portfolio123.com/rank
+  response:
+    body:
+      string: '{"cost": 1, "quotaRemaining": 6949}'
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      date:
+      - Thu, 26 Dec 2024 05:58:54 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      transfer-encoding:
+      - chunked
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+version: 1

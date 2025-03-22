@@ -1,0 +1,1308 @@
+openapi: 3.1.0
+paths:
+  /auth:
+    post:
+      tags: [Authenticate]
+      summary: Authenticate
+      description: Obtain an access token to authorize requests. The lifespan of the token (in seconds) is specified in the "X-Expires-In" header.
+      operationId: _authenticate
+      requestBody: {content: {application/json: {schema: {$ref: '#/components/schemas/AuthParams'}}}}
+      responses:
+        '200':
+          description: Access token
+          content: {text/plain: {schema: {type: string}}}
+          headers: {X-Expires-In: {schema: {type: integer}, description: Lifespan of the access token in seconds}}
+        '400': {description: Missing or invalid request body}
+        '401': {description: Invalid API id/key combination or API key inactive}
+        '402': {description: Paying subscription required}
+        '406': {description: User account inactive}
+        '503': {description: Under maintenance}
+  /data:
+    post:
+      tags: [Data]
+      summary: Get Data
+      description: >-
+        This operation retrieves data in bulk from our point in time engine.<br>
+        You can try it without a license with IBM, MSFT, & INTC and 5Y history.<br>
+        You will need to obtain your own data license to take full advantage.
+      operationId: _data
+      parameters: [{$ref: '#/components/schemas/AccessToken'}]
+      requestBody: {content: {application/json: {schema: {$ref: '#/components/schemas/DataParams'}}}}
+      responses:
+        '200':
+          description: >-
+            Items is an object with p123Uids (Portfolio123 internal ticker IDs)
+            as keys; cusip property is only set if specified in the request body.
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/DataResult'}
+              example:
+                cost: 1
+                quotaRemaining: 1533
+                items:
+                  4737:
+                    ticker: IBM
+                    cusip: 459200101
+                    series:
+                      - [115457.36, 113310.56, ...]
+                      - [6777.0, 6777.0, ...]
+                      - ...
+                  4773:
+                    ticker: INTC
+                    cusip: 458140100
+                    series:
+                      - [238180.8, 239253.3, ...]
+                      - [11356.0, 11356.0, ...]
+                      - ...
+                  ...: {}
+        '400': {description: Invalid request body}
+        '402': {description: Request quota exhausted}
+        '403': {description: Invalid (expired) access token}
+        '406': {description: Operation not permitted}
+        '409': {description: Operation failed}
+  /data/universe:
+    post:
+      tags: [Data]
+      summary: Get Universe Data
+      description: >-
+        This operation retrieves universe data from our point in time engine.<br>
+        You will need to obtain your own data license to take full advantage.
+      operationId: _data_universe
+      parameters: [{$ref: '#/components/schemas/AccessToken'}]
+      requestBody: {content: {application/json: {schema: {$ref: '#/components/schemas/DataUniverseParams'}}}}
+      responses:
+        '200':
+          description: Success
+          content: {application/json: {schema: {$ref: '#/components/schemas/DataUniverseResult'}}}
+        '400': {description: Invalid request body}
+        '402': {description: Request quota exhausted}
+        '403': {description: Invalid (expired) access token}
+        '406': {description: Operation not permitted}
+        '409': {description: Operation failed}
+  /dataSeries:
+    post:
+      tags: [Data Series]
+      summary: Data Series Create/Update
+      description: Create/update a data series
+      operationId: _update
+      parameters: [{$ref: '#/components/schemas/AccessToken'}]
+      requestBody: {content: {application/json: {schema: {$ref: '#/components/schemas/DataSeriesParams'}}}}
+      responses:
+        '200':
+          description: Data series has been successfully created/updated
+          content: {application/json: {schema: {$ref: '#/components/schemas/DataSeriesResult'}}}
+        '400': {description: Invalid request body}
+        '402': {description: Request quota exhausted}
+        '403': {description: Invalid (expired) access token}
+        '404': {description: Data series not found}
+        '409': {description: Operation failed}
+  /dataSeries/{id}:
+    delete:
+      tags: [Data Series]
+      summary: Data Series Deletion
+      description: Delete a data series
+      operationId: _delete
+      parameters:
+        - {$ref: '#/components/schemas/AccessToken'}
+        - name: id
+          in: path
+          description: Id of the data series to delete
+          required: true
+          schema: {type: integer, format: int32}
+      responses:
+        '200':
+          description: Data series has been successfully deleted
+          content: {application/json: {schema: {$ref: '#/components/schemas/SharedResult'}}}
+        '402': {description: Request quota exhausted}
+        '403': {description: Invalid (expired) access token}
+        '404': {description: Data series not found}
+  /dataSeries/upload/{id}:
+    post:
+      tags: [Data Series]
+      summary: Upload Data Series
+      operationId: _upload
+      parameters:
+        - {$ref: '#/components/schemas/AccessToken'}
+        - name: id
+          in: path
+          description: Id of the data series
+          required: true
+          schema: {type: integer, format: int32}
+        - name: headerRow
+          in: query
+          description: File contains header row
+          required: false
+          schema: {type: boolean, default: false}
+        - name: existingData
+          in: query
+          description: Existing data policy
+          required: false
+          schema: {type: string, enum: [overwrite, skip, delete], default: overwrite}
+        - name: dateFormat
+          in: query
+          description: Date format (dd for day, mm for month and yyyy for year, any separator allowed)
+          required: false
+          schema: {type: string, default: yyyy-mm-dd}
+        - name: decimalSeparator
+          in: query
+          description: Decimal separator
+          required: false
+          schema: {type: string, enum: [., ','], default: .}
+        - name: onError
+          in: query
+          description: On error
+          required: false
+          schema: {type: string, enum: [stop, continue], default: stop}
+        - name: onDuplicates
+          in: query
+          description: On duplicates
+          required: false
+          schema: {type: string, enum: [stop, continue], default: stop}
+      requestBody: {content: {text/csv: {schema: {type: string}}}}
+      responses:
+        '200':
+          description: Success
+          content: {application/json: {schema: {$ref: '#/components/schemas/SharedResult'}}}
+        '400': {description: Invalid request parameter or body}
+        '402': {description: Request quota exhausted}
+        '403': {description: Invalid (expired) access token}
+        '404': {description: Data series not found}
+  /rank:
+    post:
+      tags: [Rank]
+      summary: Rank Update
+      description: Update a ranking system
+      operationId: _update_1
+      parameters: [{$ref: '#/components/schemas/AccessToken'}]
+      requestBody: {content: {application/json: {schema: {$ref: '#/components/schemas/RankParams'}}}}
+      responses:
+        '200':
+          description: Ranking system updated successfully
+          content: {application/json: {schema: {$ref: '#/components/schemas/SharedResult'}}}
+        '400': {description: Invalid request body}
+        '402': {description: Request quota exhausted}
+        '403': {description: Invalid (expired) access token}
+        '404': {description: Invalid ranking system ID}
+        '406': {description: Operation not permitted}
+        '409': {description: Operation failed}
+  /rank/performance:
+    post:
+      tags: [Rank]
+      summary: Rank Performance
+      description: Get historical performance by ranks
+      operationId: _performance
+      parameters: [{$ref: '#/components/schemas/AccessToken'}]
+      requestBody: {content: {application/json: {schema: {$ref: '#/components/schemas/RankPerfParams'}}}}
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/RankPerfRetResult'
+                  - $ref: '#/components/schemas/RankPerfDetailedResult'
+              examples:
+                Returns only:
+                  description: Returns only
+                  value:
+                    cost: 1
+                    quotaRemaining: 1533
+                    benchmarkAnnRet: value
+                    bucketAnnRet: [value1, value2, ...]
+                Return series:
+                  description: Return series
+                  value:
+                    cost: 1
+                    quotaRemaining: 1533
+                    dates: [date1, date2, ...]
+                    benchmarkSeries: [value1, value2, ...]
+                    bucketSeries:
+                      - [value1, value2, ...]
+                      - [value1, value2, ...]
+        '400': {description: Invalid request body}
+        '402': {description: Request quota exhausted}
+        '403': {description: Invalid (expired) access token}
+        '404': {description: Invalid rank ID}
+        '406': {description: Another request is already running}
+        '409': {description: Operation failed}
+  /rank/ranks:
+    post:
+      tags: [Rank]
+      summary: Ranks
+      description: Get historical ranks and additional data
+      operationId: _ranks
+      parameters: [{$ref: '#/components/schemas/AccessToken'}]
+      requestBody: {content: {application/json: {schema: {$ref: '#/components/schemas/RankRanksParams'}}}}
+      responses:
+        '200':
+          description: Successful
+          content: {application/json: {schema: {$ref: '#/components/schemas/RankRanksResult'}}}
+        '400': {description: Invalid request body}
+        '402': {description: Request quota exhausted}
+        '403': {description: Invalid (expired) access token}
+        '404': {description: Invalid rank ID}
+        '406': {description: Another request is already running}
+        '409': {description: Operation failed}
+  /rank/{id}/touch:
+    post:
+      tags: [Rank]
+      summary: Rank Touch
+      description: Invalidate cached ranks for a ranking system
+      operationId: _touch
+      parameters:
+        - {$ref: '#/components/schemas/AccessToken'}
+        - name: id
+          in: path
+          description: ID of the ranking system
+          required: true
+          schema: {type: integer, format: int32}
+      responses:
+        '200': {description: Ranking system touched successfully}
+        '409': {description: Operation failed}
+  /screen/run:
+    post:
+      tags: [Screen]
+      summary: Screen Run
+      description: Run a screen
+      operationId: _run
+      parameters: [{$ref: '#/components/schemas/AccessToken'}]
+      requestBody: {content: {application/json: {schema: {$ref: '#/components/schemas/ScreenRunParams'}}}}
+      responses:
+        '200':
+          description: Screen results
+          content: {application/json: {schema: {$ref: '#/components/schemas/ScreenRunResults'}}}
+        '400': {description: Invalid request body}
+        '402': {description: Request quota exhausted}
+        '403': {description: Invalid (expired) access token}
+        '404': {description: Invalid screen ID}
+        '409': {description: Operation failed}
+  /screen/backtest:
+    post:
+      tags: [Screen]
+      summary: Screen Backtest
+      description: Run a screen backtest
+      operationId: _backtest
+      parameters: [{$ref: '#/components/schemas/AccessToken'}]
+      requestBody: {content: {application/json: {schema: {$ref: '#/components/schemas/ScreenBacktestParams'}}}}
+      responses:
+        '200':
+          description: Screen backtest Successfull
+          content: {application/json: {schema: {$ref: '#/components/schemas/ScreenBacktestResult'}}}
+        '400': {description: Invalid request body}
+        '402': {description: Request quota exhausted}
+        '403': {description: Invalid (expired) access token}
+        '404': {description: Invalid screen ID}
+        '406': {description: Another request is already running}
+        '409': {description: Operation failed}
+  /screen/rolling-backtest:
+    post:
+      tags: [Screen]
+      summary: Screen Rolling Backtest
+      description: Run a screen rolling backtest
+      operationId: _rolling_backtest
+      parameters: [{$ref: '#/components/schemas/AccessToken'}]
+      requestBody: {content: {application/json: {schema: {$ref: '#/components/schemas/ScreenRollingBacktestParams'}}}}
+      responses:
+        '200':
+          description: Screen rolling backtest Successfull
+          content: {application/json: {schema: {$ref: '#/components/schemas/ScreenRollingBacktestResult'}}}
+        '400': {description: Invalid request body}
+        '402': {description: Request quota exhausted}
+        '403': {description: Invalid (expired) access token}
+        '404': {description: Invalid screen ID}
+        '406': {description: Another request is already running or operation not permitted}
+        '409': {description: Operation failed}
+  /stockFactor:
+    post:
+      tags: [Stock Factor]
+      summary: Stock Factor Create/Update
+      description: Create/update a stock factor
+      operationId: _update_2
+      parameters: [{$ref: '#/components/schemas/AccessToken'}]
+      requestBody: {content: {application/json: {schema: {$ref: '#/components/schemas/StockFactorParams'}}}}
+      responses:
+        '200':
+          description: Stock factor has been successfully created/updated
+          content: {application/json: {schema: {$ref: '#/components/schemas/StockFactorResult'}}}
+        '400': {description: Invalid request body}
+        '402': {description: Request quota exhausted}
+        '403': {description: Invalid (expired) access token}
+        '404': {description: Factor not found}
+        '409': {description: Operation failed}
+  /stockFactor/{id}:
+    delete:
+      tags: [Stock Factor]
+      summary: Stock Factor Deletion
+      description: Delete a stock factor
+      operationId: _delete_1
+      parameters:
+        - {$ref: '#/components/schemas/AccessToken'}
+        - name: id
+          in: path
+          description: Id of the stock factor to delete
+          required: true
+          schema: {type: integer, format: int32}
+      responses:
+        '200':
+          description: Stock factor has been successfully deleted
+          content: {application/json: {schema: {$ref: '#/components/schemas/SharedResult'}}}
+        '402': {description: Request quota exhausted}
+        '403': {description: Invalid (expired) access token}
+        '404': {description: Factor not found}
+  /stockFactor/upload/{id}:
+    post:
+      tags: [Stock Factor]
+      summary: Upload Stock Factor Data
+      operationId: _upload_1
+      parameters:
+        - {$ref: '#/components/schemas/AccessToken'}
+        - name: id
+          in: path
+          description: Id of the stock factor
+          required: true
+          schema: {type: integer, format: int32}
+        - name: columnSeparator
+          in: query
+          description: Column separator
+          required: false
+          schema: {type: string, enum: [comma, semicolon, tab], default: comma}
+          example: comma
+        - name: existingData
+          in: query
+          description: Existing data policy
+          required: false
+          schema: {type: string, enum: [overwrite, skip, delete], default: overwrite}
+          example: overwrite
+        - name: dateFormat
+          in: query
+          description: Date format (dd for day, mm for month and yyyy for year, any separator allowed)
+          required: false
+          schema: {type: string, default: yyyy-mm-dd}
+          example: yyyy-mm-dd
+        - name: decimalSeparator
+          in: query
+          description: Decimal separator
+          required: false
+          schema: {type: string, enum: [., ','], default: .}
+          example: .
+        - name: onError
+          in: query
+          description: On error
+          required: false
+          schema: {type: string, enum: [stop, continue], default: stop}
+          example: stop
+        - name: onDuplicates
+          in: query
+          description: On duplicates
+          required: false
+          schema: {type: string, enum: [stop, continue], default: stop}
+          example: stop
+      requestBody: {content: {text/csv: {schema: {type: string}}}}
+      responses:
+        '200':
+          description: Success
+          content: {application/json: {schema: {$ref: '#/components/schemas/SharedResult'}}}
+        '402': {description: Request quota exhausted}
+        '403': {description: Invalid (expired) access token}
+        '400': {description: Invalid request parameter or body}
+  /strategy/{id}:
+    get:
+      tags: [Strategy]
+      summary: Strategy Details
+      description: Get strategy summary, holdings, statistics and performance
+      operationId: _details
+      parameters:
+        - {$ref: '#/components/schemas/AccessToken'}
+        - name: id
+          in: path
+          description: ID of the strategy/book
+          required: true
+          schema: {type: integer, format: int32}
+      responses:
+        '200':
+          description: Details
+          content: {application/json: {schema: {$ref: '#/components/schemas/StrategyOutput'}}}
+        '402': {description: Request quota exhausted}
+        '403': {description: Invalid (expired) access token}
+        '404': {description: Invalid strategy ID}
+  /universe:
+    post:
+      tags: [Universe]
+      summary: Universe Update
+      description: Update an universe
+      operationId: _update_3
+      parameters: [{$ref: '#/components/schemas/AccessToken'}]
+      requestBody: {content: {application/json: {schema: {$ref: '#/components/schemas/UniverseParams'}}}}
+      responses:
+        '200':
+          description: Universe updated successfully
+          content: {application/json: {schema: {$ref: '#/components/schemas/SharedResult'}}}
+        '402': {description: Request quota exhausted}
+        '403': {description: Invalid (expired) access token}
+        '400': {description: Invalid request body}
+        '404': {description: Invalid universe ID}
+        '406': {description: Operation not permitted}
+components:
+  schemas:
+    AuthParams:
+      type: object
+      properties:
+        apiId: {type: integer, description: API ID, format: int32}
+        apiKey: {type: string, description: API key}
+    AccessToken:
+      name: token
+      in: header
+      description: Access token
+      required: true
+      schema: {type: string}
+    Currency:
+      type: string
+      description: Currency
+      enum: [USD, CAD, EUR, GBP, CHF]
+      default: USD
+    Frequency:
+      type: string
+      enum:
+        - Every Week
+        - Every 2 Weeks
+        - Every 3 Weeks
+        - Every 4 Weeks
+        - Every 6 Weeks
+        - Every 8 Weeks
+        - Every 13 Weeks
+        - Every 26 Weeks
+        - Every 52 Weeks
+    PITMethod:
+      type: string
+      description: PIT Method
+      enum: [Prelim, Complete]
+      default: Prelim
+    Precision:
+      type: integer
+      description: Fixed precision digits
+      minimum: 2
+      maximum: 8
+      default: 2
+    PrecisionNullable:
+      type: [integer, 'null']
+      description: Fixed precision digits (null for no additional rounding)
+      $ref: '#/components/schemas/Precision'
+    RankingMethod1:
+      type: integer
+      description: >
+        Override ranking method
+          * `2` - Percentile NAs Negative
+          * `4` - Percentile NAs Neutral
+          * `1` - Normal Distribution (Experimental)
+      enum: [2, 4, 1]
+    RankingMethod2:
+      type: integer
+      description: >
+        Ranking Method
+          * `2` - Percentile NAs Negative
+          * `4` - Percentile NAs Neutral
+          * `1` - Normal Distribution (Experimental)
+      enum: [2, 4, 1]
+      default: 2
+    RankingMethod3:
+      type: integer
+      description: >
+        Ranking system method
+          * `0` - Use Ranking System Default
+          * `2` - Percentile NAs Negative
+          * `4` - Percentile NAs Neutral
+          * `1` - Normal Distribution (Experimental)
+      enum: [0, 2, 4, 1]
+      default: 0
+    Region:
+      type: string
+      description: Region
+      enum: [United States, Canada, North America, Europe, North Atlantic]
+      default: United States
+    Vendor:
+      type: string
+      description: Vendor, if applicable
+      enum: [FactSet, Compustat]
+    SharedParams:
+      type: object
+      properties:
+        vendor: {$ref: '#/components/schemas/Vendor'}
+        pitMethod: {$ref: '#/components/schemas/PITMethod'}
+        precision: {$ref: '#/components/schemas/Precision'}
+    DataSharedParams:
+      allOf:
+        - {$ref: '#/components/schemas/SharedParams'}
+        - type: object
+          properties:
+            currency: {$ref: '#/components/schemas/Currency'}
+            benchmark: {type: string, description: Benchmark (ticker)}
+            formulas:
+              type: array
+              description: Formulas (100 max)
+              items: {type: string}
+            includeNames: {type: boolean}
+    DataParams:
+      allOf:
+        - {$ref: '#/components/schemas/DataSharedParams'}
+        - required: [formulas, startDt]
+          type: object
+          properties:
+            p123Uids:
+              type: array
+              description: P123 UIDs (100 max)
+              items: {type: integer, format: int32}
+            tickers:
+              type: array
+              description: Tickers (100 max)
+              items: {type: string}
+            cusips:
+              type: array
+              description: CUSIPs (100 max)
+              items: {type: string}
+            gvkeys:
+              type: array
+              description: GVKeys (100 max)
+              items: {type: string}
+            ciks:
+              type: array
+              description: CIKs (100 max)
+              items: {type: string}
+            startDt:
+              type: string
+              description: Start date
+              format: date
+            endDt:
+              type: string
+              description: End date
+              format: date
+            frequency:
+              description: Frequency
+              default: Every Week
+              $ref: '#/components/schemas/Frequency'
+            region: {$ref: '#/components/schemas/Region'}
+            ignoreErrors:
+              type: boolean
+              description: Ignore invalid/ambiguous P123 UIDs, tickers, CUSIPs, GVKEys, or CIKs
+              default: true
+    DataResult:
+      allOf:
+        - {$ref: '#/components/schemas/SharedResult'}
+        - type: object
+          properties:
+            dates: {type: array, items: {type: string, format: date-time}}
+            items:
+              type: object
+              properties:
+                ticker: {type: string}
+                name: {type: string}
+                cusip: {type: string}
+                gvkey: {type: string}
+                cik: {type: string}
+                series: {type: array, items: {type: array, items: {type: number, format: double}}}
+            errors: {type: string}
+    DataUniverseParams:
+      allOf:
+        - {$ref: '#/components/schemas/DataSharedParams'}
+        - required: [formulas, universe]
+          type: object
+          properties:
+            vendor: {$ref: '#/components/schemas/Vendor'}
+            pitMethod: {$ref: '#/components/schemas/PITMethod'}
+            precision: {$ref: '#/components/schemas/PrecisionNullable'}
+            currency: {$ref: '#/components/schemas/Currency'}
+            benchmark: {type: string, description: Benchmark (ticker)}
+            type:
+              type: string
+              description: Type of universe
+              enum: [Stock, ETF]
+              examples: [ETF]
+              default: Stock
+            universe: {$ref: '#/components/schemas/UniverseDef'}
+            asOfDt:
+              type: string
+              description: As of date
+              format: date
+            asOfDts:
+              type: array
+              description: As of dates
+              items: {type: string, format: date}
+            figi:
+              type: string
+              description: FIGI
+              enum: [Share Class, Country Composite]
+    UniverseDef:
+      description: Universe name or id; use ApiUniverse for temporary one
+      oneOf: [{type: integer, format: int32}, {type: string}]
+    DataUniverseResult:
+      allOf:
+        - {$ref: '#/components/schemas/SharedResult'}
+        - type: object
+          properties:
+            dt: {type: string, format: date}
+            p123Uids: {type: array, items: {type: integer, format: int32}}
+            tickers: {type: array, items: {type: string}}
+            names: {type: array, items: {type: string}}
+            data: {type: array, items: {type: array, items: {type: number, format: double}}}
+            figi: {type: array, items: {type: string}}
+    SharedResult:
+      type: object
+      properties:
+        cost: {type: number, format: double}
+        quotaRemaining: {type: number, format: double}
+    DataSeriesParams:
+      required: [name]
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The ID of the data series to update, omit it if you want to create a new data series
+          format: int32
+        name:
+          type: string
+          description: Name of the data series
+        description:
+          type: string
+          description: Description of the data series
+    DataSeriesResult:
+      allOf:
+        - {$ref: '#/components/schemas/SharedResult'}
+        - type: object
+          properties:
+            dataSeriesId: {type: integer, format: int32}
+    RankPerfParams:
+      allOf:
+        - {$ref: '#/components/schemas/RankSharedParams'}
+        - required: [rankingSystem, startDt]
+          type: object
+          properties:
+            numBuckets:
+              maximum: 200
+              minimum: 2
+              type: integer
+              description: Rank buckets
+              format: int32
+              examples: [20]
+              default: 20
+            minPrice:
+              type: number
+              description: Minimum price
+              format: double
+              examples: [3]
+              default: 3
+            minLiquidity:
+              type: number
+              description: Min liquidity (0 or unspecified to disable)
+              format: double
+              examples: [5000]
+            maxReturn:
+              type: number
+              description: Max return (0 or unspecified to disable)
+              format: double
+              examples: [200]
+            rebalFreq:
+              type: string
+              description: Rebalance frequency
+              default: Every 4 Weeks
+              $ref: '#/components/schemas/Frequency'
+            slippage:
+              type: number
+              description: >-
+                When a stock changes bucket a slippage is applied to make the performance more realistic.
+                Typical values are 0.1%-0.5% depending on liquidity of the stocks.
+              format: double
+              examples: [0]
+              default: 0
+            transType:
+              type: string
+              description: Transaction type
+              enum: [long, short]
+              default: long
+            benchmark:
+              type: string
+              description: Benchmark (ticker)
+              examples: [SPY]
+              default: SPY
+            startDt:
+              type: string
+              description: Start date (yyyy-mm-dd)
+              format: date
+            endDt:
+              type: string
+              description: End date (yyyy-mm-dd)
+              format: date
+            outputType:
+              type: string
+              description: >
+                Output type
+                * `ann` - annualized returns
+                * `perf` - performance)
+              enum:  [ann, perf]
+              default: ann
+    RankingSystemDef:
+      description: Ranking system name or ID
+      oneOf: [{type: integer, format: int32}, {type: string}]
+    RankPerfRetResult:
+      allOf:
+        - {$ref: '#/components/schemas/SharedResult'}
+        - type: object
+          properties:
+            benchmarkAnnRet: {type: number, format: double}
+            bucketAnnRet: {type: array, items: {type: number, format: double}}
+    RankPerfDetailedResult:
+      allOf:
+        - {$ref: '#/components/schemas/SharedResult'}
+        - type: object
+          properties:
+            dates: {type: array, items: {type: string, format: date}}
+            benchmarkSeries: {type: array, items: {type: number, format: double}}
+            bucketSeries: {type: array, items: {type: array, items: {type: number, format: double}}}
+    RankSharedParams:
+      allOf:
+        - {$ref: '#/components/schemas/SharedParams'}
+        - required: [rankingSystem]
+          type: object
+          properties:
+            rankingSystem: {$ref: '#/components/schemas/RankingSystemDef'}
+            universe:
+              type: string
+              description: Universe name, use ApiUniverse for temporary one
+            rankingMethod: {$ref: '#/components/schemas/RankingMethod1'}
+    RankRanksParams:
+      allOf:
+        - {$ref: '#/components/schemas/RankSharedParams'}
+        - required: [asOfDt]
+          type: object
+          properties:
+            asOfDt:
+              type: string
+              description: As of date (yyyy-mm-dd)
+              format: date
+            tickers: {type: string, description: Tickers}
+            includeNames:
+              type: boolean
+              description: Include names
+              default: false
+            includeNaCnt:
+              type: boolean
+              description: Include NA count
+              default: false
+            includeFinalStmt:
+              type: boolean
+              description: Include final statement flag
+              default: false
+            includeNodeDetails:
+              type: boolean
+              description: Include node details
+              deprecated: true
+              default: false
+            nodeDetails:
+              type: string
+              description: Include node details, no details included if not specified
+              enum: [composite, factor]
+            additionalData:
+              type: array
+              description: Additional data (100 max)
+              items: {type: string}
+            currency: {$ref: '#/components/schemas/Currency'}
+            figi:
+              type: string
+              description: FIGI
+              enum: [Share Class, Country Composite]
+    Nodes:
+      type: object
+      properties:
+        ids: {type: array, items: {type: integer, format: int32}}
+        names: {type: array, items: {type: string}}
+        parents: {type: array, items: {type: integer, format: int32}}
+        types: {type: array, items: {type: integer, format: int32}}
+        weights: {type: array, items: {type: number, format: double}}
+        ranks: {type: array, items: {type: array, items: {type: number, format: double}}}
+    RankRanksResult:
+      allOf:
+        - {$ref: '#/components/schemas/SharedResult'}
+        - type: object
+          properties:
+            dt: {type: string, format: date}
+            p123Uids: {type: array, items: {type: integer, format: int32}}
+            tickers: {type: array, items: {type: string}}
+            names: {type: array, items: {type: string}}
+            naCnt: {type: array, items: {type: integer, format: int32}}
+            finalStmt: {type: array, items: {type: boolean}}
+            ranks: {type: array, items: {type: number, format: double}}
+            nodes: {$ref: '#/components/schemas/Nodes'}
+            additionalData: {type: array, items: {type: array, items: {type: number, format: double}}}
+            figi: {type: array, items: {type: string}}
+    RankParams:
+      required: [nodes, type]
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The ID of the ranking system to update, omit it if you want to update the API ranking system
+          format: int32
+        type:
+          type: string
+          description: Type of ranking system
+          enum: [Stock, ETF]
+        rankingMethod: {$ref: '#/components/schemas/RankingMethod2'}
+        nodes:
+          type: string
+          description: Nodes in XML format
+        currency: {$ref: '#/components/schemas/Currency'}
+    ScreenByIdParams:
+      required: [id]
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Screen ID
+          format: int32
+        maxNumHoldings:
+          type: integer
+          description: Override maximum number of stocks
+          format: int32
+    ScreenDefParams:
+      oneOf:
+        - {type: integer, format: int32}
+        - {$ref: '#/components/schemas/ScreenByIdParams'}
+        - {$ref: '#/components/schemas/ScreenParams'}
+    ScreenParams:
+      required: [type]
+      type: object
+      properties:
+        type:
+          type: string
+          description: Type of screen
+          enum: [Stock, ETF]
+        rules: {type: array, items: {$ref: '#/components/schemas/ScreenRuleParams'}}
+        method:
+          type: string
+          description: Screen method
+          enum: [long, short, long/short, hedged]
+          default: long
+        maxNumHoldings:
+          type: integer
+          description: Maximum number of stocks (0 for factor)
+          format: int32
+          default: 0
+        benchmark:
+          type: string
+          description: Benchmark (ticker)
+          default: SPY
+        universe:
+          type: string
+          description: Universe name, use ApiUniverse for temporary one
+        ranking: {$ref: '#/components/schemas/ScreenRankingParams'}
+        currency: {$ref: '#/components/schemas/Currency'}
+    ScreenRankingParams:
+      oneOf:
+        - {type: integer, format: int32}
+        - {type: string}
+        - {$ref: '#/components/schemas/ScreenRankingSystemByIdParams'}
+        - {$ref: '#/components/schemas/ScreenRankingSystemByNameParams'}
+        - {$ref: '#/components/schemas/ScreenRankingQuickRankParams'}
+    ScreenRankingQuickRankParams:
+      required: [formula]
+      type: object
+      properties:
+        formula:
+          type: string
+          description: Quick rank formula
+        lowerIsBetter:
+          type: boolean
+          description: Lower is better
+          default: false
+    ScreenRankingSystemByIdParams:
+      required: [id]
+      type: object
+      properties:
+        method: {$ref: '#/components/schemas/RankingMethod3'}
+        id: {type: integer, format: int32, minimum: 1}
+    ScreenRankingSystemByNameParams:
+      required: [name]
+      type: object
+      properties:
+        method: {$ref: '#/components/schemas/RankingMethod3'}
+        name:
+          type: string
+          description: Ranking system name, use ApiRankingSystem for temporary one
+    ScreenRuleParams:
+      required: [formula]
+      type: object
+      properties:
+        formula:
+          type: string
+          description: Rule formula (500 chars max)
+        type:
+          type: string
+          description: Rule type, only applicable if screen method is long/short or hedged
+          enum: [common, long, short, hedge]
+    ScreenRunParams:
+      required: [screen]
+      type: object
+      properties:
+        vendor: {$ref: '#/components/schemas/Vendor'}
+        pitMethod: {$ref: '#/components/schemas/PITMethod'}
+        precision: {$ref: '#/components/schemas/Precision'}
+        screen: {$ref: '#/components/schemas/ScreenDefParams'}
+        asOfDt:
+          type: string
+          description: As of date (yyyy-mm-dd), defaults to today
+          format: date
+        endDt:
+          type: string
+          description: End date (yyyy-mm-dd)
+          format: date
+    ScreenRunResults:
+      allOf:
+        - {$ref: '#/components/schemas/SharedResult'}
+        - type: object
+          properties:
+            columns: {type: array, items: {type: string}}
+            rows: {type: array, {items: {type: array, items: {type: object}}}}
+    ScreenBacktestSharedParams:
+      allOf:
+        - {ref: '#/components/schemas/SharedParams'}
+        - required: [screen, startDt]
+          type: object
+          properties:
+            screen: {$ref: '#/components/schemas/ScreenDefParams'}
+            transPrice:
+              type: integer
+              description: >
+                Transaction price
+                * `1` - Next Open
+                * `4` - Next Close
+                * `3` - Next Average of Hi and Low
+              enum: [1, 4, 3]
+              default: 1
+            maxPosPct:
+              maximum: 100
+              minimum: 0
+              type: number
+              description: Max position % (0 - 100)
+              format: double
+              default: 0
+            slippage:
+              type: number
+              description: Slippage %
+              format: double
+              default: 0.25
+            longWeight:
+              type: number
+              description: Long weight %
+              format: double
+              default: 100
+            shortWeight:
+              type: number
+              description: Short weight %
+              format: double
+              default: 100
+            startDt:
+              type: string
+              description: Backtest start date (yyyy-mm-dd)
+              format: date
+            endDt:
+              type: string
+              description: Backtest end date (yyyy-mm-dd)
+              format: date
+    ScreenBacktestParams:
+      allOf:
+        - {$ref: '#/components/schemas/ScreenBacktestSharedParams'}
+        - type: object
+          properties:
+            rankTolerance:
+              type: number
+              description: Rank tolerance
+              format: double
+              default: 0
+            carryCost:
+              type: number
+              description: Carry cost %
+              format: double
+              default: 1.5
+            rebalFreq:
+              type: string
+              description: Rebalance frequency
+              default: Every 4 Weeks
+              $ref: '#/components/schemas/Frequency'
+            riskStatsPeriod:
+              type: string
+              description: Risk statistics period
+              enum: [Monthly, Weekly, Daily]
+              default: Monthly
+    ScreenBacktestResult:
+      allOf:
+        - {$ref: '#/components/schemas/SharedResult'}
+        - type: object
+          properties:
+            stats: {$ref: '#/components/schemas/ScreenBacktestResultStats'}
+            results: {$ref: '#/components/schemas/ScreenBacktestResultResults'}
+            chart: {$ref: '#/components/schemas/ScreenBacktestResultChartData'}
+    ScreenBacktestResultChartData:
+      type: object
+      properties:
+        dates: {type: array, items: {type: string, format: date}}
+        screenReturns: {type: array, items: {type: number, format: double}}
+        benchReturns: {type: array, items: {type: number, format: double}}
+        turnoverPct: {type: array, items: {type: number, format: double}}
+        positionCnt: {type: array, items: {type: number, format: double}}
+    ScreenBacktestResultResults:
+      type: object
+      properties:
+        columns: {type: array, items: {type: string}}
+        rows: {type: array, items: {type: array, items: {type: object}}}
+        average: {type: array, items: {type: number, format: double}}
+        upMarkets: {type: array, items: {type: number, format: double}}
+        downMarkets: {type: array, items: {type: number, format: double}}
+    ScreenBacktestResultSpanStats:
+      type: object
+      properties:
+        standard_dev: {type: number, format: double}
+        sharpe_ratio: {type: number, format: double}
+        sortino_ratio: {type: number, format: double}
+        total_return: {type: number, format: double}
+        annualized_return: {type: number, format: double}
+        max_drawdown: {type: number, format: double}
+    ScreenBacktestResultStats:
+      type: object
+      properties:
+        samples: {type: integer, format: int32}
+        correlation: {type: number, format: double}
+        r_squared: {type: number, format: double}
+        beta: {type: number, format: double}
+        alpha: {type: number, format: double}
+        port: {$ref: '#/components/schemas/ScreenBacktestResultSpanStats'}
+        bench: {$ref: '#/components/schemas/ScreenBacktestResultSpanStats'}
+    ScreenRollingBacktestParams:
+      allOf:
+        - {$ref: '#/components/schemas/ScreenBacktestSharedParams'}
+        - type: object
+          properties:
+            frequency:
+              type: string
+              description: Frequency
+              enum: [Every Week, Every 4 Weeks]
+              default: Every Week
+            holdingPeriod:
+              maximum: 730
+              minimum: 1
+              type: integer
+              description: Holding period (days)
+              format: int32
+              default: 182
+    ScreenRollingBacktestResult:
+      allOf:
+        - {$ref: '#/components/schemas/ScreenRunResults'}
+        - type: object
+          properties:
+            average: {type: array, items: {type: number, format: double}}
+            upMarkets: {type: array, items: {type: number, format: double}}
+            downMarkets: {type: array, items: {type: number, format: double}}
+    StockFactorParams:
+      required: [name]
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The ID of the stock factor to update, omit it if you want to create a new stock factor
+          format: int32
+        name:
+          type: string
+          description: Name of the stock factor
+        description:
+          type: string
+          description: Description of the stock factor
+    StockFactorResult:
+      allOf:
+        - {$ref: '#/components/schemas/SharedResult'}
+        - type: object
+          properties:
+            factorId: {type: integer, format: int32}
+    Asset:
+      type: object
+      properties:
+        id: {type: integer, format: int32}
+        name: {type: string}
+        weight: {type: number, format: double}
+        type: {type: string}
+    Comp:
+      type: object
+      properties:
+        model: {type: number, format: double}
+        bench: {type: number, format: double}
+    Data:
+      type: object
+      properties:
+        totalReturn: {$ref: '#/components/schemas/Comp'}
+        annualizedReturn: {$ref: '#/components/schemas/Comp'}
+        maxDrawdown: {$ref: '#/components/schemas/Comp'}
+        periodSamples: {$ref: '#/components/schemas/Comp'}
+        standardDeviation: {$ref: '#/components/schemas/Comp'}
+        sharpeRatio: {$ref: '#/components/schemas/Comp'}
+        sortinoRatio: {$ref: '#/components/schemas/Comp'}
+        benchCorrel: {$ref: '#/components/schemas/Comp'}
+        rSquared: {$ref: '#/components/schemas/Comp'}
+        beta: {$ref: '#/components/schemas/Comp'}
+        alpha: {$ref: '#/components/schemas/Comp'}
+    Details:
+      type: object
+      properties:
+        trades: {$ref: '#/components/schemas/Data'}
+        avgReturn: {$ref: '#/components/schemas/Data'}
+        avgDaysHeld: {$ref: '#/components/schemas/Data'}
+        totalAmount: {$ref: '#/components/schemas/Data'}
+        biggestAmount: {$ref: '#/components/schemas/Data'}
+        biggestPct: {$ref: '#/components/schemas/Data'}
+    GeneralInfo:
+      type: object
+      properties:
+        name: {type: string}
+        mktVal: {type: number, format: double}
+        cash: {type: number, format: double}
+        noPos: {type: integer, format: int32}
+        noAssets: {type: integer, format: int32}
+        lastTrades: {type: integer, format: int32}
+        lastTraded: {type: string, format: date}
+        start: {type: string, format: date}
+        end: {type: string, format: date}
+        sizingMethod: {type: string}
+        reconPeriod: {type: string}
+        lastRecon: {type: string, format: date}
+        nextRecon: {type: string, format: date}
+        reconText: {type: string}
+        rebalPeriod: {type: string}
+        rebalMode: {type: string}
+        lastRebal: {type: string, format: date}
+        nextRebal: {type: string, format: date}
+        rebalText: {type: string}
+        benchmarkId: {type: integer, format: int32}
+        benchmark: {type: string}
+        universe: {type: string}
+        rankingSystemId: {type: integer, format: int32}
+        rankingSystem: {type: string}
+    Holding:
+      type: object
+      properties:
+        weight: {type: number, format: double}
+        ticker: {type: string}
+        name: {type: string}
+        mktUid: {type: integer, format: int32}
+        retPct: {type: number, format: double}
+        ret: {type: number, format: double}
+        rank: {type: number, format: double}
+        shares: {type: number, format: double}
+        avgShareCost: {type: number, format: double}
+        currPrice: {type: number, format: double}
+        value: {type: number, format: double}
+        daysHeld: {type: integer, format: int32}
+        sector: {type: string}
+        asset: {type: string}
+        assetUrl: {type: string}
+        totalAmount: {type: number, format: double}
+    Parameters:
+      type: object
+      properties:
+        startingCapital: {type: number, format: double}
+        totalCashAdded: {type: number, format: double}
+        endingMarketValue: {type: number, format: double}
+        startDate: {type: string, format: date}
+        endDate: {type: string, format: date}
+        daysSinceInception: {type: integer, format: int32}
+    Perf:
+      type: object
+      properties:
+        returnPct: {$ref: '#/components/schemas/Return'}
+        monthly: {$ref: '#/components/schemas/Period'}
+        yearly: {$ref: '#/components/schemas/Period'}
+        weekly: {$ref: '#/components/schemas/Period'}
+    Period:
+      type: object
+      properties:
+        trailing3Year: {$ref: '#/components/schemas/Data'}
+        sinceInception: {$ref: '#/components/schemas/Data'}
+    QuickStats:
+      type: object
+      properties:
+        totalReturn: {type: number, format: double}
+        benchReturn: {type: number, format: double}
+        activeReturn: {type: number, format: double}
+        annualizedReturn: {type: number, format: double}
+        annualTurnover: {type: number, format: double}
+        maxDrawdown: {type: number, format: double}
+        benchMaxDrawdown: {type: number, format: double}
+        overallWinners: {type: integer, format: int32}
+        overallWinnersPct: {type: number, format: double}
+        sharpeRatio: {type: number, format: double}
+        benchCorrel: {type: number, format: double}
+    Return:
+      type: object
+      properties:
+        total: {$ref: '#/components/schemas/Comp'}
+        annualized: {$ref: '#/components/schemas/Comp'}
+        yearToDate: {$ref: '#/components/schemas/Comp'}
+        monthToDate: {$ref: '#/components/schemas/Comp'}
+        period4Week: {$ref: '#/components/schemas/Comp'}
+        period13Week: {$ref: '#/components/schemas/Comp'}
+        period1Year: {$ref: '#/components/schemas/Comp'}
+        period3Year: {$ref: '#/components/schemas/Comp'}
+    RiskMeasurements:
+      type: object
+      properties:
+        daily: {$ref: '#/components/schemas/Period'}
+        weekly: {$ref: '#/components/schemas/Period'}
+        monthly: {$ref: '#/components/schemas/Period'}
+        yearly: {$ref: '#/components/schemas/Period'}
+    StrategyOutput:
+      type: object
+      properties:
+        summary: {$ref: '#/components/schemas/StrategySummaryOutput'}
+        holdings: {type: array, items: {$ref: '#/components/schemas/Holding'}}
+        stats: {$ref: '#/components/schemas/StrategyStatsOutput'}
+        assets: {type: array, items: {$ref: '#/components/schemas/Asset'}}
+    StrategyStatsOutput:
+      type: object
+      properties:
+        perf: {$ref: '#/components/schemas/Perf'}
+        trading: {$ref: '#/components/schemas/Trading'}
+        riskMeasurements: {$ref: '#/components/schemas/RiskMeasurements'}
+    StrategySummaryOutput:
+      type: object
+      properties:
+        generalInfo: {$ref: '#/components/schemas/GeneralInfo'}
+        quickStats: {$ref: '#/components/schemas/QuickStats'}
+    Summary:
+      type: object
+      properties:
+        totalBuyShortTrades: {type: integer, format: int32}
+        totalSellCoverTrades: {type: integer, format: int32}
+        averageAnnualTurnover: {type: number, format: double}
+        totalTradingCost: {type: number, format: double}
+        realizedWinners: {type: number, format: double}
+        unrealizedWinners: {type: number, format: double}
+        overallWinners: {type: number, format: double}
+    Table:
+      type: object
+      properties:
+        period: {type: array, items: {type: string}}
+        model: {type: array, items: {type: number, format: double}}
+        bench: {type: array, items: {type: number, format: double}}
+    Trading:
+      type: object
+      properties:
+        parameters: {$ref: '#/components/schemas/Parameters'}
+        summary: {$ref: '#/components/schemas/Summary'}
+        realized: {$ref: '#/components/schemas/Details'}
+        unrealized: {$ref: '#/components/schemas/Details'}
+    UniverseParams:
+      required: [rules, type]
+      type: object
+      properties:
+        type:
+          type: string
+          description: Type of universe
+          enum: [Stock, ETF]
+        rules: {type: array, items: {type: string}}
+        startingUniverse: {type: string}
+        currency: {$ref: '#/components/schemas/Currency'}

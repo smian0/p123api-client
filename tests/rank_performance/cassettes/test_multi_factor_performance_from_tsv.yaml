@@ -1,0 +1,156 @@
+interactions:
+- request:
+    body: '{"apiKey": "MASKED", "apiId": "MASKED"}'
+    headers:
+      Content-Type:
+      - application/json
+      content-length:
+      - MASKED
+    method: POST
+    uri: https://api.portfolio123.com/auth
+  response:
+    body:
+      string: MASKED
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-length:
+      - '38'
+      content-type:
+      - text/plain;charset=UTF-8
+      date:
+      - Mon, 30 Dec 2024 03:01:12 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      x-content-type-options:
+      - nosniff
+      x-expires-in:
+      - '3600'
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+- request:
+    body: '{"nodes": "<RankingSystem RankType=\"Higher\"><StockFormula Weight=\"1\"
+      RankType=\"Higher\" Name=\"Close(0)\" Description=\"\" Scope=\"Universe\"><Formula>Close(0)</Formula></StockFormula><StockFormula
+      Weight=\"1\" RankType=\"Lower\" Name=\"PERelative\" Description=\"\" Scope=\"Universe\"><Formula>PERelative</Formula></StockFormula></RankingSystem>",
+      "type": "stock"}'
+    headers:
+      Content-Type:
+      - application/json
+      authorization:
+      - MASKED
+      content-length:
+      - MASKED
+    method: POST
+    uri: https://api.portfolio123.com/rank
+  response:
+    body:
+      string: '{"cost": 1, "quotaRemaining": 6770}'
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      date:
+      - Mon, 30 Dec 2024 03:01:12 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      transfer-encoding:
+      - chunked
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+- request:
+    body: '{"apiKey": "MASKED", "apiId": "MASKED"}'
+    headers:
+      Content-Type:
+      - application/json
+      content-length:
+      - MASKED
+    method: POST
+    uri: https://api.portfolio123.com/auth
+  response:
+    body:
+      string: MASKED
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-length:
+      - '38'
+      content-type:
+      - text/plain;charset=UTF-8
+      date:
+      - Mon, 30 Dec 2024 03:01:13 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      x-content-type-options:
+      - nosniff
+      x-expires-in:
+      - '3600'
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+- request:
+    body: '{"rankingSystem": "ApiRankingSystem", "startDt": "2022-01-01", "endDt":
+      "2022-12-31", "pitMethod": "Prelim", "precision": 4, "universe": "SP500", "transType":
+      "long", "rankingMethod": 4, "numBuckets": 20, "minPrice": 1.0, "minLiquidity":
+      100000.0, "maxReturn": 200.0, "rebalFreq": "Every Week", "slippage": 0.25, "benchmark":
+      "SPY", "outputType": "ann"}'
+    headers:
+      Content-Type:
+      - application/json
+      authorization:
+      - MASKED
+      content-length:
+      - MASKED
+    method: POST
+    uri: https://api.portfolio123.com/rank/performance
+  response:
+    body:
+      string: '{"cost": 3, "quotaRemaining": 6767, "benchmarkAnnRet": -19.0473, "bucketAnnRet":
+        [-9.4819, -9.7942, 6.8679, 0.2145, -16.7786, -10.5366, -22.0251, -23.811,
+        -20.7083, -19.1237, -13.9716, -14.2784, -17.6249, -15.4677, -20.1992, -23.225,
+        -9.2291, -19.3855, -16.9953, -17.8113]}'
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      date:
+      - Mon, 30 Dec 2024 03:01:13 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      transfer-encoding:
+      - chunked
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+version: 1

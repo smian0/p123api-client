@@ -1,0 +1,59 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# Environment variables
+.env
+.env.local
+.env.production
+sample.env
+tests/.env.test
+tests/**/.env*
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Caches and logs
+.mypy_cache/
+.ruff_cache/
+.cursor/
+logs/
+*.log
+
+# Mac OS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+.history
+.ai-templates
+tests/**/test_output
+tests/**/output

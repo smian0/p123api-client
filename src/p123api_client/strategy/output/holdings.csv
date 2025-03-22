@@ -1,0 +1,21 @@
+ticker,weight,name,mktUid,retPct,ret,rank,shares,avgShareCost,currPrice,value,daysHeld,sector
+BSVN:USA,4.99,Bank7 Corp.,61615,30.34,130531.17,97.86,11675.0,36.85,48.03,560750.25,163,Finance
+DDI:USA,3.0,"DoubleDown Interactive Co., Ltd.",69497,-24.69,-110433.91,99.5,31772.0,14.08,10.6,336789.55,128,Technology
+ELMD:USA,10.92,"Electromed, Inc.",31198,189.85,803526.93,99.82,41473.0,10.21,29.58,1226771.34,477,Healthcare
+ESP:USA,4.34,Espey Manufacturing & Electronics Corp.,3291,-4.23,-21508.7,98.69,16950.0,30.01,28.74,487220.97,86,Industrials
+FSI:USA,4.19,"Flexible Solutions International, Inc.",18394,-18.76,-108784.52,98.38,132297.0,4.38,3.56,470977.32,44,Non-Energy Materials
+FSTR:USA,6.11,L.B. Foster Co.,5220,14.48,86793.66,99.74,25111.0,23.87,27.33,686283.63,44,Industrials
+GB:USA,5.77,Global Blue Group Holding AG,65263,21.55,114965.39,99.37,97513.0,5.47,6.65,648461.45,93,Finance
+ISSC:USA,3.78,"Innovative Solutions & Support, Inc.",4701,1.19,4978.25,99.61,50695.0,8.28,8.38,424824.1,289,Industrials
+KINS:USA,5.75,"Kingstone Cos., Inc.",2622,32.39,158087.56,99.63,41605.0,11.73,15.53,646125.65,128,Finance
+KMDA:USA,6.47,Kamada Ltd.,44160,-0.11,-829.12,98.88,120163.0,6.06,6.05,726986.15,51,Healthcare
+LGCY:USA,4.05,"Legacy Education, Inc.",140532,-0.95,-4365.49,99.97,54774.0,8.4,8.32,455719.68,2,Consumer Non-Cyclicals
+LQDT:USA,5.7,"Liquidity Services, Inc.",23414,55.65,229047.61,99.42,20197.0,20.38,31.72,640648.84,163,Consumer Cyclicals
+MAX:USA,4.36,"MediaAlpha, Inc.",65626,-14.42,-82483.83,99.71,45082.0,12.69,10.86,489590.52,44,Finance
+MSB:USA,3.67,Mesabi Trust,5803,3.24,12965.67,99.95,14551.0,27.47,28.36,412666.36,2,Non-Energy Materials
+PAYS:USA,5.26,"PaySign, Inc.",61466,-19.93,-147004.04,99.29,194302.0,3.8,3.04,590678.08,79,Finance
+RDVT:USA,7.93,"Red Violet, Inc.",60966,74.96,382033.75,97.96,23753.0,21.46,37.54,891687.62,198,Technology
+RIGL:USA,3.62,"Rigel Pharmaceuticals, Inc.",7577,-33.28,-203159.34,99.4,24775.0,24.64,16.44,407301.0,44,Healthcare
+STRW:USA,3.25,"Strawberry Fields REIT, Inc.",116918,-8.62,-34508.58,99.9,34444.0,11.62,10.62,365795.28,107,Finance
+SWKH:USA,4.82,SWK Holdings Corp.,5086,-7.83,-46063.02,99.84,33804.0,17.39,16.03,541878.12,261,Finance
+UG:USA,2.96,"United-Guardian, Inc.",9158,-23.27,-100898.98,98.8,34483.0,12.58,9.65,332760.95,128,Non-Energy Materials

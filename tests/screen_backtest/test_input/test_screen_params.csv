@@ -1,0 +1,2 @@
+startDt,endDt,pitMethod,precision,transPrice,slippage,longWeight,rankTolerance,rebalFreq,riskStatsPeriod,type,universe,maxNumHoldings,method,currency,benchmark,ranking,rules
+2023-01-01,2023-12-31,Prelim,2,3,0.1,100,7,Every Week,Monthly,stock,01 SmallCap Bulls Rank US,25,long,USD,spy,476075,[]

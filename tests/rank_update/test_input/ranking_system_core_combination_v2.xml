@@ -1,0 +1,263 @@
+<RankingSystem RankType="Higher">
+    <Composite Name="Core: Growth" Weight="15" RankType="Higher">
+        <Composite Name="EPS" Weight="33.33" RankType="Higher">
+            <Composite Name="Basic" Weight="50" RankType="Higher">
+                <StockFactor Weight="33.33" RankType="Higher" Scope="Universe">
+                    <Factor>EPSExclXorGr%PYQ</Factor>
+                </StockFactor>
+                <StockFactor Weight="33.33" RankType="Higher" Scope="Universe">
+                    <Factor>EPSExclXorGr%TTM</Factor>
+                </StockFactor>
+                <StockFactor Weight="33.33" RankType="Higher" Scope="Universe">
+                    <Factor>EPSExclXorGr%5Y</Factor>
+                </StockFactor>
+            </Composite>
+            <Composite Name="Acceleration" Weight="50" RankType="Higher">
+                <StockFormula Weight="50" RankType="Higher" Name="EPS Acceleration - recent" Description="" Scope="Universe">
+                    <Formula>%(EPSExclXorGr%PYQ, EPSExclXorGr%TTM)</Formula>
+                </StockFormula>
+                <StockFormula Weight="50" RankType="Higher" Name="EPS Acceleration - longer term" Description="" Scope="Universe">
+                    <Formula>%(EPSExclXorGr%TTM, EPSExclXorGr%5Y)</Formula>
+                </StockFormula>
+            </Composite>
+        </Composite>
+        <Composite Name="Sales" Weight="33.33" RankType="Higher">
+            <Composite Name="Basic" Weight="50" RankType="Higher">
+                <StockFactor Weight="33.33" RankType="Higher" Scope="Universe">
+                    <Factor>SalesGr%PYQ</Factor>
+                </StockFactor>
+                <StockFactor Weight="33.33" RankType="Higher" Scope="Universe">
+                    <Factor>SalesGr%TTM</Factor>
+                </StockFactor>
+                <StockFactor Weight="33.33" RankType="Higher" Scope="Universe">
+                    <Factor>SalesGr%5Y</Factor>
+                </StockFactor>
+            </Composite>
+            <Composite Name="Acceleration" Weight="50" RankType="Higher">
+                <StockFormula Weight="50" RankType="Higher" Name="Sales Acceleration - recent" Description="" Scope="Universe">
+                    <Formula>%(SalesGr%PYQ, SalesGr%TTM)</Formula>
+                </StockFormula>
+                <StockFormula Weight="50" RankType="Higher" Name="Sales Acceleration - longer term" Description="" Scope="Universe">
+                    <Formula>%(SalesGr%TTM, SalesGr%5Y)</Formula>
+                </StockFormula>
+            </Composite>
+        </Composite>
+        <Composite Name="Operating Income" Weight="33.33" RankType="Higher">
+            <Composite Name="Basic" Weight="50" RankType="Higher">
+                <StockFactor Weight="33.33" RankType="Higher" Scope="Universe">
+                    <Factor>OpIncGr%PYQ</Factor>
+                </StockFactor>
+                <StockFactor Weight="33.33" RankType="Higher" Scope="Universe">
+                    <Factor>OpIncGr%TTM</Factor>
+                </StockFactor>
+                <StockFactor Weight="33.33" RankType="Higher" Scope="Universe">
+                    <Factor>OpIncGr%5Y</Factor>
+                </StockFactor>
+            </Composite>
+            <Composite Name="Acceleration" Weight="50" RankType="Higher">
+                <StockFormula Weight="50" RankType="Higher" Name="Operating Income Acceleration - recent" Description="" Scope="Universe">
+                    <Formula>%(OpIncGr%PYQ, OpIncGr%TTM)</Formula>
+                </StockFormula>
+                <StockFormula Weight="50" RankType="Higher" Name="Operating Income Acceleration - longer term" Description="" Scope="Universe">
+                    <Formula>%(OpIncGr%TTM, OpIncGr%5Y)</Formula>
+                </StockFormula>
+            </Composite>
+        </Composite>
+    </Composite>
+    <Composite Name="Core: Low Volatility" Weight="10" RankType="Higher">
+        <Composite Name="Beta" Weight="50" RankType="Higher">
+            <StockFormula Weight="33.33" RankType="Lower" Name="1-year Beta" Description="" Scope="Universe">
+                <Formula>betafunc(5,52,30)</Formula>
+            </StockFormula>
+            <StockFactor Weight="33.33" RankType="Lower" Scope="Universe">
+                <Factor>Beta3Y</Factor>
+            </StockFactor>
+            <StockFactor Weight="33.33" RankType="Lower" Scope="Universe">
+                <Factor>Beta5Y</Factor>
+            </StockFactor>
+        </Composite>
+        <Composite Name="Price Volatility" Weight="50" RankType="Higher">
+            <StockFormula Weight="33.33" RankType="Lower" Name="Price Volatility, 12 months" Description="" Scope="Universe">
+                <Formula>PctDev(252,1)</Formula>
+            </StockFormula>
+            <StockFormula Weight="33.33" RankType="Lower" Name="Price Volatility, 3 years" Description="" Scope="Universe">
+                <Formula>PctDev(156,5)</Formula>
+            </StockFormula>
+            <StockFormula Weight="33.33" RankType="Lower" Name="Price Volatility, 5 years" Description="" Scope="Universe">
+                <Formula>PctDev(126,10)</Formula>
+            </StockFormula>
+        </Composite>
+    </Composite>
+    <Composite Name="Core: Sentiment" Weight="10" RankType="Higher">
+        <Composite Name="Estimate Revision" Weight="45" RankType="Higher">
+            <StockFormula Weight="33.33" RankType="Higher" Name="EPS Estimate Revision CY" Description="" Scope="Universe">
+                <Formula>%(CurFYEPSMean, CurFYEPS4WkAgo)</Formula>
+            </StockFormula>
+            <StockFormula Weight="33.33" RankType="Higher" Name="EPS Estimate Revision CQ" Description="" Scope="Universe">
+                <Formula>%(CurQEPSMean, CurQEPS4WkAgo)</Formula>
+            </StockFormula>
+            <StockFormula Weight="33.33" RankType="Lower" Name="EPS Estimate Variability CQ" Description="" Scope="Universe">
+                <Formula>CurQEPSStdDev/abs( CurQEPSMean)</Formula>
+            </StockFormula>
+        </Composite>
+        <Composite Name="Surprise" Weight="25" RankType="Higher">
+            <StockFactor Weight="65" RankType="Higher" Scope="Universe">
+                <Factor>Surprise%Q1</Factor>
+            </StockFactor>
+            <StockFactor Weight="35" RankType="Higher" Scope="Universe">
+                <Factor>Surprise%Q2</Factor>
+            </StockFactor>
+        </Composite>
+        <Composite Name="Recommendations" Weight="15" RankType="Higher">
+            <StockFormula Weight="75" RankType="Lower" Name="Changes in Recommendation" Description="" Scope="Universe">
+                <Formula>AvgRec/AvgRec4WkAgo</Formula>
+            </StockFormula>
+            <StockFactor Weight="25" RankType="Lower" Scope="Universe">
+                <Factor>AvgRec</Factor>
+            </StockFactor>
+        </Composite>
+        <Composite Name="Short Interest" Weight="15" RankType="Higher">
+            <StockFormula Weight="100" RankType="Lower" Name="Short Interest" Description="" Scope="Universe">
+                <Formula>SI%ShsOut</Formula>
+            </StockFormula>
+        </Composite>
+    </Composite>
+    <Composite Name="Core: Momentum" Weight="10" RankType="Higher">
+        <Composite Name="price changes" Weight="35" RankType="Higher">
+            <StockFormula Weight="20" RankType="Higher" Name="Price Change 120 days" Description="" Scope="Universe">
+                <Formula>close(0)/close(120)</Formula>
+            </StockFormula>
+            <StockFormula Weight="20" RankType="Higher" Name="Price Change 140 days" Description="" Scope="Universe">
+                <Formula>close(0)/close(140)</Formula>
+            </StockFormula>
+            <StockFormula Weight="30" RankType="Higher" Name="Price Change 160 days" Description="" Scope="Universe">
+                <Formula>close(0)/close(160)</Formula>
+            </StockFormula>
+            <StockFormula Weight="30" RankType="Higher" Name="Price Change 180 days" Description="" Scope="Universe">
+                <Formula>close(0)/close(180)</Formula>
+            </StockFormula>
+        </Composite>
+        <Composite Name="technical indicators" Weight="15" RankType="Higher">
+            <StockFormula Weight="50" RankType="Higher" Name="up-down ratio 120" Description="" Scope="Universe">
+                <Formula>UpDownRatio(120,0)</Formula>
+            </StockFormula>
+            <StockFormula Weight="30" RankType="Higher" Name="up-down ratio 60" Description="" Scope="Universe">
+                <Formula>UpDownRatio(60,0)</Formula>
+            </StockFormula>
+            <StockFormula Weight="20" RankType="Higher" Name="up-down ratio 20" Description="" Scope="Universe">
+                <Formula>UpDownRatio(20,0)</Formula>
+            </StockFormula>
+        </Composite>
+        <Composite Name="quarterly returns" Weight="15" RankType="Higher">
+            <StockFormula Weight="32.5" RankType="Higher" Name="3MoPctRet" Description="" Scope="Universe">
+                <Formula>Close(0) / Close(60)</Formula>
+            </StockFormula>
+            <StockFormula Weight="27.5" RankType="Higher" Name="3MoRet3MoAgo" Description="" Scope="Universe">
+                <Formula>Close(60) / Close(120)</Formula>
+            </StockFormula>
+            <StockFormula Weight="22.5" RankType="Higher" Name="3MoRet6MoAgo" Description="" Scope="Universe">
+                <Formula>Close(120) / Close(180)</Formula>
+            </StockFormula>
+            <StockFormula Weight="17.5" RankType="Higher" Name="3MoRet9MoAgo" Description="" Scope="Universe">
+                <Formula>Close(180) / Close(240)</Formula>
+            </StockFormula>
+        </Composite>
+        <Composite Name="industry momentum" Weight="35" RankType="Higher">
+            <IndFactor Weight="40" RankType="Higher">
+                <Factor>Pr26W%ChgInd</Factor>
+            </IndFactor>
+            <IndFactor Weight="60" RankType="Higher">
+                <Factor>Pr52W%ChgInd</Factor>
+            </IndFactor>
+        </Composite>
+    </Composite>
+    <Composite Name="Core: Quality" Weight="30" RankType="Higher">
+        <Composite Name="Margins" Weight="25" RankType="Higher">
+            <StockFactor Weight="50" RankType="Higher" Scope="Industry">
+                <Factor>OpMgn%TTM</Factor>
+            </StockFactor>
+            <StockFactor Weight="25" RankType="Higher" Scope="Industry">
+                <Factor>OpMgn%5YAvg</Factor>
+            </StockFactor>
+            <StockFormula Weight="25" RankType="Higher" Name="Excess Gross Margin" Description="" Scope="Universe">
+                <Formula>GMgn%TTM - GMgn%TTMInd</Formula>
+            </StockFormula>
+        </Composite>
+        <Composite Name="Turnover" Weight="25" RankType="Higher">
+            <StockFactor Weight="50" RankType="Higher" Scope="Industry">
+                <Factor>AstTurnTTM</Factor>
+            </StockFactor>
+            <StockFactor Weight="50" RankType="Higher" Scope="Industry">
+                <Factor>AstTurn5YAvg</Factor>
+            </StockFactor>
+        </Composite>
+        <Composite Name="Return on Capital" Weight="25" RankType="Higher">
+            <StockFactor Weight="30" RankType="Higher" Scope="Industry">
+                <Factor>ROI%TTM</Factor>
+            </StockFactor>
+            <StockFactor Weight="40" RankType="Higher" Scope="Industry">
+                <Factor>ROI%5YAvg</Factor>
+            </StockFactor>
+            <StockFactor Weight="10" RankType="Higher" Scope="Industry">
+                <Factor>ROE%TTM</Factor>
+            </StockFactor>
+            <StockFactor Weight="20" RankType="Higher" Scope="Industry">
+                <Factor>ROE%5YAvg</Factor>
+            </StockFactor>
+        </Composite>
+        <Composite Name="Finances" Weight="25" RankType="Higher">
+            <StockFactor Weight="50" RankType="Higher" Scope="Universe">
+                <Factor>IntCovTTM</Factor>
+            </StockFactor>
+            <StockFactor Weight="20" RankType="Lower" Scope="Industry">
+                <Factor>DbtTot2CapQ</Factor>
+            </StockFactor>
+            <StockFactor Weight="30" RankType="Higher" Scope="Universe">
+                <Factor>IntCov5YAvg</Factor>
+            </StockFactor>
+        </Composite>
+    </Composite>
+    <Composite Name="Core: Value" Weight="25" RankType="Higher">
+        <Composite Name="Based on Earnings" Weight="30" RankType="Higher">
+            <StockFactor Weight="25" RankType="Lower" Scope="Industry">
+                <Factor>PEExclXorTTM</Factor>
+            </StockFactor>
+            <StockFormula Weight="35" RankType="Higher" Name="Forward Earnings Yield" Description="" Scope="Universe">
+                <Formula>CurFYEPSMean / Price</Formula>
+            </StockFormula>
+            <StockFormula Weight="40" RankType="Higher" Name="EBITDA / EV" Description="" Scope="Universe">
+                <Formula>OpIncBDeprTTM / EV</Formula>
+            </StockFormula>
+        </Composite>
+        <Composite Name="Based on Sales" Weight="35" RankType="Higher">
+            <StockFactor Weight="40" RankType="Lower" Scope="Universe">
+                <Factor>Pr2SalesTTM</Factor>
+            </StockFactor>
+            <StockFactor Weight="20" RankType="Lower" Scope="Universe">
+                <Factor>EV2SalesTTM</Factor>
+            </StockFactor>
+            <StockFormula Weight="20" RankType="Lower" Name="Forward Price to Sales" Description="" Scope="Universe">
+                <Formula>(Price * SharesFDQ) / CurFYSalesMean</Formula>
+            </StockFormula>
+            <StockFormula Weight="20" RankType="Higher" Name="Gross Profit to EV" Description="" Scope="Universe">
+                <Formula>GrossProfitTTM / EV</Formula>
+            </StockFormula>
+        </Composite>
+        <Composite Name="Based on Free Cash Flow" Weight="25" RankType="Higher">
+            <StockFormula Weight="40" RankType="Higher" Name="Free Cash Flow to Price" Description="" Scope="Universe">
+                <Formula>NetFCFPSTTM / Price</Formula>
+            </StockFormula>
+            <StockFormula Weight="60" RankType="Higher" Name="Unlevered Free Cash Flow to EV" Description="" Scope="Universe">
+                <Formula>(OperCashFlTTM - CapExTTM + 0.8*IntExpTTM) / EV</Formula>
+            </StockFormula>
+        </Composite>
+        <Composite Name="Based on Assets" Weight="10" RankType="Higher">
+            <StockFactor Weight="50" RankType="Lower" Scope="Industry">
+                <Factor>Pr2BookQ</Factor>
+            </StockFactor>
+            <StockFactor Weight="50" RankType="Lower" Scope="Universe">
+                <Factor>Pr2TanBkQ</Factor>
+            </StockFactor>
+        </Composite>
+    </Composite>
+</RankingSystem>

@@ -1,0 +1,5 @@
+rank_type	formula	scope	description	category
+Higher	Close(0)	Universe	Yesterday's Close Price	Price
+Lower	Vol(0)	Universe	Yesterday's Volume	Volume
+Higher	mktcap	Universe	Market Capitalization	Size
+Lower	PERelative	Universe	Current P/E Ratio	Valuation

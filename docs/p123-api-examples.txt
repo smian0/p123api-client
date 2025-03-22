@@ -1,0 +1,614 @@
+- [Home](https://portfolio123.customerly.help/en)
+- [DataMiner & API](https://portfolio123.customerly.help/en/dataminer-api)
+- [The API Wrapper - p123api](https://portfolio123.customerly.help/en/dataminer-api/the-api-wrapper-p123api)
+
+# The API Wrapper - p123api
+
+Describes the p123api package with objects and functions that facilitate using the P123 API
+
+![Marco Salerno](https://portfolio123.customerly.help/_next/image?url=https%3A%2F%2Fpictures.customerly.io%2Faccounts%2F35042%2F128&w=128&q=75)
+
+Written by Marco SalernoLast update 24 days ago
+
+## Introduction
+
+To facilitate using the our Rest API we created a python package that wraps the [API endpoints](https://api.portfolio123.com/docs/index.html). The package is called `p123api` and it makes it very easy to start using the API. It handles several things like retries, authentication and low level http request.
+
+The wrapper is an open source project and is [hosted at pypi.org](https://pypi.org/project/p123api/). The package is still being developed, so let us know of any issues or inconsistencies.
+
+- For an example using the `p123api` in a Google Colab notebook see [this article](https://portfolio123.customerly.help/dataminer-api/how-to-run-a-screen-backtest-using-the-api-in-google-colab).
+
+- [For additional Google Colab examples click here](https://drive.google.com/drive/u/0/folders/1F3geOi2IYIbdb9obDj8U_o2aDTjw6Fpr)
+
+
+To use `p123api` you can start your code like this:
+
+```
+# Install p123api if missing
+!pip install --upgrade p123api
+
+import p123api
+
+try:
+    client = p123api.Client(api_id='YOUR_API_ID', api_key='YOUR_API_KEY_XXXX')
+
+    # call package function(s)
+    res1 = client.p123api_function1()
+
+    ... etc ...
+
+except p123api.ClientException as e:
+    print(e)
+```
+
+## Functions
+
+Each API endpoint has been wrapped with a function. They are listed below grouped the same way as the API reference. The parameters for the functions should be identical to the [API specification](https://api.portfolio123.com/docs/index.html). Lastly, for optional parameter the default value when not specified is the first value in the list (if any).
+
+## List of functions
+
+#### (see below for details)
+
+| **AI Functions** |  |
+| aifactor\_predict | Returns the predictions for a trained predictor. |
+| **Data Functions** |  |
+| data | This operation allows you to retrieve large sets of data from our point in time engine. |
+| data\_universe | This operation allows you to retrieve point in time data for a selected universe. |
+| **Universe Functions** |  |
+| universe\_update | This operation updates the Universe used by API. |
+| **Rank Functions** |  |
+| rank\_ranks | This operation allows you to retrieve rank data from a ranking system for a specific universe. |
+| rank\_perf | This operation lets you run bucket performance tests of multifactor ranking systems. |
+| rank\_update | This operation updates the "API ranking system" called ApiRankingSystem. |
+| **Screen Functions** |  |
+| screen\_run | This operation allows you to run a screen. |
+| screen\_backtest | This operation allows you to run a performance backtest of a Screen. |
+| screen\_rolling\_backtest | This operation allows you to run and collect the output of rolling screens. |
+| **Strategy Functions** |  |
+| strategy | This operation returns the data from the Summary, Current Holdings and Statistics tabs of a strategies or books. |
+| **Data Series Functions** |  |
+| data\_series\_create\_update | Create or update a data series. |
+| data\_series\_delete | Deletes a data series and the data associated with it. |
+| data\_series\_upload | Upload the series data. |
+| **Stock Factors Functions** |  |
+| stock\_factor\_create\_update | Create or update a new stock factor. |
+| stock\_factor\_delete | Delete a stock factor. |
+| stock\_factor\_upload | Upload data from a csv file into an existing stock factor. |
+
+## **AI Function**
+
+### **aifactor\_predict()**
+
+**Wrapper for POST** [**/aiFactor/predict/{id}**](https://api.portfolio123.com/docs/index.html#/Data/_data)
+
+This operation allows you to get the predictions for a trained Predictor. Although you can specify any universe we recommended that you use the same one used to train the predictor.
+
+```
+p123api.Client().aifactor_predict(
+    id # predictor id
+    #
+    # optional
+    #
+    ,{
+    "asOfDt": "2024-10-07",  # defaults to latest available
+    "precision": 2,
+    "universe": "univ name", # defaults to AI Factor universe
+    "includeNames": False,
+    "includeFeatures": False,
+    "figi": 'Share Class' |'Country Composite'
+    },
+    to_pandas=True
+)
+```
+
+## **Data Functions**
+
+### **data()**
+
+**Wrapper for POST** [**/data**](https://api.portfolio123.com/docs/index.html#/Data/_data)
+
+This operation allows you to retrieve large sets of data from our point in time engine. You will need to obtain your own license from the data vendor (Factset or Compustat) to fully access. You can try it without a license with the following stocks: IBM, MSFT & INTC and for 5 years of history. Alternatively see the data\_universe() operation below to download normalized data.
+
+```
+p123api.Client().data({
+    # Specify either: tickers, FIGI, p123Uids, CIKs,
+    # or gvkeys (Compustat only)
+    'tickers': ['ticker1', 'ticker2'' ...],
+    'formulas': ['form1', 'form2', ... ],
+    'startDt': 'yyyy-mm-dd',
+    'endDt': 'yyyy-mm-dd',
+    # optional parameters
+    'currency': 'USD' | 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'NOK' | 'PLN' | 'SEK' | 'TRY',
+    'precision': 2 | 3 | 4,
+    'frequency': 'Every Week' | 'Every N Weeks' (2,3,4,6,8,13,26,52),
+    'pitMethod': 'Prelim' | 'Complete',
+    'includeNames': True | False,
+    'region': 'United States' | 'Canada' | 'North America' | 'Europe' | 'North Atlantic',
+    'ignoreErrors': True | False #True will ignore invalid tickers, FIGI, etc
+},True) # True - output to Pandas DataFrame | [False] to JSON.
+```
+
+### **data\_universe()**
+
+**Wrapper for POST** [**​ /data​/universe**](https://api.portfolio123.com/docs/index.html#/Data/_data_universe)
+
+**Example** [**Google Colab**](https://colab.research.google.com/drive/1HARb1k1Y43UT2y4HUZGakIiLLgx_f5HH)
+
+This operation allows you to retrieve point in time data for a selected universe. If a preprocessor that normalizes the data is not used, a data license with our vendor might be required. For the universe parameter, specify the name of your custom universe or one of the [Portfolio123 universes](https://www.portfolio123.com/doc/doc_detail.jsp?factor=Universe).
+
+```
+
+p123api.Client().data_universe({
+    # Specify the universe name (ex 'SP500'). To use the
+    # API universe that can be updated with other
+    # API functions use 'APIUniverse'
+        "universe": "DJIA" # universe symbol or name
+        , "asOfDts": ["2024-03-16","2024-03-09"]  # use weekend dates
+        , "formulas": [ "Close(0)/close(5)", "PEExclXorTTM", "SalesGr%TTM" ]
+        # names optional. Must match the number of columns in formulas
+        , "names":["1wk%","PE","SalesGr"]
+        , "pitMethod": 'Prelim' | 'Complete'
+        # use None for max precision
+        , "precision": None | 2 | 3 | 4
+        , "type": "stock" | "etf"
+        # add company name column
+        , "includeNames": False
+        , "figi": "Country Composite" | "Share Class"
+        , 'currency': 'USD' | 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'NOK' | 'PLN' | 'SEK' | 'TRY'
+
+        # normalization
+        ,"preproc": {
+            "scaling": "minmax" | "rank" | "normal"
+            , "scope" : "dataset" | "date"
+            , "trimPct": 5.0
+            , "outliers": True # when True outliers are clipped
+            , "naFill": False # when True NAs are set to the middle values
+            , "outlierLimit": 5 # used for normal scaling
+            # data license required for non technical factors
+            , "excludedFormulas": ["Close(0)/close(5)"]
+            # end date for the scaling when scope = dataset
+            , "mlTrainingEnd": "2020-01-01"
+          }
+        }
+    , to_pandas=True
+    )
+```
+
+## **Universe Functions**
+
+### **universe\_update()**
+
+**Wrapper for POST** [**​/universe**](https://api.portfolio123.com/docs/index.html#/Universe/_update_3)
+
+This operation updates the Universe used by API. This universe is always called "ApiUniverse" and it's stored in your account. If you don’t have this Universe already saved in the platform, it will be created.
+
+```
+p123api.Client().universe_update( {
+    'rules': ['rule1','rule2', ... ],
+    # optional parameters
+    'type': 'stock' | 'etf',
+    'currency': 'USD' | 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'NOK' | 'PLN' | 'SEK' | 'TRY',
+    'startingUniverse': 'SP500' (optional)
+})
+```
+
+## **Rank Functions**
+
+### **rank\_ranks()**
+
+**Wrapper for POST** [**​/rank​/ranks**](https://api.portfolio123.com/docs/index.html#/Rank/_ranks)
+
+This operation allows you to retrieve rank data from a ranking system for a specific universe.
+
+```
+p123api.Client().rank_ranks({
+    'rankingSystem': 'Ranking name',
+    'asOfDt': 'yyyy-mm-dd',
+    'universe': 'Universe name',
+    #
+    # Optional parameters,
+    'pitMethod': 'Prelim' | 'Complete',
+    'precision': 2 | 3 | 4,
+    'rankingMethod': 2, # 2-Percentile NAs Negative, 4-Percentile NAs Neutral
+    # Filter for specific stocks
+    'tickers': 'IBM,MSFT',
+    'includeNames': False,
+    'includeNaCnt': False,
+    'includeFinalStmt': False,
+    'nodeDetails': 'composite' | 'factor',
+    'currency': 'USD' | 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'NOK' | 'PLN' | 'SEK' | 'TRY',
+    'additionalData': ['formula1','formula2',...]
+     # Example: ['Close(0)', 'mktcap', "ZScore(`Pr2SalesQ`,#All)"]
+},True) # True - output to Pandas DataFrame | [False] to JSON.
+```
+
+### **rank\_perf()**
+
+**Wrapper for POST** [**​/rank​/performance**](https://api.portfolio123.com/docs/index.html#/Rank/_performance)
+
+This operation lets you run bucket performance tests of multifactor ranking systems. You can use one of your existing ranking systems or a Portfolio123 ranking system. This includes your ApiRankingSystem which can be modified using the rank\_update endpoint. Other specific settings include the number of buckets, minimum price, transaction slippage (expressed in %), sector, benchmark and output type.
+
+```
+p123api.Client().rank_perf({
+    'rankingSystem': 'Rank Name',
+    'startDt': 'yyyy-mm-dd',
+    #
+    # Optional parameters
+    'endDt': 'yyyy-mm-dd',
+    'pitMethod': 'Prelim' | 'Complete',
+    'precision': 2 | 3 | 4,
+    'universe': 'Universe name',
+    'transType': 'Long' | 'Short',
+    'rankingMethod': 2, # 2 NAs Negative | 4 NAs Neutral
+    'numBuckets': 10,
+    'minPrice': 5,
+    'minLiquidity': 5000,
+    'maxReturn': 200,
+    'rebalFreq': 'Every 4 Weeks' | 'Every Week' |
+                 'Every N Weeks' (2,3,4,6,8,13,26,52),
+    'slippage': 0,
+    'benchmark': 'SPY',
+    'outputType': 'ann' | 'perf'
+})
+```
+
+### **rank\_update()**
+
+**Wrapper for POST** [**​/rank**](https://api.portfolio123.com/docs/index.html#/Rank/_update_1)
+
+This operation updates the "API ranking system" called ApiRankingSystem. If you don’t have this ranking system already saved in the platform, it will be created automatically.
+
+```
+p123api.Client().rank_update({
+    # For 'nodes' use the same XML format you see when you
+    # click 'Text Editor' in the page Ranking System->Factors
+    'nodes': 'node definition',
+    'type': 'stock' | 'etf',
+
+    #
+    # Optional parameters
+    # ranking system id.
+    # If missing the ranking system 'ApiRankingSystem' is updated
+    'id': 123
+    'rankingMethod': 2,  # 2 NAs Negative, 4 NAs Neutral
+    'currency': 'USD' | 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'NOK' | 'PLN' | 'SEK' | 'TRY'
+})
+```
+
+## **Screen Functions**
+
+### **screen\_run()**
+
+**Wrapper for POST** [**​ /screen​/run**](https://api.portfolio123.com/docs/index.html#/Screen/_run)
+
+This operation allows you to run a screen. You can specify the screen settings directly as well as use one of your existing screens.
+
+```
+# Specify the screen settings inline:
+p123api.Client().screen_run({
+    'screen': {
+        'type': 'stock' | 'etf',
+        'universe': 'Universe name',
+        'maxNumHoldings': 10, # 0 for all
+        'method': 'long' | 'short' | 'long/short' | 'hedged',
+        'benchmark': 'SPY',
+        'currency': 'USD' | 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'NOK' | 'PLN' | 'SEK' | 'TRY',
+
+        #Several options for specifying the ranking. Choose one of these 5:
+        'ranking': 'Ranking Name',
+        'ranking': id,
+        'ranking': {
+            'method': 0, # 0-Use Ranking System Default, 2-Percentile NAs Negative,
+                         # 4-Percentile NAs Neutral, 1-Normal Distribution
+            'id': id},
+        'ranking': {
+            'method': 0,
+            'name': 'Ranking Name'},
+        'ranking': {
+            'formula': 'formula1',
+            'lowerIsBetter': True | False },
+
+        'rules': [\
+            {'formula': 'formula1',\
+                'type': 'common' | 'long' | 'short' | 'hedge'\
+            },\
+            {'formula': 'formula2',\
+                'type': 'common' | 'long' | 'short' | 'hedge'\
+            }\
+            ... etc ...]
+    #
+    # Optional parameters
+    'asOfDt': 'yyyy-mm-dd', # Defaults to today's date
+    'pitMethod': 'Prelim' | 'Complete',
+    'precision': 2 | 3 | 4,
+    },True) # True - output to Pandas DataFrame | [False] to JSON.
+
+```
+
+```
+# Run an existing screen using the integer id of the screen:
+p123api.Client().client.screen_run({
+    'screen': id,
+    #
+    # Optional parameters
+    'asOfDt': 'yyyy-mm-dd', # Defaults to today's date
+    'pitMethod': 'Prelim' | 'Complete',
+    'precision': 2 | 3 | 4,
+    },True) # True - output to Pandas DataFrame | [False] to JSON.
+
+```
+
+```
+# Run an existing screen using the integer id of the screen and maxNumHoldings:
+p123api.Client().client.screen_run({
+    'screen': {
+        'id': id,
+        'maxNumHoldings': 10  # 0 for all. Optional.
+        },
+    #
+    # Optional parameters
+    'asOfDt': 'yyyy-mm-dd', # Defaults to today's date
+    'pitMethod': 'Prelim' | 'Complete',
+    'precision': 2 | 3 | 4
+    },True) # True - output to Pandas DataFrame | [False] to JSON.
+```
+
+### **screen\_backtest()**
+
+**Wrapper for POST** [**​ /screen​/backtest**](https://api.portfolio123.com/docs/index.html#/Screen/_backtest)
+
+This operation allows you to run a performance backtest of a Screen.
+
+```
+# Backtest a screen which is defined inline:
+p123api.Client().screen_backtest({
+    'screen': {
+        'type': 'stock' | 'etf',
+        'universe': 'Universe name',
+        'maxNumHoldings': 10,  #0 for all
+        'method': 'long' | 'short' | 'long/short' | 'hedged',
+        'currency': 'USD' | 'CAD' | 'CHF' | 'EUR' | 'GBP' | 'NOK' | 'PLN' | 'SEK' | 'TRY',
+        'benchmark': 'SPY',
+
+        #Several options for specifying the ranking. Choose one of these 5:
+        'ranking': 'Ranking Name',
+        'ranking': id,
+        'ranking': {
+            'method': 0, # 0-Use Ranking System Default, 2-Percentile NAs Negative,
+                         # 4-Percentile NAs Neutral, 1-Normal Distribution
+            'id': id},
+        'ranking': {
+            'method': 0,
+            'name': 'Ranking Name'},
+        'ranking': {
+            'formula': 'formula1',
+            'lowerIsBetter': True | False },
+
+        'rules': [\
+            {'formula': 'formula1',\
+                'type': 'common' | 'long' | 'short' | 'hedge'\
+            },\
+            {'formula': 'formula2',\
+                'type': 'common' | 'long' | 'short' | 'hedge'\
+            }\
+            ... etc ...]
+        },
+    'startDt': '2020-01-01',
+    #
+    # Optional parameters
+    'endDt': 'yyyy-mm-yy',
+    'pitMethod': 'Prelim' | 'Complete',
+    'precision': 2 | 3 | 4,
+    'transPrice': 1, # 1 - Open | 3 - Avg of Hi and Low | 4 - Close
+    'maxPosPct': 0,
+    'slippage': 0.25,
+    'longWeight': 100,
+    'shortWeight': 100,
+    'rankTolerance': 0,
+    'carryCost': 0,
+    'rebalFreq': 'Every 4 Weeks' | 'Every Week' |
+                 'Every N Weeks' (2,3,4,6,8,13,26,52),
+    'riskStatsPeriod': ['Monthly'] | 'Weekly' | 'Daily'
+    },True) # True - output to Pandas DataFrame | [False] to JSON.
+
+```
+
+```
+# Backtest and existing screen using the integer id of the screen:
+p123api.Client().screen_backtest({
+    'screen': id,
+    'startDt': '2020-01-01',
+    #
+    # Optional parameters
+    'endDt': 'yyyy-mm-yy',
+    'pitMethod': 'Prelim' | 'Complete',
+    'precision': 2 | 3 | 4,
+    'transPrice': 1, # 1 - Open | 3 - Avg of Hi and Low | 4 - Close
+    'maxPosPct': 0,
+    'slippage': 0.25,
+    'longWeight': 100,
+    'shortWeight': 100,
+    'rankTolerance': 0,
+    'carryCost': 0,
+    'rebalFreq': 'Every 4 Weeks' | 'Every Week' |
+                 'Every N Weeks' (2,3,4,6,8,13,26,52),
+    'riskStatsPeriod': 'Monthly' | 'Weekly' | 'Daily'
+    },True) # True - output to Pandas DataFrame | [False] to JSON.
+
+```
+
+```
+# Backtest an existing screen using the integer id of the screen and maxNumHoldings:
+p123api.Client().screen_backtest({
+    'screen': {
+        'id': id,
+        'maxNumHoldings': 10  # 0 for all. Optional.
+        },
+    'startDt': '2020-01-01',
+    #
+    # Optional parameters
+    'endDt': 'yyyy-mm-dd',
+    'pitMethod': 'Prelim' | 'Complete',
+    'precision': 2 | 3 | 4,
+    'transPrice': 1, # 1 - Open | 3 - Avg of Hi and Low | 4 - Close
+    'maxPosPct': 0,
+    'slippage': 0.25,
+    'longWeight': 100,
+    'shortWeight': 100,
+    'rankTolerance': 0,
+    'carryCost': 0,
+    'rebalFreq': 'Every 4 Weeks' | 'Every Week' |
+                 'Every N Weeks' (2,3,4,6,8,13,26,52),
+    'riskStatsPeriod': ['Monthly'] | 'Weekly' | 'Daily'
+    },True) # True - output to Pandas DataFrame | [False] to JSON.
+```
+
+### **screen\_rolling\_backtest()**
+
+**Wrapper for POST** [**​ /screen​/rolling-backtest**](https://api.portfolio123.com/docs/index.html#/Screen/_rolling_backtest)
+
+This operation allows you to run and collect the output of rolling screens. Rolling screens are subsequent, fixed holding period backtests of a screen, moving forward the starting date for each test. Rolling screens are excellent robustness tests.
+
+```
+p123api.Client().screen_rolling_backtest({
+    'screen': id,
+    'startDt': 'yyyy-mm-dd',
+    #
+    # Optional parameters
+    'endDt': 'yyyy-mm-dd',
+    'pitMethod': 'Prelim' | 'Complete',
+    'precision': 2 | 3 | 4,
+    'transPrice': 1, # 1 - Open | 3 - Avg of Hi and Low | 4 - Close
+    'maxPosPct': 0,
+    'slippage': 0.25,
+    'longWeight': 100,
+    'shortWeight': 100,
+    'frequency': 'Every 4 Weeks' | 'Every Week',
+    'holdingPeriod': 182
+})
+```
+
+## **Strategy Functions**
+
+### **strategy()**
+
+**Wrapper for GET** [**​/strategy​/{id}**](https://api.portfolio123.com/docs/index.html#/Strategy/_details)
+
+This operation returns the data from the Summary, Current Holdings and Statistics tabs of a strategies or books. The only parameter is the id of the strategy or book.
+
+```
+p123api.Client().strategy(
+    strategy_id=id
+)
+```
+
+## **Data Series Functions**
+
+You can create and store a custom data series which consists of a list of dates and their associated values. You can then use these series in your rules as [explained here](https://portfolio123.customerly.help/research-section/imported-data-series-stock-factors) . There are 3 operations to create or update, delete or upload data to a custom data series.
+
+### **data\_series\_create\_update()**
+
+**Wrapper for POST** [**​ /dataSeries**](https://api.portfolio123.com/docs/index.html#/Data%20Series/_update)
+
+Create or update a data series. To create a new series omit the id parameter. The id of the newly created series is returned.
+
+```
+p123api.Client().data_series_create_update({
+    name : 'Name of Series',
+    # ID of the data series to update, omit to create new one
+    id : N,
+    # optional parameters
+    description : 'Series description optional'
+})
+```
+
+### **data\_series\_delete()**
+
+**Wrapper for DELETE** [**​ /dataSeries/{id}**](https://api.portfolio123.com/docs/index.html#/Data%20Series/_update)
+
+Deletes a data series and the data associated with it.
+
+```
+p123api.Client().data_series_delete(
+    series_id = N
+)
+```
+
+### **data\_series\_upload()**
+
+**Wrapper for POST** [**​/dataSeries​/upload​/{id}**](https://api.portfolio123.com/docs/index.html#/Data%20Series/_upload)
+
+Upload the series data. Data must be tabular with date and value in each row.
+
+```
+p123api.Client().data_series_upload(
+    file = 'C:/MyPath/SeriesData.csv',
+    series_id = id of series,
+    #
+    # Optional parameters
+    existing_data = 'overwrite' | 'skip' | 'delete',
+    date_format = 'yyyy-mm-dd' | 'yyyy/mm/dd' | 'mm/dd/yyyy' |
+                  'mm-dd-yyyy' | 'dd/mm/yyyy' | 'dd-mm-yyyy' | 'dd.mm.yyyy',
+    decimal_separator = '.' | ',',
+    ignore_errors = False | True,
+    ignore_duplicates = False | True,
+    contains_header_row = False | True,
+)
+```
+
+## **Stock Factors Functions**
+
+You can create and store a custom stock factor on the website which consists of a list of dates, tickers and their associated values.
+
+### **stock\_factor\_create\_update()**
+
+**Wrapper for POST** [**​/stockFactor**](https://api.portfolio123.com/docs/index.html#/Stock%20Factor/_update_2)
+
+Create or update a new stock factor. When the id is omitted a new factor will be created and the new id is returned.
+
+```
+p123api.Client().stock_factor_create_update({
+    'name': 'FactorName',
+    # Omit the id to create a new factor
+    'id' : id
+    # Optional parameters
+    'description': 'Description'
+})
+
+```
+
+### **stock\_factor\_delete()**
+
+**Wrapper for DELETE** [**​ /stockFactor​/{id}**](https://api.portfolio123.com/docs/index.html#/Stock%20Factor/_delete_1)
+
+Delete a stock factor.
+
+```
+p123api.Client().stock_factor_delete(
+     factor_id = id
+)
+```
+
+### **stock\_factor\_upload()**
+
+**Wrapper for POST** [**​/stockFactor​/upload​/{id}**](https://api.portfolio123.com/docs/index.html#/Stock%20Factor/_upload_1)
+
+Upload data from a csv file into an existing stock factor
+
+```
+p123api.Client().stock_factor_upload(
+    file = 'C:/MyPath/Factors.csv',
+    factor_id = id,
+    column_separator = 'comma' | 'semicolon' | 'tab',
+    existing_data = 'overwrite' | 'skip' | 'delete',
+    date_format = 'yyyy-mm-dd' | 'yyyy/mm/dd' | 'mm/dd/yyyy' |
+                  'mm-dd-yyyy' | 'dd/mm/yyyy' | 'dd-mm-yyyy' | 'dd.mm.yyyy',
+    decimal_separator = '.' | ',',
+    ignore_errors = False | True,
+    ignore_duplicates = True | False
+)
+```
+
+Did this answer your question?
+
+🙁😐😍

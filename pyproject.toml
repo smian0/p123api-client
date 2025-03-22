@@ -1,0 +1,150 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "p123api-client"
+version = "0.1.0"
+description = "Python client library for interacting with the Portfolio123 (P123) API"
+requires-python = ">=3.10.0,<3.11.0"
+dependencies = [
+    "streamlit>=1.29.0",
+    "plotly>=5.18.0",
+    "pandas>=2.1.4",
+    "pydantic>=2.5.0",
+    "p123api>=1.7.1",
+    "python-dotenv>=1.0.0",
+    "vcrpy==4.3.1",
+    "urllib3<2.0.0",
+    "matplotlib>=3.8.0",
+    "pytest-vcr>=1.0.2",
+    "PyYAML>=6.0.1"
+]
+
+[project.optional-dependencies]
+test = [
+    "urllib3<2.0.0",
+    "vcrpy",
+    "pytest>=7.4.0",
+    "pytest-vcr>=1.0.2",
+    "ruff>=0.3.0",
+    "mypy>=1.8.0",
+    "types-requests>=2.31.0",
+    "types-setuptools>=69.0.0",
+    "pandas-stubs>=2.1.1",
+    "types-PyYAML>=6.0.12",
+    "types-python-dateutil>=2.8.19",
+    "types-urllib3<2.0.0"
+]
+
+[tool.hatch.envs.default]
+dependencies = [
+  "pytest>=7.4.0",
+  "vcrpy==4.3.1",
+  "urllib3<2.0.0"
+]
+
+[tool.hatch.envs.test]
+dependencies = [
+  "pytest>=7.4.0",
+  "vcrpy==4.3.1",
+  "urllib3<2.0.0"
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/p123_streamlit", "src/p123api_client"]
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]                # Directory containing tests
+python_files = ["test_*.py"]         # Test file pattern
+python_classes = ["Test*"]           # Test class pattern
+python_functions = ["test_*"]        # Test function pattern
+addopts = [
+    "-v",                           # Verbose output
+    "--import-mode=importlib",      # Help with import discovery
+]
+markers = [
+    "integration: marks tests that integrate with external systems",
+    "slow: marks tests that are slow to execute"
+]
+
+[tool.coverage.run]
+source = ["src"]                    # Source code directory
+branch = true
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if self.debug:",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+    "pass",
+    "raise ImportError",
+]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    "C",   # flake8-comprehensions
+    "B",   # flake8-bugbear
+    "UP",  # pyupgrade
+]
+ignore = [
+    "E402",  # Module level import not at top of file (needed for streamlit)
+    "C901",  # Function is too complex
+    "B017",  # asserting against Exception is fine for our tests
+    "UP038", # Use X | Y in isinstance (not supported in older Python)
+]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+
+[tool.ruff.lint.isort]
+known-first-party = ["p123api_client", "p123_streamlit"]
+section-order = ["future", "standard-library", "third-party", "first-party", "local-folder"]
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = false  # Some external decorators don't have types
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+warn_unreachable = true
+strict_equality = true
+ignore_missing_imports = true
+explicit_package_bases = true
+namespace_packages = true
+plugins = ["pydantic.mypy"]
+
+[[tool.mypy.overrides]]
+module = "tests.*"
+disallow_untyped_defs = false  # Allow untyped defs in tests
+disallow_incomplete_defs = false
+check_untyped_defs = false
+disable_error_code = ["attr-defined"]  # Ignore attribute errors in test files
+
+[tool.pydantic-mypy]
+init_forbid_extra = true
+init_typed = true
+warn_required_dynamic_aliases = true
+warn_untyped_fields = true

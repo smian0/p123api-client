@@ -1,0 +1,3 @@
+start_dt	end_dt	pit_method	precision	universe	trans_type	ranking_method	num_buckets	min_price	min_liquidity	max_return	rebal_freq	slippage	benchmark	output_type
+2022-01-01	2022-12-31	Prelim	4	SP500	long	4	20	1.0	100000	200	Every Week	0.25	SPY	ann
+2023-01-01	2023-12-31	Prelim	4	SP500	long	4	20	1.0	100000	200	Every Week	0.25	SPY	ann

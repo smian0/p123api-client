@@ -1,0 +1,4 @@
+universe,rule,ranking_formula,ranking_lower_is_better,max_results
+SP500,close > 100,ROE,false,50
+NASDAQ100,volume > 1000000,PEG,true,25
+Russell3000,pe < 20 and marketcap > 1000,ROA,false,100 

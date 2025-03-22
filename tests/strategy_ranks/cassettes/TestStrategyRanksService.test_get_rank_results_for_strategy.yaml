@@ -1,0 +1,68 @@
+interactions:
+- request:
+    body: '{"apiKey": "MASKED", "apiId": "MASKED"}'
+    headers:
+      Content-Type:
+      - application/json
+      content-length:
+      - MASKED
+    method: POST
+    uri: https://api.portfolio123.com/auth
+  response:
+    body:
+      string: MASKED
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-length:
+      - '38'
+      content-type:
+      - text/plain;charset=UTF-8
+      date:
+      - Mon, 30 Dec 2024 02:57:27 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      x-content-type-options:
+      - nosniff
+      x-expires-in:
+      - '3600'
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+- request:
+    body: null
+    headers:
+      authorization:
+      - MASKED
+    method: GET
+    uri: https://api.portfolio123.com/strategy/12345
+  response:
+    body:
+      string: ''
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-length:
+      - '0'
+      date:
+      - Mon, 30 Dec 2024 02:57:27 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 404
+      message: ''
+version: 1

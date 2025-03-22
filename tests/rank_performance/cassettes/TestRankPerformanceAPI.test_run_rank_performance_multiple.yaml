@@ -1,0 +1,315 @@
+interactions:
+- request:
+    body: '{"nodes": "<RankingSystem RankType=\"Higher\"><StockFormula Weight=\"1\"
+      RankType=\"Higher\" Name=\"Close(0)\" Description=\"Yesterday''s Close Price\"
+      Scope=\"Universe\"><Formula>Close(0)</Formula></StockFormula></RankingSystem>",
+      "type": "stock"}'
+    headers:
+      Content-Length:
+      - '247'
+      Content-Type:
+      - application/json
+      Cookie:
+      - JSESSIONID=0CEBABAFCC6757371F100E3246575743
+    method: POST
+    uri: https://api.portfolio123.com/rank
+  response:
+    body:
+      string: '{"cost":1,"quotaRemaining":7316}'
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      date:
+      - Thu, 26 Dec 2024 05:40:01 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      set-cookie:
+      - JSESSIONID=DFD881072322F3A6A3D282CC78117DCB; Path=/; HttpOnly
+      transfer-encoding:
+      - chunked
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+- request:
+    body: '{"rankingSystem": "ApiRankingSystem", "startDt": "2022-01-01", "endDt":
+      "2022-12-31", "pitMethod": "Prelim", "precision": 4, "universe": "SP500", "transType":
+      "long", "rankingMethod": 4, "numBuckets": 20, "minPrice": 1.0, "minLiquidity":
+      100000.0, "maxReturn": 200.0, "rebalFreq": "Every Week", "slippage": 0.25, "benchmark":
+      "SPY", "outputType": "ann"}'
+    headers:
+      Content-Length:
+      - '353'
+      Content-Type:
+      - application/json
+    method: POST
+    uri: https://api.portfolio123.com/rank/performance
+  response:
+    body:
+      string: '{"cost":3,"quotaRemaining":7313,"benchmarkAnnRet":-19.0473,"bucketAnnRet":[-14.7561,13.5877,-10.8265,-11.7802,-16.5846,-3.032,-8.5895,-7.5103,-6.5612,-10.4775,-15.6779,-15.6307,-20.6851,-23.8334,-13.162,-7.2435,-16.4149,-20.7365,-28.3766,-23.4699]}'
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      date:
+      - Thu, 26 Dec 2024 05:40:04 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      transfer-encoding:
+      - chunked
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+- request:
+    body: '{"nodes": "<RankingSystem RankType=\"Lower\"><StockFormula Weight=\"1\"
+      RankType=\"Lower\" Name=\"Vol(0)\" Description=\"Yesterday''s Volume\" Scope=\"Universe\"><Formula>Vol(0)</Formula></StockFormula></RankingSystem>",
+      "type": "stock"}'
+    headers:
+      Content-Length:
+      - '236'
+      Content-Type:
+      - application/json
+      Cookie:
+      - JSESSIONID=DFD881072322F3A6A3D282CC78117DCB
+    method: POST
+    uri: https://api.portfolio123.com/rank
+  response:
+    body:
+      string: '{"cost":1,"quotaRemaining":7312}'
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      date:
+      - Thu, 26 Dec 2024 05:40:04 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      set-cookie:
+      - JSESSIONID=C06A0C0A3F6F5ECCF0903F993B9ADF58; Path=/; HttpOnly
+      transfer-encoding:
+      - chunked
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+- request:
+    body: '{"rankingSystem": "ApiRankingSystem", "startDt": "2022-01-01", "endDt":
+      "2022-12-31", "pitMethod": "Prelim", "precision": 4, "universe": "SP500", "transType":
+      "long", "rankingMethod": 4, "numBuckets": 20, "minPrice": 1.0, "minLiquidity":
+      100000.0, "maxReturn": 200.0, "rebalFreq": "Every Week", "slippage": 0.25, "benchmark":
+      "SPY", "outputType": "ann"}'
+    headers:
+      Content-Length:
+      - '353'
+      Content-Type:
+      - application/json
+    method: POST
+    uri: https://api.portfolio123.com/rank/performance
+  response:
+    body:
+      string: '{"cost":3,"quotaRemaining":7309,"benchmarkAnnRet":-19.0473,"bucketAnnRet":[-19.2373,-24.3829,-21.3172,-28.0292,-25.7919,-21.8877,-22.9536,-25.0996,-18.4725,-18.6066,-23.481,-13.9468,-19.9523,-8.7212,-14.2158,-20.1234,-15.9628,-9.0843,-0.9913,-27.4153]}'
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      date:
+      - Thu, 26 Dec 2024 05:40:05 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      transfer-encoding:
+      - chunked
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+- request:
+    body: '{"nodes": "<RankingSystem RankType=\"Higher\"><StockFormula Weight=\"1\"
+      RankType=\"Higher\" Name=\"mktcap\" Description=\"Market Capitalization\" Scope=\"Universe\"><Formula>mktcap</Formula></StockFormula></RankingSystem>",
+      "type": "stock"}'
+    headers:
+      Content-Length:
+      - '241'
+      Content-Type:
+      - application/json
+      Cookie:
+      - JSESSIONID=C06A0C0A3F6F5ECCF0903F993B9ADF58
+    method: POST
+    uri: https://api.portfolio123.com/rank
+  response:
+    body:
+      string: '{"cost":1,"quotaRemaining":7308}'
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      date:
+      - Thu, 26 Dec 2024 05:40:05 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      set-cookie:
+      - JSESSIONID=FA581DBE300D2233733A2BBFA47D2102; Path=/; HttpOnly
+      transfer-encoding:
+      - chunked
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+- request:
+    body: '{"rankingSystem": "ApiRankingSystem", "startDt": "2022-01-01", "endDt":
+      "2022-12-31", "pitMethod": "Prelim", "precision": 4, "universe": "SP500", "transType":
+      "long", "rankingMethod": 4, "numBuckets": 20, "minPrice": 1.0, "minLiquidity":
+      100000.0, "maxReturn": 200.0, "rebalFreq": "Every Week", "slippage": 0.25, "benchmark":
+      "SPY", "outputType": "ann"}'
+    headers:
+      Content-Length:
+      - '353'
+      Content-Type:
+      - application/json
+    method: POST
+    uri: https://api.portfolio123.com/rank/performance
+  response:
+    body:
+      string: '{"cost":3,"quotaRemaining":7305,"benchmarkAnnRet":-19.0473,"bucketAnnRet":[-6.1183,-17.6775,-8.6277,-17.3295,-14.5193,-18.8087,-18.0687,-19.9278,-18.5603,-8.5266,-8.2947,-7.4827,-5.6545,-11.1433,-9.5194,-14.523,-11.7918,-9.6649,-22.6738,-16.8079]}'
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      date:
+      - Thu, 26 Dec 2024 05:40:06 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      transfer-encoding:
+      - chunked
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+- request:
+    body: '{"nodes": "<RankingSystem RankType=\"Lower\"><StockFormula Weight=\"1\"
+      RankType=\"Lower\" Name=\"PERelative\" Description=\"Current P/E Ratio\" Scope=\"Universe\"><Formula>PERelative</Formula></StockFormula></RankingSystem>",
+      "type": "stock"}'
+    headers:
+      Content-Length:
+      - '243'
+      Content-Type:
+      - application/json
+      Cookie:
+      - JSESSIONID=FA581DBE300D2233733A2BBFA47D2102
+    method: POST
+    uri: https://api.portfolio123.com/rank
+  response:
+    body:
+      string: '{"cost":1,"quotaRemaining":7304}'
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      date:
+      - Thu, 26 Dec 2024 05:40:06 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      set-cookie:
+      - JSESSIONID=657EBF98C1316DD7901FEAD476ECA295; Path=/; HttpOnly
+      transfer-encoding:
+      - chunked
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+- request:
+    body: '{"rankingSystem": "ApiRankingSystem", "startDt": "2022-01-01", "endDt":
+      "2022-12-31", "pitMethod": "Prelim", "precision": 4, "universe": "SP500", "transType":
+      "long", "rankingMethod": 4, "numBuckets": 20, "minPrice": 1.0, "minLiquidity":
+      100000.0, "maxReturn": 200.0, "rebalFreq": "Every Week", "slippage": 0.25, "benchmark":
+      "SPY", "outputType": "ann"}'
+    headers:
+      Content-Length:
+      - '353'
+      Content-Type:
+      - application/json
+    method: POST
+    uri: https://api.portfolio123.com/rank/performance
+  response:
+    body:
+      string: '{"cost":3,"quotaRemaining":7301,"benchmarkAnnRet":-19.0473,"bucketAnnRet":[0.1852,-15.7324,-27.3454,-12.616,-11.7142,-14.1008,-18.1126,-22.6774,-23.8408,0.0,0.0,-7.668,-11.4457,-25.2423,-19.7173,-9.2229,-25.6124,-18.9162,-17.7805,-11.5784]}'
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      date:
+      - Thu, 26 Dec 2024 05:40:08 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      transfer-encoding:
+      - chunked
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+version: 1

@@ -1,0 +1,416 @@
+interactions:
+- request:
+    body: '{"rankingSystem": "Small and Micro Cap Focus", "asOfDt": "2023-01-06",
+      "pitMethod": "Prelim", "rankingMethod": 4, "includeNames": true, "includeNaCnt":
+      true, "includeFinalStmt": true, "nodeDetails": "composite", "tickers": "AAPL,MSFT,GOOGL",
+      "currency": "USD", "universe": "SP500", "additionalData": ["Close(0)", "mktcap"]}'
+    headers:
+      Content-Length:
+      - '323'
+      Content-Type:
+      - application/json
+    method: POST
+    uri: https://api.portfolio123.com/rank/ranks
+  response:
+    body:
+      string: '{"cost": 2, "quotaRemaining": 7264, "dt": "2022-12-31", "p123Uids":
+        [774, 5881, 21724], "tickers": ["AAPL", "MSFT", "GOOGL"], "names": ["Apple,
+        Inc.", "Microsoft Corp.", "Alphabet, Inc."], "naCnt": [0, 0, 0], "finalStmt":
+        [true, true, true], "ranks": [57.2, 55.0, 14.0], "nodes": {"ids": [0, 20,
+        21, 25, 28], "names": ["Small and Micro Cap Focus", "Sentiment: P123 basic",
+        "Estimate Revision", "Surprise", "Recommendations"], "parents": [0, 0, 20,
+        20, 20], "weights": [100.0, 6.0, 50.0, 30.0, 20.0], "ranks": [[57.2, 13.6,
+        17.4, 37.0, 33.2], [55.0, 68.2, 66.4, 23.2, 97.2], [14.0, 4.4, 15.0, 4.8,
+        37.2]]}, "additionalData": [[129.93, 2071529.07], [239.82, 1788337.75], [88.23,
+        1144431.37]]}'
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      date:
+      - Thu, 26 Dec 2024 05:42:04 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      transfer-encoding:
+      - chunked
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+- request:
+    body: '{"rankingSystem": "Small and Micro Cap Focus", "asOfDt": "2023-01-06",
+      "pitMethod": "Prelim", "rankingMethod": 4, "includeNames": true, "includeNaCnt":
+      true, "includeFinalStmt": true, "nodeDetails": "composite", "tickers": "AAPL,MSFT,GOOGL",
+      "currency": "USD", "universe": "SP500", "additionalData": ["Close(0)", "mktcap"]}'
+    headers:
+      Content-Length:
+      - '323'
+      Content-Type:
+      - application/json
+    method: POST
+    uri: https://api.portfolio123.com/rank/ranks
+  response:
+    body:
+      string: '{"cost": 2, "quotaRemaining": 7258, "dt": "2022-12-31", "p123Uids":
+        [774, 5881, 21724], "tickers": ["AAPL", "MSFT", "GOOGL"], "names": ["Apple,
+        Inc.", "Microsoft Corp.", "Alphabet, Inc."], "naCnt": [0, 0, 0], "finalStmt":
+        [true, true, true], "ranks": [57.2, 55.0, 14.0], "nodes": {"ids": [0, 20,
+        21, 25, 28], "names": ["Small and Micro Cap Focus", "Sentiment: P123 basic",
+        "Estimate Revision", "Surprise", "Recommendations"], "parents": [0, 0, 20,
+        20, 20], "weights": [100.0, 6.0, 50.0, 30.0, 20.0], "ranks": [[57.2, 13.6,
+        17.4, 37.0, 33.2], [55.0, 68.2, 66.4, 23.2, 97.2], [14.0, 4.4, 15.0, 4.8,
+        37.2]]}, "additionalData": [[129.93, 2071529.07], [239.82, 1788337.75], [88.23,
+        1144431.37]]}'
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      date:
+      - Thu, 26 Dec 2024 05:42:28 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      transfer-encoding:
+      - chunked
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+- request:
+    body: '{"rankingSystem": "Small and Micro Cap Focus", "asOfDt": "2023-01-06",
+      "pitMethod": "Prelim", "rankingMethod": 4, "includeNames": true, "includeNaCnt":
+      true, "includeFinalStmt": true, "nodeDetails": "composite", "tickers": "AAPL,MSFT,GOOGL",
+      "currency": "USD", "universe": "SP500", "additionalData": ["Close(0)", "mktcap"]}'
+    headers:
+      Content-Length:
+      - '323'
+      Content-Type:
+      - application/json
+    method: POST
+    uri: https://api.portfolio123.com/rank/ranks
+  response:
+    body:
+      string: '{"cost": 2, "quotaRemaining": 7243, "dt": "2022-12-31", "p123Uids":
+        [774, 5881, 21724], "tickers": ["AAPL", "MSFT", "GOOGL"], "names": ["Apple,
+        Inc.", "Microsoft Corp.", "Alphabet, Inc."], "naCnt": [0, 0, 0], "finalStmt":
+        [true, true, true], "ranks": [57.2, 55.0, 14.0], "nodes": {"ids": [0, 20,
+        21, 25, 28], "names": ["Small and Micro Cap Focus", "Sentiment: P123 basic",
+        "Estimate Revision", "Surprise", "Recommendations"], "parents": [0, 0, 20,
+        20, 20], "weights": [100.0, 6.0, 50.0, 30.0, 20.0], "ranks": [[57.2, 13.6,
+        17.4, 37.0, 33.2], [55.0, 68.2, 66.4, 23.2, 97.2], [14.0, 4.4, 15.0, 4.8,
+        37.2]]}, "additionalData": [[129.93, 2071529.07], [239.82, 1788337.75], [88.23,
+        1144431.37]]}'
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      date:
+      - Thu, 26 Dec 2024 05:42:52 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      transfer-encoding:
+      - chunked
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+- request:
+    body: '{"rankingSystem": "Small and Micro Cap Focus", "asOfDt": "2023-01-06",
+      "pitMethod": "Prelim", "rankingMethod": 4, "includeNames": true, "includeNaCnt":
+      true, "includeFinalStmt": true, "nodeDetails": "composite", "tickers": "AAPL,MSFT,GOOGL",
+      "currency": "USD", "universe": "SP500", "additionalData": ["Close(0)", "mktcap"]}'
+    headers:
+      Content-Length:
+      - '323'
+      Content-Type:
+      - application/json
+    method: POST
+    uri: https://api.portfolio123.com/rank/ranks
+  response:
+    body:
+      string: '{"cost": 2, "quotaRemaining": 7206, "dt": "2022-12-31", "p123Uids":
+        [774, 5881, 21724], "tickers": ["AAPL", "MSFT", "GOOGL"], "names": ["Apple,
+        Inc.", "Microsoft Corp.", "Alphabet, Inc."], "naCnt": [0, 0, 0], "finalStmt":
+        [true, true, true], "ranks": [57.2, 55.0, 14.0], "nodes": {"ids": [0, 20,
+        21, 25, 28], "names": ["Small and Micro Cap Focus", "Sentiment: P123 basic",
+        "Estimate Revision", "Surprise", "Recommendations"], "parents": [0, 0, 20,
+        20, 20], "weights": [100.0, 6.0, 50.0, 30.0, 20.0], "ranks": [[57.2, 13.6,
+        17.4, 37.0, 33.2], [55.0, 68.2, 66.4, 23.2, 97.2], [14.0, 4.4, 15.0, 4.8,
+        37.2]]}, "additionalData": [[129.93, 2071529.07], [239.82, 1788337.75], [88.23,
+        1144431.37]]}'
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      date:
+      - Thu, 26 Dec 2024 05:43:43 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      transfer-encoding:
+      - chunked
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+- request:
+    body: '{"rankingSystem": "Small and Micro Cap Focus", "asOfDt": "2023-01-06",
+      "pitMethod": "Prelim", "rankingMethod": 4, "includeNames": true, "includeNaCnt":
+      true, "includeFinalStmt": true, "nodeDetails": "composite", "tickers": "AAPL,MSFT,GOOGL",
+      "currency": "USD", "universe": "SP500", "additionalData": ["Close(0)", "mktcap"]}'
+    headers:
+      Content-Length:
+      - '323'
+      Content-Type:
+      - application/json
+    method: POST
+    uri: https://api.portfolio123.com/rank/ranks
+  response:
+    body:
+      string: '{"cost": 2, "quotaRemaining": 7178, "dt": "2022-12-31", "p123Uids":
+        [774, 5881, 21724], "tickers": ["AAPL", "MSFT", "GOOGL"], "names": ["Apple,
+        Inc.", "Microsoft Corp.", "Alphabet, Inc."], "naCnt": [0, 0, 0], "finalStmt":
+        [true, true, true], "ranks": [57.2, 55.0, 14.0], "nodes": {"ids": [0, 20,
+        21, 25, 28], "names": ["Small and Micro Cap Focus", "Sentiment: P123 basic",
+        "Estimate Revision", "Surprise", "Recommendations"], "parents": [0, 0, 20,
+        20, 20], "weights": [100.0, 6.0, 50.0, 30.0, 20.0], "ranks": [[57.2, 13.6,
+        17.4, 37.0, 33.2], [55.0, 68.2, 66.4, 23.2, 97.2], [14.0, 4.4, 15.0, 4.8,
+        37.2]]}, "additionalData": [[129.93, 2071529.07], [239.82, 1788337.75], [88.23,
+        1144431.37]]}'
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      date:
+      - Thu, 26 Dec 2024 05:45:52 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      transfer-encoding:
+      - chunked
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+- request:
+    body: '{"rankingSystem": "Small and Micro Cap Focus", "asOfDt": "2023-01-06",
+      "pitMethod": "Prelim", "rankingMethod": 4, "includeNames": true, "includeNaCnt":
+      true, "includeFinalStmt": true, "nodeDetails": "composite", "tickers": "AAPL,MSFT,GOOGL",
+      "currency": "USD", "universe": "SP500", "additionalData": ["Close(0)", "mktcap"]}'
+    headers:
+      Content-Length:
+      - '323'
+      Content-Type:
+      - application/json
+    method: POST
+    uri: https://api.portfolio123.com/rank/ranks
+  response:
+    body:
+      string: '{"cost": 2, "quotaRemaining": 7151, "dt": "2022-12-31", "p123Uids":
+        [774, 5881, 21724], "tickers": ["AAPL", "MSFT", "GOOGL"], "names": ["Apple,
+        Inc.", "Microsoft Corp.", "Alphabet, Inc."], "naCnt": [0, 0, 0], "finalStmt":
+        [true, true, true], "ranks": [57.2, 55.0, 14.0], "nodes": {"ids": [0, 20,
+        21, 25, 28], "names": ["Small and Micro Cap Focus", "Sentiment: P123 basic",
+        "Estimate Revision", "Surprise", "Recommendations"], "parents": [0, 0, 20,
+        20, 20], "weights": [100.0, 6.0, 50.0, 30.0, 20.0], "ranks": [[57.2, 13.6,
+        17.4, 37.0, 33.2], [55.0, 68.2, 66.4, 23.2, 97.2], [14.0, 4.4, 15.0, 4.8,
+        37.2]]}, "additionalData": [[129.93, 2071529.07], [239.82, 1788337.75], [88.23,
+        1144431.37]]}'
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      date:
+      - Thu, 26 Dec 2024 05:47:21 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      transfer-encoding:
+      - chunked
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+- request:
+    body: '{"rankingSystem": "Small and Micro Cap Focus", "asOfDt": "2023-01-06",
+      "pitMethod": "Prelim", "rankingMethod": 4, "includeNames": true, "includeNaCnt":
+      true, "includeFinalStmt": true, "nodeDetails": "composite", "tickers": "AAPL,MSFT,GOOGL",
+      "currency": "USD", "universe": "SP500", "additionalData": ["Close(0)", "mktcap"]}'
+    headers:
+      Content-Length:
+      - '323'
+      Content-Type:
+      - application/json
+    method: POST
+    uri: https://api.portfolio123.com/rank/ranks
+  response:
+    body:
+      string: '{"cost": 2, "quotaRemaining": 7114, "dt": "2022-12-31", "p123Uids":
+        [774, 5881, 21724], "tickers": ["AAPL", "MSFT", "GOOGL"], "names": ["Apple,
+        Inc.", "Microsoft Corp.", "Alphabet, Inc."], "naCnt": [0, 0, 0], "finalStmt":
+        [true, true, true], "ranks": [57.2, 55.0, 14.0], "nodes": {"ids": [0, 20,
+        21, 25, 28], "names": ["Small and Micro Cap Focus", "Sentiment: P123 basic",
+        "Estimate Revision", "Surprise", "Recommendations"], "parents": [0, 0, 20,
+        20, 20], "weights": [100.0, 6.0, 50.0, 30.0, 20.0], "ranks": [[57.2, 13.6,
+        17.4, 37.0, 33.2], [55.0, 68.2, 66.4, 23.2, 97.2], [14.0, 4.4, 15.0, 4.8,
+        37.2]]}, "additionalData": [[129.93, 2071529.07], [239.82, 1788337.75], [88.23,
+        1144431.37]]}'
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      date:
+      - Thu, 26 Dec 2024 05:48:57 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      transfer-encoding:
+      - chunked
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+- request:
+    body: '{"rankingSystem": "Small and Micro Cap Focus", "asOfDt": "2023-01-06",
+      "pitMethod": "Prelim", "rankingMethod": 4, "includeNames": true, "includeNaCnt":
+      true, "includeFinalStmt": true, "nodeDetails": "composite", "tickers": "AAPL,MSFT,GOOGL",
+      "currency": "USD", "universe": "SP500", "additionalData": ["Close(0)", "mktcap"]}'
+    headers:
+      Content-Length:
+      - '323'
+      Content-Type:
+      - application/json
+    method: POST
+    uri: https://api.portfolio123.com/rank/ranks
+  response:
+    body:
+      string: '{"cost": 2, "quotaRemaining": 6951, "dt": "2022-12-31", "p123Uids":
+        [774, 5881, 21724], "tickers": ["AAPL", "MSFT", "GOOGL"], "names": ["Apple,
+        Inc.", "Microsoft Corp.", "Alphabet, Inc."], "naCnt": [0, 0, 0], "finalStmt":
+        [true, true, true], "ranks": [57.2, 55.0, 14.0], "nodes": {"ids": [0, 20,
+        21, 25, 28], "names": ["Small and Micro Cap Focus", "Sentiment: P123 basic",
+        "Estimate Revision", "Surprise", "Recommendations"], "parents": [0, 0, 20,
+        20, 20], "weights": [100.0, 6.0, 50.0, 30.0, 20.0], "ranks": [[57.2, 13.6,
+        17.4, 37.0, 33.2], [55.0, 68.2, 66.4, 23.2, 97.2], [14.0, 4.4, 15.0, 4.8,
+        37.2]]}, "additionalData": [[129.93, 2071529.07], [239.82, 1788337.75], [88.23,
+        1144431.37]]}'
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      date:
+      - Thu, 26 Dec 2024 05:58:50 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      transfer-encoding:
+      - chunked
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+- request:
+    body: '{"rankingSystem": "Small and Micro Cap Focus", "asOfDt": "2023-01-06",
+      "pitMethod": "Prelim", "rankingMethod": 4, "includeNames": true, "includeNaCnt":
+      true, "includeFinalStmt": true, "nodeDetails": "composite", "tickers": "AAPL,MSFT,GOOGL",
+      "currency": "USD", "universe": "SP500", "additionalData": ["Close(0)", "mktcap"]}'
+    headers:
+      Content-Length:
+      - '323'
+      Content-Type:
+      - application/json
+    method: POST
+    uri: https://api.portfolio123.com/rank/ranks
+  response:
+    body:
+      string: '{"cost": 2, "quotaRemaining": 6909, "dt": "2022-12-31", "p123Uids":
+        [774, 5881, 21724], "tickers": ["AAPL", "MSFT", "GOOGL"], "names": ["Apple,
+        Inc.", "Microsoft Corp.", "Alphabet, Inc."], "naCnt": [0, 0, 0], "finalStmt":
+        [true, true, true], "ranks": [57.2, 55.0, 14.0], "nodes": {"ids": [0, 20,
+        21, 25, 28], "names": ["Small and Micro Cap Focus", "Sentiment: P123 basic",
+        "Estimate Revision", "Surprise", "Recommendations"], "parents": [0, 0, 20,
+        20, 20], "weights": [100.0, 6.0, 50.0, 30.0, 20.0], "ranks": [[57.2, 13.6,
+        17.4, 37.0, 33.2], [55.0, 68.2, 66.4, 23.2, 97.2], [14.0, 4.4, 15.0, 4.8,
+        37.2]]}, "additionalData": [[129.93, 2071529.07], [239.82, 1788337.75], [88.23,
+        1144431.37]]}'
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      date:
+      - Mon, 30 Dec 2024 02:33:28 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      transfer-encoding:
+      - chunked
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+version: 1
