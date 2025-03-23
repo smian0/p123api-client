@@ -63,6 +63,7 @@ testpaths = ["tests"]                # Directory containing tests
 python_files = ["test_*.py"]         # Test file pattern
 python_classes = ["Test*"]           # Test class pattern
 python_functions = ["test_*"]        # Test function pattern
+norecursedirs = ["**/backup", "**/archive", "**/old"]  # Directories to exclude
 addopts = [
     "-v",                           # Verbose output
     "--import-mode=importlib",      # Help with import discovery

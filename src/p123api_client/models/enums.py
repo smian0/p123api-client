@@ -69,6 +69,9 @@ class ScreenType(str, Enum):
 class ScreenMethod(str, Enum):
     """Screen method for position types"""
 
+    INTERSECTION = "intersection"
+    UNION = "union"
+    # Legacy values maintained for backward compatibility
     LONG = "long"
     SHORT = "short"
     LONG_SHORT = "long/short"

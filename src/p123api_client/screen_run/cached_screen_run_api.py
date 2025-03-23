@@ -83,7 +83,7 @@ class CachedScreenRunAPI(ScreenRunAPI):
         # Use default cache configuration for simplicity
         self.cache_manager = CacheManager(CacheConfig())
     
-    @cached_api_call("screen/run")
+    @cached_api_call("screen_run")
     def run_screen(
         self,
         universe: str,
@@ -136,7 +136,7 @@ class CachedScreenRunAPI(ScreenRunAPI):
             as_dataframe=as_dataframe
         )
     
-    @cached_api_call("screen/run/simple")
+    @cached_api_call("screen_run/simple")
     def run_simple_screen(
         self, 
         universe: str, 
