@@ -49,7 +49,14 @@ class RiskStatsPeriod(str, Enum):
 
     MONTHLY = "Monthly"
     WEEKLY = "Weekly"
-    DAILY = "Daily"
+
+
+class OutputFormat(str, Enum):
+    """Output format for API responses"""
+
+    CSV = "csv"
+    JSON = "json"
+    DATAFRAME = "dataframe"
 
 
 class ScreenType(str, Enum):

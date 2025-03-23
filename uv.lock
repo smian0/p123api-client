@@ -430,7 +430,20 @@ wheels = [
 ]
 
 [[package]]
-name = "p123-streamlit"
+name = "p123api"
+version = "1.7.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "pandas" },
+    { name = "requests" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/ea/84/047865a4166814a111c6d0a7915a959c84184b2f1734ab3087bf7ba4f0ad/p123api-1.7.1.tar.gz", hash = "sha256:48ba5efca9e5890ab39783b7013aecafefb4623997389238c980970b1b5fda64", size = 7513 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/9c/7d/d0407f0d5d6733d7a3be0499cb4aa9ed634979444ee6104385ffdd2832e6/p123api-1.7.1-py3-none-any.whl", hash = "sha256:7f3d12162e12b5b07fadf6d419898337a686bbfb846f058da9ee723095c118dc", size = 7482 },
+]
+
+[[package]]
+name = "p123api-client"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
@@ -441,6 +454,7 @@ dependencies = [
     { name = "pydantic" },
     { name = "pytest-vcr" },
     { name = "python-dotenv" },
+    { name = "pytz" },
     { name = "pyyaml" },
     { name = "streamlit" },
     { name = "urllib3" },
@@ -476,6 +490,7 @@ requires-dist = [
     { name = "pytest-vcr", specifier = ">=1.0.2" },
     { name = "pytest-vcr", marker = "extra == 'test'", specifier = ">=1.0.2" },
     { name = "python-dotenv", specifier = ">=1.0.0" },
+    { name = "pytz", specifier = ">=2024.1" },
     { name = "pyyaml", specifier = ">=6.0.1" },
     { name = "ruff", marker = "extra == 'test'", specifier = ">=0.3.0" },
     { name = "streamlit", specifier = ">=1.29.0" },
@@ -490,19 +505,6 @@ requires-dist = [
     { name = "vcrpy", marker = "extra == 'test'" },
 ]
 provides-extras = ["test"]
-
-[[package]]
-name = "p123api"
-version = "1.7.1"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "pandas" },
-    { name = "requests" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/ea/84/047865a4166814a111c6d0a7915a959c84184b2f1734ab3087bf7ba4f0ad/p123api-1.7.1.tar.gz", hash = "sha256:48ba5efca9e5890ab39783b7013aecafefb4623997389238c980970b1b5fda64", size = 7513 }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/9c/7d/d0407f0d5d6733d7a3be0499cb4aa9ed634979444ee6104385ffdd2832e6/p123api-1.7.1-py3-none-any.whl", hash = "sha256:7f3d12162e12b5b07fadf6d419898337a686bbfb846f058da9ee723095c118dc", size = 7482 },
-]
 
 [[package]]
 name = "packaging"

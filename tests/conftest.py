@@ -245,7 +245,12 @@ def rank_update_api(api_credentials):
 @pytest.fixture
 def screen_run_api(api_credentials):
     """Create a screen run API client for testing."""
-    api_id, api_key = api_credentials
+    api_id = api_credentials.get("api_id") 
+    api_key = api_credentials.get("api_key")
+    
+    if not api_id or not api_key:
+        pytest.skip("Missing API credentials for screen run tests")
+        
     return ScreenRunAPI(api_id=api_id, api_key=api_key)
 
 

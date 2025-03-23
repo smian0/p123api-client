@@ -36,6 +36,18 @@ test-cov: ## Run tests with coverage report
 test-specific: ## Run specific test module (usage: make test-specific TEST=path/to/test.py)
 	PYTHONPATH=$(PYTHON_PATH) . $(VENV)/bin/activate && pytest -v $(TEST)
 
+test-cache-all: ## Run all cache-related tests (storage implementations and cache manager)
+	PYTHONPATH=$(PYTHON_PATH) . $(VENV)/bin/activate && pytest -v tests/cache_tests.py tests/test_cache_manager.py tests/screen_run/test_screen_run_cache.py
+
+test-cache: ## Run consolidated tests for cache implementations (SimpleStorage and SQLiteStorage)
+	PYTHONPATH=$(PYTHON_PATH) . $(VENV)/bin/activate && pytest -v tests/cache_tests.py
+
+test-cache-manager: ## Run CacheManager tests
+	PYTHONPATH=$(PYTHON_PATH) . $(VENV)/bin/activate && pytest -v tests/test_cache_manager.py
+
+test-screen-run-cache: ## Run screen run cache integration tests
+	PYTHONPATH=$(PYTHON_PATH) . $(VENV)/bin/activate && pytest -v tests/screen_run/test_screen_run_cache.py
+
 run-app: ## Run the Streamlit app
 	. $(VENV)/bin/activate && streamlit run src/p123_streamlit/app.py
 

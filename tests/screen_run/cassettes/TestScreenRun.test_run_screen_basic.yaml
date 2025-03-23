@@ -1,0 +1,588 @@
+interactions:
+- request:
+    body: '{"apiKey": "MASKED", "apiId": "MASKED"}'
+    headers:
+      Content-Type:
+      - application/json
+      content-length:
+      - MASKED
+    method: POST
+    uri: https://api.portfolio123.com/auth
+  response:
+    body:
+      string: MASKED
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-length:
+      - '38'
+      content-type:
+      - text/plain;charset=UTF-8
+      date:
+      - Sat, 22 Mar 2025 22:50:43 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      x-content-type-options:
+      - nosniff
+      x-expires-in:
+      - '3600'
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+- request:
+    body: '{"screen": {"type": "stock", "universe": "SP500", "rules": [{"formula":
+      "Vol(0) > 500000", "type": null}]}}'
+    headers:
+      Content-Type:
+      - application/json
+      authorization:
+      - MASKED
+      content-length:
+      - MASKED
+    method: POST
+    uri: https://api.portfolio123.com/screen/run
+  response:
+    body:
+      string: '{"cost": 2, "quotaRemaining": 9840, "columns": ["P123 UID", "Ticker",
+        "Name", "Last", "MktCap", "SectorCode", "IndCode"], "rows": [[54686, "BKR",
+        "Baker Hughes Co.", 44.11, 43653.29, "ENERGY", "OILGASSUPPORT"], [185, "AES",
+        "The AES Corp.", 13.05, 9279.52, "UTIL", "ENERGYUTIL"], [1173, "BAX", "Baxter
+        International, Inc.", 33.19, 16957.68, "HEALTHCARE", "MEDDEVICESGEN"], [33640,
+        "XYL", "Xylem, Inc.", 118.47, 28786.43, "INDUSTRIAL", "MACHINE"], [8855, "TSCO",
+        "Tractor Supply Co.", 52.46, 27918.74, "CYCLICALS", "HOMEIMPROVE"], [1000,
+        "ADSK", "Autodesk, Inc.", 267.25, 57191.5, "TECH", "SOFTW"], [3868, "GPC",
+        "Genuine Parts Co.", 118.78, 16484.25, "CYCLICALS", "AUTORETAIL"], [759, "APA",
+        "APA Corp.", 20.61, 7530.84, "ENERGY", "FOSSILFUEL"], [25199, "DAL", "Delta
+        Air Lines, Inc.", 46.77, 30235.53, "INDUSTRIAL", "PASSENGERTRANS"], [8241,
+        "TRV", "The Travelers Cos., Inc.", 256.7, 58168.22, "FINANCIAL", "INSURANCE"],
+        [5675, "MCK", "McKesson Corp.", 661.17, 83307.42, "HEALTHCARE", "HCARESUPPORT"],
+        [145, "CB", "Chubb Ltd.", 291.43, 116777.07, "FINANCIAL", "INSURANCE"], [7470,
+        "REG", "Regency Centers Corp.", 71.5, 12933.08, "FINANCIAL", "REIT"], [129,
+        "AOS", "A. O. Smith Corp.", 66.5, 9597.25, "INDUSTRIAL", "MACHINE"], [2112,
+        "CL", "Colgate-Palmolive Co.", 90.3, 73375.5, "NONCYCLICAL", "PERSONALCAREPRODUCT"],
+        [168, "TAP", "Molson Coors Beverage Co.", 58.89, 11966.45, "NONCYCLICAL",
+        "FOODDRINKMFR"], [136, "ABT", "Abbott Laboratories", 126.34, 218782.72, "HEALTHCARE",
+        "MEDDEVICESGEN"], [166, "ADBE", "Adobe, Inc.", 387.26, 170781.66, "TECH",
+        "SOFTW"], [826, "ADM", "Archer-Daniels-Midland Co.", 46.1, 22035.8, "NONCYCLICAL",
+        "AGRICULTURE"], [5773, "MRK", "Merck & Co., Inc.", 93.11, 235348.32, "HEALTHCARE",
+        "BIOPHARMANONSYS"], [705, "IVZ", "Invesco Ltd.", 15.32, 6863.36, "FINANCIAL",
+        "INVESTSVCE"], [191, "AFL", "Aflac, Inc.", 108.24, 59528.1, "FINANCIAL", "INSURANCE"],
+        [1404, "BXP", "BXP, Inc.", 68.34, 10809.68, "FINANCIAL", "REIT"], [25105,
+        "BR", "Broadridge Financial Solutions, Inc.", 232.9, 27249.3, "FINANCIAL",
+        "FINSOFTW"], [7283, "PHM", "PulteGroup, Inc.", 102.72, 20843.21, "CYCLICALS",
+        "HOMEBUILDMANUF"], [874, "AJG", "Arthur J. Gallagher & Co.", 331.79, 82947.5,
+        "FINANCIAL", "INSURANCE"], [3299, "EL", "The Est\u00e9e Lauder Companies,
+        Inc.", 66.95, 24081.43, "NONCYCLICAL", "PERSONALCAREPRODUCT"], [175, "AMD",
+        "Advanced Micro Devices, Inc.", 106.44, 172645.68, "TECH", "SEMIMFR"], [8291,
+        "STT", "State Street Corp.", 90.55, 26147.8, "FINANCIAL", "INVESTSVCE"], [6572,
+        "ON", "ON Semiconductor Corp.", 43.78, 18516.98, "TECH", "SEMIMFR"], [195,
+        "A", "Agilent Technologies, Inc.", 120.75, 34441.79, "HEALTHCARE", "HCAREMISC"],
+        [116422, "GEHC", "GE Healthcare Technologies, Inc.", 81.49, 37237.34, "HEALTHCARE",
+        "MEDDEVICESOTHER"], [1876, "CRL", "Charles River Laboratories International,
+        Inc.", 167.28, 8554.87, "HEALTHCARE", "HCAREOUTSOURCE"], [711, "ADI", "Analog
+        Devices, Inc.", 204.4, 101377.59, "TECH", "SEMIMFR"], [258, "AMZN", "Amazon.com,
+        Inc.", 196.21, 2078452.6, "NONCYCLICAL", "GENMERCH"], [4402, "HRL", "Hormel
+        Foods Corp.", 29.98, 16482.57, "NONCYCLICAL", "FOODDRINKMFR"], [3325, "EG",
+        "Everest Group Ltd.", 352.42, 15154.06, "FINANCIAL", "INSURANCE"], [201, "APD",
+        "Air Products & Chemicals, Inc.", 291.65, 64885.03, "MATERIALS", "CHEMCOMMOD"],
+        [207, "AKAM", "Akamai Technologies, Inc.", 81.04, 12158.03, "TECH", "SOFTW"],
+        [1372, "BA", "The Boeing Co.", 178.11, 133442.92, "INDUSTRIAL", "AERODEF"],
+        [44076, "TMUS", "T-Mobile US, Inc.", 255.84, 292829.27, "TELECOM", "TELECOMWIRE"],
+        [216, "ALB", "Albemarle Corp.", 77.56, 9117.95, "MATERIALS", "CHEMSPECIAL"],
+        [23159, "CF", "CF Industries Holdings, Inc.", 76.78, 13043.62, "MATERIALS",
+        "CHEMSPECIAL"], [9136, "UPS", "United Parcel Service, Inc.", 115.1, 98283.89,
+        "INDUSTRIAL", "DELIVERY"], [3422, "FRT", "Federal Realty Investment Trust",
+        95.1, 8146.86, "FINANCIAL", "REIT"], [225, "ARE", "Alexandria Real Estate
+        Equities, Inc.", 96.27, 16578.03, "FINANCIAL", "REIT"], [30956, "CBOE", "Cboe
+        Global Markets, Inc.", 214.77, 22483.52, "FINANCIAL", "INVESTSVCE"], [5666,
+        "MKC", "McCormick & Co., Inc.", 80.17, 21485.56, "NONCYCLICAL", "FOODDRINKMFR"],
+        [5336, "LEN", "Lennar Corp.", 115.22, 30905.9, "CYCLICALS", "HOMEBUILDMANUF"],
+        [228, "ALGN", "Align Technology, Inc.", 168.61, 12451.68, "HEALTHCARE", "MEDDEVICESOTHER"],
+        [243, "LNT", "Alliant Energy Corp.", 63.05, 16160.86, "UTIL", "ENERGYUTIL"],
+        [252, "ALL", "The Allstate Corp.", 206.47, 54714.55, "FINANCIAL", "INSURANCE"],
+        [1463, "BMY", "Bristol Myers Squibb Co.", 61.07, 123911.03, "HEALTHCARE",
+        "BIOPHARMANONSYS"], [45236, "ALLE", "Allegion Plc", 127.06, 10959.53, "MATERIALS",
+        "MATCONSTR"], [31645, "HCA", "HCA Healthcare, Inc.", 328.79, 82191.39, "HEALTHCARE",
+        "PATIENTCARE"], [8942, "TRMB", "Trimble, Inc.", 70.54, 17338.73, "TECH", "SOFTW"],
+        [1128, "BAC", "Bank of America Corp.", 42.47, 323233.33, "FINANCIAL", "BANKSUSA"],
+        [789, "AMAT", "Applied Materials, Inc.", 152.12, 123588.5, "TECH", "SEMIEQUIPSVCE"],
+        [26322, "BX", "Blackstone, Inc.", 148.29, 181087.46, "FINANCIAL", "INVESTSVCE"],
+        [22345, "LVS", "Las Vegas Sands Corp.", 41.93, 30034.46, "CONSUMERSVCE", "HOSPITALITY"],
+        [590, "AEP", "American Electric Power Co., Inc.", 105.11, 56013.93, "UTIL",
+        "ENERGYUTIL"], [259, "PLD", "Prologis, Inc.", 108.42, 100427.6, "FINANCIAL",
+        "REIT"], [5231, "LH", "Labcorp Holdings, Inc.", 234.21, 19533.11, "HEALTHCARE",
+        "PATIENTCARE"], [5062, "JNPR", "Juniper Networks, Inc.", 36.05, 11990.23,
+        "TECH", "COMMEQUIP"], [268, "HES", "Hess Corp.", 156.58, 48272.64, "ENERGY",
+        "FOSSILFUEL"], [6397, "NTRS", "Northern Trust Corp.", 98.77, 19355.93, "FINANCIAL",
+        "INVESTSVCE"], [270, "AEE", "Ameren Corp.", 98.91, 26695.81, "UTIL", "ENERGYUTIL"],
+        [3429, "FDX", "FedEx Corp.", 230.33, 55279.2, "INDUSTRIAL", "DELIVERY"], [592,
+        "AXP", "American Express Co.", 270.51, 189898.03, "FINANCIAL", "FINSPECIAL"],
+        [609, "AIG", "American International Group, Inc.", 83.18, 50420.34, "FINANCIAL",
+        "INSURANCE"], [7634, "ROP", "Roper Technologies, Inc.", 572.18, 61394.91,
+        "TECH", "SOFTW"], [6948, "PCG", "PG&E Corp.", 16.88, 37027.52, "UTIL", "ENERGYUTIL"],
+        [651, "AMT", "American Tower Corp.", 216.23, 101062.44, "FINANCIAL", "REIT"],
+        [18668, "WYNN", "Wynn Resorts Ltd.", 82.63, 8909.3, "CONSUMERSVCE", "HOSPITALITY"],
+        [2347, "GLW", "Corning, Inc.", 48.53, 39454.89, "MATERIALS", "MINERAL"], [670,
+        "COR", "Cencora, Inc.", 267.43, 51841.15, "HEALTHCARE", "HCARESUPPORT"], [3350,
+        "EXC", "Exelon Corp.", 43.8, 44019.0, "UTIL", "ENERGYUTIL"], [1406, "BSX",
+        "Boston Scientific Corp.", 100.69, 148473.09, "HEALTHCARE", "MEDDEVICESGEN"],
+        [1093, "BALL", "Ball Corp.", 50.69, 14668.57, "MATERIALS", "PACKAGING"], [679,
+        "AME", "AMETEK, Inc.", 174.52, 40261.66, "INDUSTRIAL", "MACHINE"], [1605,
+        "CPT", "Camden Property Trust", 119.21, 12718.29, "FINANCIAL", "REIT"], [745,
+        "ANSS", "ANSYS, Inc.", 324.2, 28379.05, "TECH", "SOFTW"], [27233, "MSCI",
+        "MSCI, Inc.", 562.56, 43736.0, "TECH", "INTERNET"], [5604, "MLM", "Martin
+        Marietta Materials, Inc.", 477.03, 29159.24, "MATERIALS", "MATCONSTR"], [681,
+        "AMGN", "Amgen, Inc.", 316.04, 169681.89, "HEALTHCARE", "BIOPHARMAOTHER"],
+        [44111, "IQV", "IQVIA Holdings, Inc.", 185.89, 32735.23, "HEALTHCARE", "HCAREOUTSOURCE"],
+        [5865, "MCHP", "Microchip Technology, Inc.", 51.72, 27813.13, "TECH", "SEMIMFR"],
+        [4990, "JKHY", "Jack Henry & Associates, Inc.", 173.05, 12615.01, "FINANCIAL",
+        "FINSOFTW"], [693, "APH", "Amphenol Corp.", 66.6, 80539.38, "TECH", "COMPONENTS"],
+        [756, "AON", "Aon plc", 390.35, 84315.6, "FINANCIAL", "INSURANCE"], [966,
+        "ATO", "Atmos Energy Corp.", 148.63, 23591.45, "UTIL", "ENERGYUTIL"], [774,
+        "AAPL", "Apple, Inc.", 218.27, 3282940.52, "TECH", "COMMEQUIP"], [1183, "TFC",
+        "Truist Financial Corp.", 41.42, 54506.07, "FINANCIAL", "BANKSUSA"], [822,
+        "ACGL", "Arch Capital Group Ltd.", 91.98, 34621.27, "FINANCIAL", "INSURANCE"],
+        [1487, "BRO", "Brown & Brown, Inc.", 118.52, 33896.72, "FINANCIAL", "INSURANCE"],
+        [38618, "ENPH", "Enphase Energy, Inc.", 61.54, 8150.85, "TECH", "COMPONENTS"],
+        [2638, "DE", "Deere & Co.", 472.43, 128224.09, "INDUSTRIAL", "MACHINE"], [1005,
+        "ADP", "Automatic Data Processing, Inc.", 295.32, 120165.71, "BIZSVCE", "PROSVCE"],
+        [1015, "AVB", "AvalonBay Communities, Inc.", 209.56, 29810.75, "FINANCIAL",
+        "REIT"], [8371, "SYK", "Stryker Corp.", 371.11, 141541.35, "HEALTHCARE", "MEDDEVICESGEN"],
+        [1545, "CHRW", "C.H. Robinson Worldwide, Inc.", 99.95, 11860.47, "INDUSTRIAL",
+        "DELIVERY"], [6002, "MCO", "Moody''s Corp.", 459.49, 82850.2, "BIZSVCE", "PROSVCE"],
+        [5881, "MSFT", "Microsoft Corp.", 391.26, 2909018.17, "TECH", "SOFTW"], [1031,
+        "AVY", "Avery Dennison Corp.", 174.58, 13931.55, "MATERIALS", "PACKAGING"],
+        [1134, "BK", "The Bank of New York Mellon Corp.", 83.55, 59962.19, "FINANCIAL",
+        "INVESTSVCE"], [9743, "XEL", "Xcel Energy, Inc.", 69.11, 39694.41, "UTIL",
+        "ENERGYUTIL"], [4438, "HUM", "Humana, Inc.", 266.17, 32111.18, "HEALTHCARE",
+        "HCARESUPPORT"], [1201, "BDX", "Becton, Dickinson & Co.", 230.23, 66107.18,
+        "HEALTHCARE", "MEDDEVICESGEN"], [2320, "CPRT", "Copart, Inc.", 53.63, 51809.43,
+        "CYCLICALS", "AUTORETAIL"], [1235, "BRK.B", "Berkshire Hathaway, Inc.", 521.91,
+        1125934.76, "FINANCIAL", "INSURANCE"], [1240, "BBY", "Best Buy Co., Inc.",
+        73.56, 15550.58, "CYCLICALS", "ELECTRONICSENTRETAIL"], [1760, "CDW", "CDW
+        Corp.", 165.57, 21954.58, "TECH", "TECHDISTRIB"], [1393, "BWA", "BorgWarner,
+        Inc.", 28.7, 6275.83, "CYCLICALS", "VEHICLE"], [4980, "JBHT", "J.B. Hunt Transport
+        Services, Inc.", 148.55, 14937.46, "INDUSTRIAL", "TRAINTRUCK"], [1490, "BF.B",
+        "Brown-Forman Corp.", 34.65, 16377.7, "NONCYCLICAL", "FOODDRINKMFR"], [23386,
+        "CMG", "Chipotle Mexican Grill, Inc.", 48.53, 65940.18, "CONSUMERSVCE", "HOSPITALITY"],
+        [4681, "TT", "Trane Technologies plc", 347.14, 77923.89, "INDUSTRIAL", "MACHINE"],
+        [1557, "CTRA", "Coterra Energy, Inc.", 28.72, 21109.2, "ENERGY", "FOSSILFUEL"],
+        [1564, "CDNS", "Cadence Design Systems, Inc.", 262.42, 71863.99, "TECH", "SOFTW"],
+        [1612, "CPB", "The Campbell''s Co.", 38.08, 11347.84, "NONCYCLICAL", "FOODDRINKMFR"],
+        [9939, "FIS", "Fidelity National Information Services, Inc.", 73.35, 38948.85,
+        "FINANCIAL", "FINSPECIAL"], [1651, "COF", "Capital One Financial Corp.", 174.82,
+        66646.69, "FINANCIAL", "FINSPECIAL"], [1676, "CAH", "Cardinal Health, Inc.",
+        131.89, 31917.38, "HEALTHCARE", "HCARESUPPORT"], [7782, "SBAC", "SBA Communications
+        Corp.", 221.64, 23839.82, "FINANCIAL", "REIT"], [1694, "KMX", "CarMax, Inc.",
+        71.32, 10976.72, "CYCLICALS", "AUTORETAIL"], [1698, "CCL", "Carnival Corp.",
+        20.94, 27389.52, "CONSUMERSVCE", "HOSPITALITY"], [5819, "MET", "MetLife, Inc.",
+        82.36, 56763.42, "FINANCIAL", "INSURANCE"], [4896, "INTU", "Intuit, Inc.",
+        604.04, 168974.14, "TECH", "SOFTW"], [1739, "CAT", "Caterpillar, Inc.", 335.78,
+        160480.02, "INDUSTRIAL", "MACHINE"], [5607, "MAS", "Masco Corp.", 69.6, 14790.0,
+        "NONCYCLICAL", "APPLIANCESTOOLS"], [1746, "CBRE", "CBRE Group, Inc.", 129.78,
+        39200.34, "FINANCIAL", "REALESTATESVCE"], [9316, "VRSN", "VeriSign, Inc.",
+        244.51, 23228.45, "TECH", "INTERNET"], [1877, "SCHW", "The Charles Schwab
+        Corp.", 78.39, 139559.13, "FINANCIAL", "INVESTSVCE"], [2974, "EBAY", "eBay,
+        Inc.", 65.78, 30982.38, "NONCYCLICAL", "GENMERCH"], [1882, "CHTR", "Charter
+        Communications, Inc.", 363.81, 51641.53, "TELECOM", "TELECOMWIRE"], [8314,
+        "STE", "STERIS Plc (Ireland)", 220.42, 21655.16, "HEALTHCARE", "HCAREMISC"],
+        [1963, "CHD", "Church & Dwight Co., Inc.", 107.15, 26346.02, "NONCYCLICAL",
+        "PERSONALCAREPRODUCT"], [3793, "GRMN", "Garmin Ltd.", 210.19, 40454.85, "TECH",
+        "COMMEQUIP"], [1970, "CI", "The Cigna Group", 316.65, 86695.29, "HEALTHCARE",
+        "HCARESUPPORT"], [1975, "CINF", "Cincinnati Financial Corp.", 145.62, 22774.97,
+        "FINANCIAL", "INSURANCE"], [1980, "CTAS", "Cintas Corp.", 191.17, 77136.33,
+        "BIZSVCE", "BIZSUPPORT"], [1989, "CSCO", "Cisco Systems, Inc.", 60.3, 239813.1,
+        "TECH", "COMMEQUIP"], [23326, "PARA", "Paramount Global", 11.86, 7958.06,
+        "CONSUMERSVCE", "MEDIAPUB"], [4331, "HLT", "Hilton Worldwide Holdings, Inc.",
+        229.33, 55453.47, "CONSUMERSVCE", "HOSPITALITY"], [3255, "EFX", "Equifax,
+        Inc.", 244.0, 30256.0, "BIZSVCE", "PROSVCE"], [1994, "C", "Citigroup, Inc.",
+        71.98, 135111.61, "FINANCIAL", "INVESTSVCE"], [2050, "CLX", "The Clorox Co.",
+        144.84, 17837.17, "NONCYCLICAL", "PERSONALCAREPRODUCT"], [7941, "SHW", "The
+        Sherwin-Williams Co.", 334.41, 84037.23, "MATERIALS", "CHEMSPECIAL"], [2056,
+        "CMS", "CMS Energy Corp.", 73.5, 21961.8, "UTIL", "ENERGYUTIL"], [3457, "FITB",
+        "Fifth Third Bancorp", 39.48, 26445.83, "FINANCIAL", "BANKSUSA"], [2070, "TPR",
+        "Tapestry, Inc.", 73.12, 15128.53, "CYCLICALS", "APPARELPRODUCTS"], [2084,
+        "KO", "The Coca-Cola Co.", 68.67, 295418.33, "NONCYCLICAL", "FOODDRINKMFR"],
+        [5438, "L", "Loews Corp.", 87.25, 18751.12, "FINANCIAL", "INSURANCE"], [4386,
+        "HON", "Honeywell International, Inc.", 210.12, 136535.97, "INDUSTRIAL", "MACHINE"],
+        [3085, "LLY", "Eli Lilly & Co.", 837.57, 793629.43, "HEALTHCARE", "BIOPHARMASYS"],
+        [2097, "CTSH", "Cognizant Technology Solutions Corp.", 76.42, 37827.9, "TECH",
+        "TECHCONSULTSVCE"], [9473, "WAB", "Westinghouse Air Brake Technologies Corp.",
+        184.78, 31652.81, "INDUSTRIAL", "TRANSPORTEQUIP"], [8477, "GEN", "Gen Digital
+        Inc.", 27.18, 16742.88, "TECH", "SOFTW"], [4134, "KHC", "The Kraft Heinz Co.",
+        29.52, 35276.4, "NONCYCLICAL", "FOODDRINKMFR"], [2142, "CMCSA", "Comcast Corp.",
+        36.75, 139199.68, "TELECOM", "TELECOMWIRE"], [2248, "CAG", "Conagra Brands,
+        Inc.", 25.68, 12257.59, "NONCYCLICAL", "FOODDRINKMFR"], [9258, "VLO", "Valero
+        Energy Corp.", 131.51, 41407.72, "ENERGY", "DOWNSTREAMENERGY"], [2254, "CE",
+        "Celanese Corp.", 57.1, 6242.6, "MATERIALS", "CHEMSPECIAL"], [2278, "ED",
+        "Consolidated Edison, Inc.", 107.8, 37406.6, "UTIL", "ENERGYUTIL"], [2287,
+        "STZ", "Constellation Brands, Inc.", 177.42, 32060.39, "NONCYCLICAL", "FOODDRINKMFR"],
+        [2315, "COO", "The Cooper Cos., Inc.", 81.71, 16333.83, "HEALTHCARE", "MEDDEVICESOTHER"],
+        [2329, "CME", "CME Group, Inc.", 263.35, 94702.01, "FINANCIAL", "INVESTSVCE"],
+        [2372, "CSGP", "CoStar Group, Inc.", 78.46, 32129.37, "TECH", "INTERNET"],
+        [53517, "HPE", "Hewlett Packard Enterprise Co.", 16.05, 21079.93, "TECH",
+        "COMPUTER"], [2373, "COST", "Costco Wholesale Corp.", 909.26, 403465.95, "NONCYCLICAL",
+        "GENMERCH"], [2457, "CCI", "Crown Castle, Inc.", 106.39, 46279.65, "FINANCIAL",
+        "REIT"], [3587, "FE", "FirstEnergy Corp.", 39.56, 22810.78, "UTIL", "ENERGYUTIL"],
+        [2482, "CSX", "CSX Corp.", 29.57, 56188.61, "INDUSTRIAL", "TRAINTRUCK"], [30607,
+        "VRSK", "Verisk Analytics, Inc.", 285.16, 40040.64, "BIZSVCE", "PROSVCE"],
+        [2501, "CMI", "Cummins, Inc.", 322.1, 44256.54, "INDUSTRIAL", "TRANSPORTEQUIP"],
+        [2517, "CVS", "CVS Health Corp.", 67.05, 84483.0, "NONCYCLICAL", "PERSONALCARERETAIL"],
+        [16916, "CNC", "Centene Corp.", 58.9, 29208.92, "HEALTHCARE", "HCARESUPPORT"],
+        [2557, "DHI", "D.R. Horton, Inc.", 128.84, 40926.31, "CYCLICALS", "HOMEBUILDMANUF"],
+        [2576, "DHR", "Danaher Corp.", 211.36, 151988.97, "HEALTHCARE", "HCAREMISC"],
+        [6823, "PAYX", "Paychex, Inc.", 143.02, 51501.5, "BIZSVCE", "PROSVCE"], [2583,
+        "DRI", "Darden Restaurants, Inc.", 199.93, 23431.79, "CONSUMERSVCE", "HOSPITALITY"],
+        [2614, "DVA", "DaVita, Inc.", 148.15, 11931.41, "HEALTHCARE", "PATIENTCARE"],
+        [6505, "OXY", "Occidental Petroleum Corp.", 47.94, 44989.68, "ENERGY", "FOSSILFUEL"],
+        [3381, "FDS", "FactSet Research Systems, Inc.", 432.86, 16470.24, "TECH",
+        "INTERNET"], [2632, "DECK", "Deckers Outdoor Corp.", 117.86, 17887.61, "CYCLICALS",
+        "APPARELPRODUCTS"], [7630, "ROL", "Rollins, Inc.", 51.63, 25008.14, "BIZSVCE",
+        "BIZSUPPORT"], [2695, "DVN", "Devon Energy Corp.", 36.15, 23522.81, "ENERGY",
+        "FOSSILFUEL"], [2797, "DLTR", "Dollar Tree, Inc.", 66.75, 14353.36, "NONCYCLICAL",
+        "GENMERCH"], [7088, "RL", "Ralph Lauren Corp.", 224.03, 13845.05, "CYCLICALS",
+        "APPARELPRODUCTS"], [2799, "D", "Dominion Energy, Inc.", 54.55, 46476.6, "UTIL",
+        "ENERGYUTIL"], [31449, "TRGP", "Targa Resources Corp.", 197.4, 42986.58, "ENERGY",
+        "DOWNSTREAMENERGY"], [2818, "DOV", "Dover Corp.", 179.64, 24649.56, "INDUSTRIAL",
+        "MACHINE"], [31784, "MOS", "The Mosaic Co.", 27.83, 8820.22, "MATERIALS",
+        "CHEMSPECIAL"], [2821, "DD", "DuPont de Nemours, Inc.", 75.17, 31420.63, "MATERIALS",
+        "CHEMSPECIAL"], [6630, "ORCL", "Oracle Corp.", 152.23, 426700.68, "TECH",
+        "INTERNET"], [2860, "DTE", "DTE Energy Co.", 137.11, 28405.3, "UTIL", "ENERGYUTIL"],
+        [4548, "ITW", "Illinois Tool Works Inc.", 251.34, 73893.96, "INDUSTRIAL",
+        "MACHINE"], [2870, "DUK", "Duke Energy Corp.", 119.1, 92421.6, "UTIL", "ENERGYUTIL"],
+        [4359, "HOLX", "Hologic, Inc.", 61.47, 13865.17, "HEALTHCARE", "MEDDEVICESGEN"],
+        [3686, "NEE", "NextEra Energy, Inc.", 70.88, 145800.15, "UTIL", "ENERGYUTIL"],
+        [2961, "EMN", "Eastman Chemical Co.", 88.69, 10209.78, "MATERIALS", "CHEMSPECIAL"],
+        [9469, "WRB", "W.R. Berkley Corp.", 63.24, 24035.38, "FINANCIAL", "INSURANCE"],
+        [2968, "ETN", "Eaton Corp. Plc", 295.44, 116078.38, "INDUSTRIAL", "ELECTREQUIP"],
+        [2993, "ECL", "Ecolab, Inc.", 251.0, 71122.04, "MATERIALS", "CHEMSPECIAL"],
+        [3013, "EIX", "Edison International", 58.17, 22382.93, "UTIL", "ENERGYUTIL"],
+        [7480, "RF", "Regions Financial Corp.", 21.71, 19723.05, "FINANCIAL", "BANKSUSA"],
+        [3022, "EW", "Edwards Lifesciences Corp.", 70.46, 41472.75, "HEALTHCARE",
+        "MEDDEVICESGEN"], [3071, "EA", "Electronic Arts, Inc.", 144.3, 37741.38, "TECH",
+        "SOFTW"], [3128, "EMR", "Emerson Electric Co.", 113.11, 63782.73, "INDUSTRIAL",
+        "MACHINE"], [6013, "MS", "Morgan Stanley", 120.14, 193023.37, "FINANCIAL",
+        "INVESTSVCE"], [3204, "ETR", "Entergy Corp.", 83.88, 36033.2, "UTIL", "ENERGYUTIL"],
+        [3234, "EOG", "EOG Resources, Inc.", 125.17, 69745.79, "ENERGY", "FOSSILFUEL"],
+        [7272, "PEG", "Public Service Enterprise Group, Inc.", 82.98, 41324.04, "UTIL",
+        "ENERGYUTIL"], [3256, "EQIX", "Equinix, Inc.", 834.59, 81194.76, "FINANCIAL",
+        "REIT"], [21475, "CRM", "Salesforce, Inc.", 280.62, 269956.44, "TECH", "SOFTW"],
+        [3258, "EQT", "EQT Corp.", 52.88, 31562.49, "ENERGY", "FOSSILFUEL"], [3266,
+        "EQR", "Equity Residential", 69.81, 26491.17, "FINANCIAL", "REIT"], [3298,
+        "ESS", "Essex Property Trust, Inc.", 300.06, 19288.0, "FINANCIAL", "REIT"],
+        [6480, "NVDA", "NVIDIA Corp.", 117.7, 2880942.83, "TECH", "SEMIMFR"], [6367,
+        "NSC", "Norfolk Southern Corp.", 231.75, 52449.87, "INDUSTRIAL", "TRAINTRUCK"],
+        [3356, "EXPD", "Expeditors International of Washington, Inc.", 116.3, 16049.75,
+        "INDUSTRIAL", "DELIVERY"], [3369, "XOM", "Exxon Mobil Corp.", 115.5, 502771.5,
+        "ENERGY", "OILGASINTEG"], [3377, "FFIV", "F5, Inc.", 268.4, 15602.63, "TECH",
+        "SOFTW"], [9046, "UAL", "United Airlines Holdings, Inc.", 74.87, 24549.86,
+        "INDUSTRIAL", "PASSENGERTRANS"], [5135, "KEY", "KeyCorp", 16.15, 17874.6,
+        "FINANCIAL", "BANKSUSA"], [9016, "USB", "U.S. Bancorp", 42.84, 66821.67, "FINANCIAL",
+        "BANKSUSA"], [3414, "FAST", "Fastenal Co.", 74.73, 42844.24, "INDUSTRIAL",
+        "INDLDIST"], [3598, "FI", "Fiserv, Inc.", 218.09, 123002.76, "FINANCIAL",
+        "FINSPECIAL"], [3635, "FMC", "FMC Corp.", 41.51, 5182.15, "MATERIALS", "CHEMSPECIAL"],
+        [3655, "F", "Ford Motor Co.", 10.0, 39640.0, "CYCLICALS", "VEHICLE"], [9218,
+        "MTCH", "Match Group, Inc.", 30.49, 7667.03, "TECH", "INTERNET"], [3696, "BEN",
+        "Franklin Resources, Inc.", 19.87, 10411.24, "FINANCIAL", "INVESTSVCE"], [26677,
+        "LULU", "lululemon athletica, Inc.", 322.62, 39411.9, "CYCLICALS", "APPARELRETAIL"],
+        [3703, "FCX", "Freeport-McMoRan, Inc.", 40.25, 57839.25, "MATERIALS", "ORE"],
+        [3791, "IR", "Ingersoll Rand, Inc.", 80.96, 32617.17, "INDUSTRIAL", "MACHINE"],
+        [3795, "IT", "Gartner, Inc.", 430.38, 33302.74, "TECH", "INTERNET"], [3830,
+        "GD", "General Dynamics Corp.", 263.41, 71210.4, "INDUSTRIAL", "AERODEF"],
+        [3831, "GE", "GE Aerospace", 204.13, 219172.78, "INDUSTRIAL", "AERODEF"],
+        [3836, "GIS", "General Mills, Inc.", 58.64, 32105.4, "NONCYCLICAL", "FOODDRINKMFR"],
+        [3906, "GILD", "Gilead Sciences, Inc.", 107.08, 133421.68, "HEALTHCARE", "BIOPHARMANONSYS"],
+        [22084, "DLR", "Digital Realty Trust, Inc.", 150.38, 50623.47, "FINANCIAL",
+        "REIT"], [5891, "MAA", "Mid-America Apartment Communities, Inc.", 161.27,
+        18849.79, "FINANCIAL", "REIT"], [3947, "GPN", "Global Payments, Inc.", 97.05,
+        24137.2, "FINANCIAL", "FINSPECIAL"], [27606, "AWK", "American Water Works
+        Co., Inc.", 141.13, 27509.13, "UTIL", "WATER"], [9961, "WTW", "Willis Towers
+        Watson plc", 332.71, 33206.38, "FINANCIAL", "INSURANCE"], [3994, "GS", "The
+        Goldman Sachs Group, Inc.", 565.14, 175562.85, "FINANCIAL", "INVESTSVCE"],
+        [4148, "HAL", "Halliburton Co.", 24.74, 21474.32, "ENERGY", "OILGASSUPPORT"],
+        [6967, "MO", "Altria Group, Inc.", 57.6, 97381.54, "NONCYCLICAL", "TOBACCO"],
+        [4170, "MNST", "Monster Beverage Corp.", 57.31, 55767.16, "NONCYCLICAL", "FOODDRINKMFR"],
+        [4191, "LHX", "L3Harris Technologies, Inc.", 207.98, 39473.54, "INDUSTRIAL",
+        "AERODEF"], [9968, "AXON", "Axon Enterprise, Inc.", 560.0, 42906.83, "INDUSTRIAL",
+        "AERODEF"], [4198, "HIG", "The Hartford Insurance Group, Inc.", 119.25, 34291.08,
+        "FINANCIAL", "INSURANCE"], [52328, "CFG", "Citizens Financial Group, Inc.
+        (Rhode Island)", 41.19, 18145.98, "FINANCIAL", "BANKSUSA"], [4204, "HAS",
+        "Hasbro, Inc.", 60.57, 8451.25, "CYCLICALS", "LEISURE"], [4230, "DOC", "Healthpeak
+        Properties, Inc.", 20.03, 14010.69, "FINANCIAL", "REIT"], [7130, "PPG", "PPG
+        Industries, Inc.", 110.73, 25459.92, "MATERIALS", "CHEMSPECIAL"], [4231, "WELL",
+        "Welltower, Inc.", 146.52, 93082.59, "FINANCIAL", "REIT"], [4293, "HSIC",
+        "Henry Schein, Inc.", 69.39, 8615.18, "HEALTHCARE", "HCARESUPPORT"], [4304,
+        "HSY", "The Hershey Co.", 167.18, 33834.4, "NONCYCLICAL", "FOODDRINKMFR"],
+        [4306, "HPQ", "HP, Inc.", 28.68, 27092.85, "TECH", "COMPUTER"], [4363, "HD",
+        "The Home Depot, Inc.", 351.15, 348691.94, "CYCLICALS", "HOMEIMPROVE"], [38736,
+        "META", "Meta Platforms, Inc.", 596.25, 1510897.5, "TECH", "INTERNET"], [4406,
+        "HST", "Host Hotels & Resorts, Inc.", 14.69, 10269.78, "FINANCIAL", "REIT"],
+        [8506, "SYY", "Sysco Corp.", 71.11, 34806.09, "CONSUMERSVCE", "HOSPITALITY"],
+        [4426, "HUBB", "Hubbell, Inc.", 338.36, 18190.22, "INDUSTRIAL", "ELECTREQUIP"],
+        [120891, "SOLV", "Solventum Corp.", 73.97, 12780.95, "HEALTHCARE", "MEDDEVICESOTHER"],
+        [4449, "HBAN", "Huntington Bancshares, Inc.", 15.02, 21833.61, "FINANCIAL",
+        "BANKSUSA"], [4519, "BIIB", "Biogen, Inc.", 140.9, 20543.22, "HEALTHCARE",
+        "BIOPHARMASYS"], [9685, "WEC", "WEC Energy Group, Inc.", 106.81, 33931.49,
+        "UTIL", "ENERGYUTIL"], [4521, "IEX", "IDEX Corp.", 181.91, 13806.97, "INDUSTRIAL",
+        "MACHINE"], [4522, "IDXX", "IDEXX Laboratories, Inc.", 420.99, 34354.47, "HEALTHCARE",
+        "HCAREMISC"], [5464, "LOW", "Lowe''s Companies, Inc.", 227.07, 127159.2, "CYCLICALS",
+        "HOMEIMPROVE"], [4613, "INCY", "Incyte Corp.", 61.92, 11977.45, "HEALTHCARE",
+        "BIOPHARMASYS"], [4737, "IBM", "International Business Machines Corp.", 243.87,
+        225894.36, "TECH", "TECHCONSULTSVCE"], [4773, "INTC", "Intel Corp.", 24.26,
+        105045.8, "TECH", "SEMIMFR"], [4836, "IFF", "International Flavors & Fragrances,
+        Inc.", 77.84, 19903.69, "MATERIALS", "CHEMSPECIAL"], [9138, "URI", "United
+        Rentals, Inc.", 628.16, 41022.45, "INDUSTRIAL", "INDLDIST"], [4841, "IP",
+        "International Paper Co.", 51.39, 17853.76, "MATERIALS", "PACKAGING"], [4863,
+        "IPG", "Interpublic Group of Cos., Inc.", 26.51, 9872.32, "BIZSVCE", "MKTINGPRINTING"],
+        [8495, "SNPS", "Synopsys, Inc.", 448.6, 69361.63, "TECH", "SOFTW"], [4897,
+        "ISRG", "Intuitive Surgical, Inc.", 492.49, 175621.93, "HEALTHCARE", "MEDDEVICESGEN"],
+        [27449, "V", "Visa, Inc.", 335.66, 656210.76, "FINANCIAL", "FINSPECIAL"],
+        [4929, "IRM", "Iron Mountain, Inc.", 87.54, 25701.1, "FINANCIAL", "REIT"],
+        [4983, "SJM", "The J. M. Smucker Co.", 109.7, 11674.05, "NONCYCLICAL", "FOODDRINKMFR"],
+        [31600, "KMI", "Kinder Morgan, Inc.", 27.93, 62050.62, "ENERGY", "MIDSTREAMENERGY"],
+        [4984, "JPM", "JPMorgan Chase & Co.", 241.63, 675989.02, "FINANCIAL", "BANKSUSA"],
+        [31182, "NXPI", "NXP Semiconductors NV", 200.64, 51027.69, "TECH", "SEMIMFR"],
+        [8008, "SPG", "Simon Property Group, Inc.", 162.1, 52889.69, "FINANCIAL",
+        "REIT"], [7076, "PNC", "The PNC Financial Services Group, Inc.", 173.61, 68738.62,
+        "FINANCIAL", "BANKSUSA"], [4988, "JBL", "Jabil, Inc.", 145.22, 16220.07, "TECH",
+        "ELECTRONICEQUIP"], [4996, "J", "Jacobs Solutions, Inc.", 121.25, 14903.13,
+        "INDUSTRIAL", "FACIL"], [5044, "JNJ", "Johnson & Johnson", 163.63, 393844.68,
+        "HEALTHCARE", "BIOPHARMAOTHER"], [5045, "JCI", "Johnson Controls International
+        Plc", 82.73, 54650.96, "INDUSTRIAL", "MACHINE"], [5107, "K", "Kellanova",
+        82.51, 28474.93, "NONCYCLICAL", "FOODDRINKMFR"], [5147, "KMB", "Kimberly-Clark
+        Corp.", 138.67, 46010.57, "NONCYCLICAL", "PERSONALCAREPRODUCT"], [22839, "DXCM",
+        "DexCom, Inc.", 73.8, 28833.66, "HEALTHCARE", "HCAREDIAGNOSTICS"], [5148,
+        "KIM", "Kimco Realty Corp.", 20.75, 14099.49, "FINANCIAL", "REIT"], [5165,
+        "KLAC", "KLA Corp.", 706.49, 93923.61, "TECH", "SEMIEQUIPSVCE"], [7474, "REGN",
+        "Regeneron Pharmaceuticals, Inc.", 658.48, 72169.4, "HEALTHCARE", "BIOPHARMASYS"],
+        [5201, "KR", "The Kroger Co.", 65.4, 43033.2, "NONCYCLICAL", "FOODDRINKRETAIL"],
+        [7333, "PWR", "Quanta Services, Inc.", 268.22, 39610.33, "INDUSTRIAL", "FACIL"],
+        [5245, "LRCX", "Lam Research Corp.", 75.84, 97451.06, "TECH", "SEMIEQUIPSVCE"],
+        [5337, "LII", "Lennox International, Inc.", 569.55, 20273.82, "INDUSTRIAL",
+        "MACHINE"], [8820, "GL", "Globe Life, Inc.", 126.83, 10688.63, "FINANCIAL",
+        "INSURANCE"], [7131, "PPL", "PPL Corp.", 34.76, 25654.03, "UTIL", "ENERGYUTIL"],
+        [6445, "NRG", "NRG Energy, Inc.", 100.66, 19991.48, "UTIL", "ENERGYUTIL"],
+        [5433, "LMT", "Lockheed Martin Corp.", 439.7, 102889.8, "INDUSTRIAL", "AERODEF"],
+        [5496, "MTB", "M&T Bank Corp.", 178.25, 29504.94, "FINANCIAL", "BANKSUSA"],
+        [5595, "MAR", "Marriott International, Inc.", 237.49, 65706.77, "CONSUMERSVCE",
+        "HOSPITALITY"], [61856, "MRNA", "Moderna, Inc.", 32.66, 12606.76, "HEALTHCARE",
+        "BIOPHARMANONSYS"], [5596, "MMC", "Marsh & McLennan Cos., Inc.", 232.31, 114157.63,
+        "BIZSVCE", "PROSVCE"], [5669, "MCD", "McDonald''s Corp.", 305.44, 218450.69,
+        "CONSUMERSVCE", "HOSPITALITY"], [5672, "SPGI", "S&P Global, Inc.", 497.88,
+        156832.2, "TECH", "INTERNET"], [5748, "MDT", "Medtronic PLC", 90.33, 115917.43,
+        "HEALTHCARE", "MEDDEVICESGEN"], [5849, "MGM", "MGM Resorts International",
+        31.42, 9249.24, "CONSUMERSVCE", "HOSPITALITY"], [5875, "MU", "Micron Technology,
+        Inc.", 94.72, 105896.96, "TECH", "SEMIMFR"], [54170, "VST", "Vistra Corp.",
+        130.58, 44365.12, "UTIL", "ENERGYUTIL"], [5942, "MMM", "3M Co.", 150.36, 81114.75,
+        "MATERIALS", "MATOTHER"], [22172, "MPWR", "Monolithic Power Systems, Inc.",
+        590.98, 28262.44, "TECH", "SEMIMFR"], [5979, "MHK", "Mohawk Industries, Inc.",
+        111.87, 7003.06, "MATERIALS", "MATCONSTR"], [6027, "MSI", "Motorola Solutions,
+        Inc.", 422.71, 70634.84, "TECH", "COMMEQUIP"], [6072, "VTRS", "Viatris, Inc.",
+        9.15, 10921.88, "HEALTHCARE", "BIOPHARMAOTHER"], [9510, "WM", "Waste Management,
+        Inc.", 224.91, 90300.06, "BIZSVCE", "WASTEMGMT"], [6249, "NTAP", "NetApp,
+        Inc.", 92.25, 18726.75, "TECH", "COMPUTER"], [17673, "NFLX", "Netflix, Inc.",
+        960.29, 410770.87, "TECH", "INTERNET"], [6310, "NEM", "Newmont Corp.", 47.36,
+        53374.72, "MATERIALS", "ORE"], [25243, "PODD", "Insulet Corp.", 268.32, 18835.0,
+        "HEALTHCARE", "HCAREDIAGNOSTICS"], [6341, "NKE", "NIKE, Inc.", 67.94, 100687.08,
+        "CYCLICALS", "APPARELPRODUCTS"], [6344, "NI", "NiSource, Inc.", 39.23, 18431.14,
+        "UTIL", "ENERGYUTIL"], [6365, "NDSN", "Nordson Corp.", 203.86, 11602.03, "INDUSTRIAL",
+        "MACHINE"], [31186, "LYB", "LyondellBasell Industries NV", 71.55, 23174.32,
+        "MATERIALS", "CHEMSPECIAL"], [6393, "ES", "Eversource Energy", 60.93, 22337.43,
+        "UTIL", "ENERGYUTIL"], [6403, "NOC", "Northrop Grumman Corp.", 490.72, 71130.86,
+        "INDUSTRIAL", "AERODEF"], [6459, "NUE", "Nucor Corp.", 122.01, 28403.93, "MATERIALS",
+        "METAL"], [24420, "LDOS", "Leidos Holdings, Inc.", 133.83, 17553.66, "INDUSTRIAL",
+        "AERODEF"], [53025, "GDDY", "GoDaddy, Inc.", 180.33, 25464.04, "TECH", "INTERNET"],
+        [6491, "ORLY", "O''Reilly Automotive, Inc.", 1339.09, 76973.82, "CYCLICALS",
+        "AUTORETAIL"], [7654, "RCL", "Royal Caribbean Group", 215.49, 57945.22, "CONSUMERSVCE",
+        "HOSPITALITY"], [6538, "ODFL", "Old Dominion Freight Line, Inc.", 165.22,
+        35189.34, "INDUSTRIAL", "TRAINTRUCK"], [7890, "SRE", "Sempra", 69.54, 45244.8,
+        "UTIL", "ENERGYUTIL"], [6563, "OMC", "Omnicom Group, Inc.", 81.14, 15935.9,
+        "BIZSVCE", "MKTINGPRINTING"], [65452, "PLTR", "Palantir Technologies, Inc.",
+        90.96, 212736.78, "BIZSVCE", "PROSVCE"], [6586, "OKE", "ONEOK, Inc.", 99.34,
+        57926.21, "ENERGY", "MIDSTREAMENERGY"], [61317, "KDP", "Keurig Dr Pepper,
+        Inc.", 33.55, 45516.09, "NONCYCLICAL", "FOODDRINKMFR"], [6706, "PCAR", "PACCAR,
+        Inc.", 97.11, 50924.49, "INDUSTRIAL", "TRANSPORTEQUIP"], [6734, "PKG", "Packaging
+        Corporation of America", 194.41, 17458.41, "MATERIALS", "PACKAGING"], [6779,
+        "PTC", "PTC, Inc.", 159.84, 19215.8, "INDUSTRIAL", "MACHINE"], [6789, "PH",
+        "Parker-Hannifin Corp.", 622.1, 80104.61, "INDUSTRIAL", "MACHINE"], [54205,
+        "LW", "Lamb Weston Holdings, Inc.", 53.08, 7571.37, "NONCYCLICAL", "FOODDRINKMFR"],
+        [6878, "PNR", "Pentair plc", 87.42, 14406.82, "INDUSTRIAL", "MACHINE"], [6901,
+        "PEP", "PepsiCo, Inc.", 145.45, 199557.4, "NONCYCLICAL", "FOODDRINKMFR"],
+        [6917, "RVTY", "Revvity, Inc.", 107.29, 12944.11, "HEALTHCARE", "HCAREMISC"],
+        [120905, "GEV", "GE Vernova, Inc.", 333.87, 92108.16, "INDUSTRIAL", "ELECTREQUIP"],
+        [33657, "APTV", "Aptiv Plc", 62.45, 14677.98, "CYCLICALS", "VEHICLE"], [6945,
+        "PFE", "Pfizer Inc.", 26.28, 148928.76, "HEALTHCARE", "BIOPHARMAOTHER"], [54354,
+        "INVH", "Invitation Homes, Inc.", 33.87, 20748.95, "FINANCIAL", "REIT"], [6971,
+        "COP", "Conocophillips", 101.92, 130036.33, "ENERGY", "FOSSILFUEL"], [23212,
+        "AMP", "Ameriprise Financial, Inc.", 492.64, 47375.56, "FINANCIAL", "INVESTSVCE"],
+        [7019, "PNW", "Pinnacle West Capital Corp.", 93.76, 11166.52, "UTIL", "ENERGYUTIL"],
+        [8264, "SWK", "Stanley Black & Decker, Inc.", 79.56, 12281.91, "INDUSTRIAL",
+        "MACHINE"], [7137, "LIN", "Linde Plc", 458.33, 216898.58, "MATERIALS", "CHEMCOMMOD"],
+        [7169, "BKNG", "Booking Holdings, Inc.", 4617.26, 152124.23, "CONSUMERSVCE",
+        "HOSPITALITY"], [7205, "PG", "Procter & Gamble Co.", 166.69, 390863.39, "NONCYCLICAL",
+        "PERSONALCAREPRODUCT"], [8712, "TXT", "Textron, Inc.", 73.08, 13371.01, "INDUSTRIAL",
+        "AERODEF"], [7222, "PGR", "Progressive Corp.", 272.86, 159895.95, "FINANCIAL",
+        "INSURANCE"], [7273, "PSA", "Public Storage", 291.14, 51068.4, "FINANCIAL",
+        "REIT"], [7326, "QCOM", "QUALCOMM, Inc.", 156.82, 173442.93, "TECH", "SEMIMFR"],
+        [9119, "UDR", "UDR, Inc.", 43.36, 14346.03, "FINANCIAL", "REIT"], [7342, "DGX",
+        "Quest Diagnostics, Inc.", 167.11, 18549.21, "HEALTHCARE", "PATIENTCARE"],
+        [121038, "SW", "Smurfit WestRock Plc", 44.21, 22918.76, "MATERIALS", "PACKAGING"],
+        [7428, "RJF", "Raymond James Financial, Inc.", 141.06, 28858.42, "FINANCIAL",
+        "INVESTSVCE"], [31455, "APO", "Apollo Global Management, Inc.", 143.41, 81132.63,
+        "FINANCIAL", "INVESTSVCE"], [8626, "TDY", "Teledyne Technologies, Inc.", 501.82,
+        23438.31, "INDUSTRIAL", "MACHINE"], [7446, "O", "Realty Income Corp.", 55.8,
+        49746.31, "FINANCIAL", "REIT"], [7492, "CNP", "CenterPoint Energy, Inc.",
+        35.77, 23312.29, "UTIL", "ENERGYUTIL"], [7521, "RSG", "Republic Services,
+        Inc.", 233.34, 72802.08, "BIZSVCE", "WASTEMGMT"], [7526, "RMD", "ResMed, Inc.",
+        219.7, 32264.33, "HEALTHCARE", "MEDDEVICESOTHER"], [7617, "ROK", "Rockwell
+        Automation, Inc.", 258.79, 29269.15, "INDUSTRIAL", "MACHINE"], [20130, "LKQ",
+        "LKQ Corp.", 40.4, 10467.64, "CYCLICALS", "AUTORETAIL"], [7639, "ROST", "Ross
+        Stores, Inc.", 123.54, 40800.07, "NONCYCLICAL", "GENMERCH"], [7783, "T", "AT&T,
+        Inc.", 27.02, 193892.7, "TELECOM", "TELECOMWIRE"], [7804, "SLB", "Schlumberger
+        Ltd.", 40.99, 57420.86, "ENERGY", "OILGASSUPPORT"], [8072, "SNA", "Snap-On,
+        Inc.", 327.97, 17179.62, "INDUSTRIAL", "MACHINE"], [8139, "SO", "The Southern
+        Co.", 89.36, 98027.92, "UTIL", "ENERGYUTIL"], [8728, "TMO", "Thermo Fisher
+        Scientific, Inc.", 517.72, 197134.47, "HEALTHCARE", "HCAREMISC"], [8155, "LUV",
+        "Southwest Airlines Co.", 34.83, 20665.12, "INDUSTRIAL", "PASSENGERTRANS"],
+        [8278, "SBUX", "Starbucks Corp.", 97.07, 110252.11, "CONSUMERSVCE", "HOSPITALITY"],
+        [44231, "NWSA", "News Corp.", 27.04, 15355.59, "CONSUMERSVCE", "MEDIAPUB"],
+        [8299, "STLD", "Steel Dynamics, Inc.", 122.67, 18537.54, "MATERIALS", "METAL"],
+        [8513, "TROW", "T. Rowe Price Group, Inc.", 92.83, 20697.93, "FINANCIAL",
+        "INVESTSVCE"], [8522, "TTWO", "Take-Two Interactive Software, Inc.", 213.47,
+        37656.11, "TECH", "SOFTW"], [8542, "TGT", "Target Corp.", 104.06, 47406.3,
+        "NONCYCLICAL", "GENMERCH"], [8580, "TECH", "Bio-Techne Corp.", 60.61, 9571.29,
+        "HEALTHCARE", "HCAREMISC"], [43467, "PANW", "Palo Alto Networks, Inc.", 182.32,
+        120404.14, "TECH", "SOFTW"], [8627, "TFX", "Teleflex, Inc.", 141.56, 6808.47,
+        "HEALTHCARE", "MEDDEVICESGEN"], [8685, "TER", "Teradyne, Inc.", 87.51, 14152.29,
+        "TECH", "SEMIEQUIPSVCE"], [8708, "TXN", "Texas Instruments Incorporated",
+        179.0, 163069.0, "TECH", "SEMIMFR"], [8786, "TJX", "The TJX Cos., Inc.", 116.12,
+        130560.2, "NONCYCLICAL", "GENMERCH"], [8935, "YUM", "Yum! Brands, Inc.", 156.75,
+        43733.25, "CONSUMERSVCE", "HOSPITALITY"], [9012, "TSN", "Tyson Foods, Inc.",
+        60.43, 21101.76, "NONCYCLICAL", "FOODDRINKMFR"], [30465, "AVGO", "Broadcom
+        Inc.", 191.66, 901185.34, "TECH", "SEMIMFR"], [9101, "UNP", "Union Pacific
+        Corp.", 233.88, 141319.95, "INDUSTRIAL", "TRAINTRUCK"], [9150, "RTX", "RTX
+        Corp.", 132.37, 176333.12, "INDUSTRIAL", "AERODEF"], [9160, "UNH", "UnitedHealth
+        Group, Inc.", 516.85, 472917.73, "HEALTHCARE", "HCARESUPPORT"], [9179, "UHS",
+        "Universal Health Services, Inc.", 174.14, 11315.15, "HEALTHCARE", "PATIENTCARE"],
+        [9305, "VTR", "Ventas, Inc.", 66.85, 29218.86, "FINANCIAL", "REIT"], [51755,
+        "ANET", "Arista Networks, Inc.", 83.13, 104854.69, "TECH", "COMMEQUIP"], [9321,
+        "VZ", "Verizon Communications, Inc.", 43.99, 185183.84, "TELECOM", "TELECOMWIRE"],
+        [64125, "OTIS", "Otis Worldwide Corp.", 101.21, 40241.1, "BIZSVCE", "BIZSUPPORT"],
+        [9335, "VRTX", "Vertex Pharmaceuticals, Inc.", 503.2, 129292.4, "HEALTHCARE",
+        "BIOPHARMASYS"], [9461, "VMC", "Vulcan Materials Co.", 234.08, 30921.97, "MATERIALS",
+        "MATCONSTR"], [9482, "WMT", "Walmart, Inc.", 85.98, 689903.55, "NONCYCLICAL",
+        "GENMERCH"], [9483, "WBA", "Walgreens Boots Alliance, Inc.", 11.1, 9584.71,
+        "NONCYCLICAL", "PERSONALCARERETAIL"], [9489, "DIS", "The Walt Disney Co.",
+        99.46, 188974.0, "CONSUMERSVCE", "MEDIAPUB"], [9520, "WAT", "Waters Corp.",
+        365.46, 21703.94, "HEALTHCARE", "HCAREMISC"], [9567, "ELV", "Elevance Health,
+        Inc.", 427.19, 97177.05, "HEALTHCARE", "HCARESUPPORT"], [9568, "WFC", "Wells
+        Fargo & Co.", 72.52, 238514.2, "FINANCIAL", "BANKSUSA"], [9586, "WST", "West
+        Pharmaceutical Services, Inc.", 228.68, 16533.56, "HEALTHCARE", "HCAREDIAGNOSTICS"],
+        [9596, "WDC", "Western Digital Corp.", 43.66, 15193.68, "TECH", "COMPUTER"],
+        [9602, "EVRG", "Evergy, Inc.", 67.45, 15512.39, "UTIL", "ENERGYUTIL"], [9619,
+        "WY", "Weyerhaeuser Co.", 29.18, 21180.16, "FINANCIAL", "REIT"], [9651, "WMB",
+        "The Williams Cos., Inc.", 59.6, 72652.4, "ENERGY", "MIDSTREAMENERGY"], [9796,
+        "ZBRA", "Zebra Technologies Corp.", 289.99, 14936.24, "TECH", "COMMERCIALELECTRONICS"],
+        [9910, "ZBH", "Zimmer Biomet Holdings, Inc.", 110.73, 22046.34, "HEALTHCARE",
+        "MEDDEVICESGEN"], [9947, "MDLZ", "Mondelez International, Inc.", 64.51, 85013.16,
+        "NONCYCLICAL", "FOODDRINKMFR"], [9980, "ACN", "Accenture PLC", 305.32, 191266.1,
+        "TECH", "TECHCONSULTSVCE"], [9986, "CVX", "Chevron Corp.", 164.75, 291444.78,
+        "ENERGY", "OILGASINTEG"], [9992, "BG", "Bunge Global SA", 73.25, 9812.88,
+        "NONCYCLICAL", "AGRICULTURE"], [12606, "PFG", "Principal Financial Group,
+        Inc.", 83.26, 18835.51, "FINANCIAL", "INVESTSVCE"], [17042, "PRU", "Prudential
+        Financial, Inc.", 110.27, 39098.1, "FINANCIAL", "INSURANCE"], [17836, "SWKS",
+        "Skyworks Solutions, Inc.", 67.25, 10807.07, "TECH", "SEMIMFR"], [18520, "STX",
+        "Seagate Technology Holdings plc", 88.27, 18687.3, "TECH", "COMPUTER"], [19086,
+        "NDAQ", "Nasdaq, Inc.", 75.55, 43445.95, "FINANCIAL", "INVESTSVCE"], [19556,
+        "MOH", "Molina Healthcare, Inc.", 309.93, 17356.08, "HEALTHCARE", "HCARESUPPORT"],
+        [20702, "AIZ", "Assurant, Inc.", 206.84, 10514.45, "FINANCIAL", "INSURANCE"],
+        [21552, "DPZ", "Domino''s Pizza, Inc.", 461.4, 15817.68, "CONSUMERSVCE", "HOSPITALITY"],
+        [21684, "EXR", "Extra Space Storage, Inc.", 143.8, 30484.96, "FINANCIAL",
+        "REIT"], [21724, "GOOGL", "Alphabet, Inc.", 163.99, 2002481.96, "TECH", "INTERNET"],
+        [22094, "MKTX", "MarketAxess Holdings, Inc.", 216.87, 8164.37, "FINANCIAL",
+        "INVESTSVCE"], [23041, "BLDR", "Builders FirstSource, Inc.", 126.46, 14363.07,
+        "MATERIALS", "MATCONSTR"], [23153, "EXPE", "Expedia Group, Inc.", 173.81,
+        22385.65, "CONSUMERSVCE", "HOSPITALITY"], [23178, "WBD", "Warner Bros. Discovery,
+        Inc.", 10.74, 26355.96, "CONSUMERSVCE", "MEDIAPUB"], [62158, "FOXA", "Fox
+        Corp.", 53.4, 24262.97, "CONSUMERSVCE", "MEDIAPUB"], [23309, "LYV", "Live
+        Nation Entertainment, Inc.", 123.06, 28840.8, "CONSUMERSVCE", "HOSPITALITY"],
+        [23433, "TDG", "TransDigm Group, Inc.", 1346.12, 75492.39, "INDUSTRIAL", "AERODEF"],
+        [71458, "CEG", "Constellation Energy Corp.", 222.48, 69636.24, "UTIL", "ENERGYUTIL"],
+        [23511, "MA", "Mastercard, Inc.", 535.69, 489620.66, "FINANCIAL", "FINSPECIAL"],
+        [24020, "ICE", "Intercontinental Exchange, Inc.", 174.39, 100099.86, "FINANCIAL",
+        "INVESTSVCE"], [24605, "FSLR", "First Solar, Inc.", 131.32, 14059.16, "INDUSTRIAL",
+        "ELECTREQUIP"], [25185, "SMCI", "Super Micro Computer, Inc.", 42.15, 25015.23,
+        "TECH", "COMPUTER"], [25234, "BLK", "BlackRock, Inc.", 951.73, 147468.48,
+        "FINANCIAL", "INVESTSVCE"], [26298, "DFS", "Discover Financial Services",
+        164.83, 41428.29, "FINANCIAL", "FINSPECIAL"], [26309, "TEL", "TE Connectivity
+        Plc", 146.17, 43670.56, "TECH", "COMPONENTS"], [27184, "ULTA", "Ulta Beauty,
+        Inc.", 350.57, 16325.69, "NONCYCLICAL", "PERSONALCARERETAIL"], [43652, "WDAY",
+        "Workday, Inc.", 249.49, 66452.16, "TECH", "SOFTW"], [27459, "PM", "Philip
+        Morris International, Inc.", 151.48, 235528.0, "NONCYCLICAL", "TOBACCO"],
+        [27786, "KKR", "KKR & Co., Inc.", 116.5, 103479.05, "FINANCIAL", "INVESTSVCE"],
+        [30630, "GNRC", "Generac Holdings, Inc.", 131.52, 7840.16, "INDUSTRIAL", "ELECTREQUIP"],
+        [30663, "DG", "Dollar General Corp.", 83.66, 18398.93, "NONCYCLICAL", "GENMERCH"],
+        [30666, "FTNT", "Fortinet, Inc.", 98.65, 75664.55, "TECH", "SOFTW"], [30978,
+        "TSLA", "Tesla, Inc.", 248.71, 799851.38, "CYCLICALS", "VEHICLE"], [31238,
+        "GM", "General Motors Co.", 49.8, 49800.0, "CYCLICALS", "VEHICLE"], [31682,
+        "HII", "Huntington Ingalls Industries, Inc.", 201.47, 7883.4, "INDUSTRIAL",
+        "AERODEF"], [53881, "FTV", "Fortive Corp.", 74.79, 25518.35, "INDUSTRIAL",
+        "MACHINE"], [33144, "MPC", "Marathon Petroleum Corp.", 149.96, 47387.36, "ENERGY",
+        "DOWNSTREAMENERGY"], [38527, "EPAM", "EPAM Systems, Inc.", 175.3, 9969.14,
+        "TECH", "TECHCONSULTSVCE"], [38742, "PSX", "Phillips 66", 125.49, 51249.23,
+        "ENERGY", "DOWNSTREAMENERGY"], [43427, "NOW", "ServiceNow, Inc.", 827.75,
+        170919.61, "TECH", "SOFTW"], [43654, "FANG", "Diamondback Energy, Inc.", 158.5,
+        46121.02, "ENERGY", "FOSSILFUEL"], [43802, "ABBV", "AbbVie, Inc.", 210.01,
+        370721.6, "HEALTHCARE", "BIOPHARMAOTHER"], [43831, "NCLH", "Norwegian Cruise
+        Line Holdings Ltd.", 20.4, 8973.17, "CONSUMERSVCE", "HOSPITALITY"], [67174,
+        "ABNB", "Airbnb, Inc.", 128.8, 80242.4, "CONSUMERSVCE", "HOSPITALITY"], [43856,
+        "ZTS", "Zoetis, Inc.", 163.03, 73114.57, "HEALTHCARE", "HCAREMISC"], [51596,
+        "PAYC", "Paycom Software, Inc.", 218.3, 12202.97, "TECH", "SOFTW"], [52116,
+        "SYF", "Synchrony Financial", 54.02, 20973.86, "FINANCIAL", "FINSPECIAL"],
+        [62318, "CTVA", "Corteva, Inc.", 61.72, 42314.92, "MATERIALS", "CHEMSPECIAL"],
+        [62197, "DOW", "Dow, Inc.", 36.17, 25449.67, "MATERIALS", "CHEMSPECIAL"],
+        [52319, "CZR", "Caesars Entertainment, Inc.", 27.36, 5781.85, "CONSUMERSVCE",
+        "HOSPITALITY"], [52395, "KEYS", "Keysight Technologies, Inc.", 154.56, 26754.34,
+        "TECH", "COMMERCIALELECTRONICS"], [53290, "PYPL", "PayPal Holdings, Inc.",
+        70.19, 69698.67, "FINANCIAL", "FINSPECIAL"], [54325, "HWM", "Howmet Aerospace,
+        Inc.", 130.85, 53050.7, "INDUSTRIAL", "AERODEF"], [55098, "VICI", "VICI Properties,
+        Inc.", 31.53, 33307.24, "FINANCIAL", "REIT"], [61091, "DAY", "Dayforce, Inc.",
+        58.5, 9301.5, "TECH", "SOFTW"], [61892, "DELL", "Dell Technologies, Inc.",
+        97.57, 68494.14, "TECH", "COMPUTER"], [62278, "UBER", "Uber Technologies,
+        Inc.", 75.84, 159867.14, "INDUSTRIAL", "PASSENGERTRANS"], [62333, "AMCR",
+        "Amcor Plc", 9.44, 13631.36, "MATERIALS", "PACKAGING"], [62334, "CRWD", "CrowdStrike
+        Holdings, Inc.", 362.24, 89789.15, "TECH", "SOFTW"], [64126, "CARR", "Carrier
+        Global Corp.", 66.17, 58119.6, "INDUSTRIAL", "MACHINE"], [117701, "KVUE",
+        "Kenvue, Inc.", 23.31, 44609.93, "NONCYCLICAL", "PERSONALCAREPRODUCT"], [119256,
+        "VLTO", "Veralto Corp.", 97.77, 24188.3, "INDUSTRIAL", "MACHINE"]]}'
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      date:
+      - Sat, 22 Mar 2025 22:50:43 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      transfer-encoding:
+      - chunked
+      vary:
+      - accept-encoding
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+version: 1

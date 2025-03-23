@@ -18,7 +18,8 @@ dependencies = [
     "urllib3<2.0.0",
     "matplotlib>=3.8.0",
     "pytest-vcr>=1.0.2",
-    "PyYAML>=6.0.1"
+    "PyYAML>=6.0.1",
+    "pytz>=2024.1"
 ]
 
 [project.optional-dependencies]

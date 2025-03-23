@@ -32,7 +32,7 @@ def test_plot_bucket_returns():
     assert isinstance(line_trace, go.Scatter)
     assert len(line_trace.y) == len(bucket_returns)
     assert line_trace.mode == "lines"
-    assert line_trace.line == {"dash": "dot"}
+    assert line_trace.line.dash == "dot"
     assert line_trace.name == f"Benchmark Return ({benchmark_return:.2f})"
 
     # Verify layout properties
@@ -42,4 +42,7 @@ def test_plot_bucket_returns():
     assert layout.yaxis.title.text == "Return"
     assert layout.yaxis.tickformat == ".2f"
     assert layout.showlegend is True
-    assert layout.legend == {"yanchor": "top", "y": 0.99, "xanchor": "left", "x": 0.01}
+    assert layout.legend.yanchor == "top"
+    assert layout.legend.y == 0.99
+    assert layout.legend.xanchor == "left"
+    assert layout.legend.x == 0.01

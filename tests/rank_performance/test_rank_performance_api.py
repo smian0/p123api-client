@@ -10,9 +10,9 @@ import pytest
 
 from p123api_client.common.settings import Settings
 from p123api_client.models.enums import PitMethod, RankType, RebalFreq, Scope, TransType
-from p123api_client.models.schemas import Factor
 from p123api_client.rank_performance.rank_performance_api import RankPerformanceAPI
 from p123api_client.rank_performance.schemas import (
+    Factor,
     RankingDefinition,
     RankPerformanceAPIRequest,
 )

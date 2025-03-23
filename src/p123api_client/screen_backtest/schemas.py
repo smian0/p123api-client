@@ -9,6 +9,7 @@ from pydantic import BaseModel, Field, field_validator
 
 from ..models.enums import (
     Currency,
+    PitMethod,
     ScreenMethod,
     ScreenType,
 )
