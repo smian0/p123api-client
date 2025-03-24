@@ -2,6 +2,10 @@
 
 import re
 from pathlib import Path
+import os
+import json
+import logging
+from datetime import datetime, date
 
 import pytest
 
@@ -22,138 +26,40 @@ from .vcr_patch import patch_vcr_response
 # Apply VCR patch
 patch_vcr_response()
 
-# Sensitive patterns to mask
+# VCR configuration from environment variables
+VCR_RECORD_MODE = os.environ.get("VCR_RECORD_MODE", "once")
+VCR_ENABLED = os.environ.get("VCR_ENABLED", "true").lower() != "false"
+
+# Regular expressions for sensitive data patterns
 SENSITIVE_PATTERNS = [
-    (r'"apiKey"\s*:\s*"[^"]*"', '"apiKey": "MASKED"'),
-    (r'"apiId"\s*:\s*"[^"]*"', '"apiId": "MASKED"'),
-    (r'"token"\s*:\s*"[^"]*"', '"token": "MASKED"'),
-    (r'"accessToken"\s*:\s*"[^"]*"', '"accessToken": "MASKED"'),
-    (r'"refreshToken"\s*:\s*"[^"]*"', '"refreshToken": "MASKED"'),
-    (r'"password"\s*:\s*"[^"]*"', '"password": "MASKED"'),
-    (r'"secret"\s*:\s*"[^"]*"', '"secret": "MASKED"'),
-    # Add patterns for any other sensitive fields
+    (re.compile(r'("token":\s*)"[^"]*"'), r'\1"MASKED"'),
+    (re.compile(r'("apiKey":\s*)"[^"]*"'), r'\1"MASKED"'),
+    (re.compile(r'("authorization":\s*)"[^"]*"'), r'\1"MASKED"'),
+    (re.compile(r'("api-key":\s*)"[^"]*"'), r'\1"MASKED"'),
+    (re.compile(r'("x-api-key":\s*)"[^"]*"'), r'\1"MASKED"'),
 ]
 
-
-def mask_sensitive_data(data_str):
-    """Mask sensitive data using regex patterns."""
-    if not isinstance(data_str, str):
-        return data_str
-
-    masked = data_str
-    for pattern, replacement in SENSITIVE_PATTERNS:
-        masked = re.sub(pattern, replacement, masked)
-    return masked
-
-
-def sanitize_dict(data):
-    """Recursively sanitize dictionary values."""
-    if not isinstance(data, dict):
-        return data
-
-    sanitized = {}
-    sensitive_keys = {
-        "apiKey",
-        "apiId",
-        "token",
-        "accessToken",
-        "refreshToken",
-        "password",
-        "secret",
-        "api_key",
-        "api_id",
-        "auth_token",
-    }
-
-    for key, value in data.items():
-        if key.lower() in sensitive_keys:
-            sanitized[key] = "MASKED"
-        elif isinstance(value, dict):
-            sanitized[key] = sanitize_dict(value)
-        elif isinstance(value, list):
-            sanitized[key] = [
-                sanitize_dict(item) if isinstance(item, dict) else item for item in value
-            ]
-        else:
-            sanitized[key] = value
-    return sanitized
-
+# Additional patterns for URLs containing sensitive data
+URL_PATTERNS = [
+    (re.compile(r'(token=)[^&]*'), r'\1MASKED'),
+    (re.compile(r'(api_key=)[^&]*'), r'\1MASKED'),
+    (re.compile(r'(apiKey=)[^&]*'), r'\1MASKED'),
+]
 
 def before_record_request(request):
-    """Filter out sensitive data from request bodies."""
-    if request.body:
-        try:
-            if isinstance(request.body, str):
-                # Try to handle as JSON first
-                try:
-                    import json
-
-                    body = json.loads(request.body)
-                    if isinstance(body, dict):
-                        body = sanitize_dict(body)
-                        request.body = json.dumps(body)
-                except json.JSONDecodeError:
-                    # If not JSON, apply regex masking
-                    request.body = mask_sensitive_data(request.body)
-            elif isinstance(request.body, bytes):
-                try:
-                    import json
-
-                    body = json.loads(request.body.decode("utf-8"))
-                    if isinstance(body, dict):
-                        body = sanitize_dict(body)
-                        request.body = json.dumps(body).encode("utf-8")
-                except json.JSONDecodeError:
-                    # If not JSON, decode, mask, and re-encode
-                    decoded = request.body.decode("utf-8")
-                    masked = mask_sensitive_data(decoded)
-                    request.body = masked.encode("utf-8")
-        except Exception:
-            # If any error occurs, mask the entire body
-            request.body = "MASKED"
+    """Mask sensitive data in request URLs and headers before recording."""
+    for pattern, replacement in URL_PATTERNS:
+        request.uri = pattern.sub(replacement, request.uri)
     return request
 
-
 def before_record_response(response):
-    """Mask sensitive data in response bodies."""
-    if response and response["body"]["string"]:
-        try:
-            import json
-
-            # Try to parse as JSON
-            try:
-                # Convert bytes to string if needed
-                body_str = response["body"]["string"]
-                if isinstance(body_str, bytes):
-                    body_str = body_str.decode("utf-8")
-
-                body = json.loads(body_str)
-                if isinstance(body, dict):
-                    body = sanitize_dict(body)
-                    response["body"]["string"] = json.dumps(body).encode("utf-8")
-                elif isinstance(body, list):
-                    body = [
-                        sanitize_dict(item) if isinstance(item, dict) else item for item in body
-                    ]
-                    response["body"]["string"] = json.dumps(body).encode("utf-8")
-                else:
-                    # If not a dict/list, mask the entire response
-                    response["body"]["string"] = b"MASKED"
-            except json.JSONDecodeError:
-                # If not JSON, apply regex masking
-                if isinstance(response["body"]["string"], bytes):
-                    decoded = response["body"]["string"].decode("utf-8")
-                    masked = mask_sensitive_data(decoded)
-                    response["body"]["string"] = masked.encode("utf-8")
-                else:
-                    response["body"]["string"] = mask_sensitive_data(
-                        response["body"]["string"]
-                    ).encode("utf-8")
-        except Exception:
-            # If any error occurs, mask the entire response
-            response["body"]["string"] = b"MASKED"
+    """Mask sensitive data in responses before recording."""
+    if response.get('body', {}).get('string'):
+        body_str = response['body']['string'].decode('utf-8')
+        for pattern, replacement in SENSITIVE_PATTERNS:
+            body_str = pattern.sub(replacement, body_str)
+        response['body']['string'] = body_str.encode('utf-8')
     return response
-
 
 # Base VCR configuration
 VCR_CONFIG = {
@@ -186,7 +92,40 @@ VCR_CONFIG = {
 
 @pytest.fixture(scope="session")
 def vcr_config():
-    """VCR configuration fixture."""
+    """VCR configuration fixture.
+    
+    This configuration can be controlled via environment variables:
+    - VCR_ENABLED: Set to "false" to disable VCR completely (default: "true")
+    - VCR_RECORD_MODE: Set to control recording mode (default: "once")
+        - "once": Record once, then replay
+        - "none": Never record, replay only
+        - "new_episodes": Record new interactions, replay existing ones
+        - "all": Always record
+    
+    Usage in CI environments:
+    
+    To run tests with real API calls (e.g., on main branch):
+    ```
+    VCR_ENABLED=false pytest tests/
+    ```
+    
+    To run tests using only existing cassettes (e.g., on pull requests):
+    ```
+    VCR_RECORD_MODE=none pytest tests/
+    ```
+    
+    To update cassettes with new API responses:
+    ```
+    VCR_RECORD_MODE=all pytest tests/
+    ```
+    """
+    if not VCR_ENABLED:
+        # If VCR is disabled, use mock mode to prevent any recording/playback
+        return {
+            "record_mode": "none",
+            "ignore_hosts": ["api.portfolio123.com"],  # Ignore all P123 API calls
+        }
+    
     return {
         "filter_headers": [
             ("authorization", "MASKED"),
@@ -205,8 +144,9 @@ def vcr_config():
             ("password", "MASKED"),
             ("secret", "MASKED"),
         ],
-        "record_mode": "once",
+        "record_mode": VCR_RECORD_MODE,
         "serializer": "yaml",
+        "path_transformer": lambda path: f"{path}.yaml" if not path.endswith(".yaml") else path,
         "match_on": ["method", "scheme", "host", "port", "path", "query"],
         "decode_compressed_response": True,
         "before_record_request": before_record_request,
@@ -358,3 +298,70 @@ def pytest_sessionfinish(session):
                 f"\nFound: {leak['match']}"
             )
         pytest.fail("\n".join(error_msg))
+
+
+@pytest.fixture
+def auto_vcr(request):
+    """Automatically apply VCR to tests based on environment variables.
+    
+    Usage:
+    ```
+    def test_something(auto_vcr):
+        # VCR will be auto-configured based on environment variables
+        # Test code here...
+    ```
+    
+    With this fixture, you don't need to manually specify @pytest.mark.vcr()
+    for each test, and VCR behavior can be controlled globally.
+    """
+    if not VCR_ENABLED:
+        # Skip VCR if disabled
+        print(f"VCR is disabled by environment variable VCR_ENABLED={VCR_ENABLED}")
+        return None
+    
+    import vcr as vcrpy
+    from vcr.config import VCR
+    
+    # Get test name for cassette
+    test_name = request.node.name
+    module_path = Path(request.module.__file__)
+    module_name = request.module.__name__.split('.')[-1]
+    
+    # Determine the cassette directory
+    # VCR pattern: {directory of test module}/cassettes/{test_module}
+    cassette_dir = module_path.parent / "cassettes"
+    cassette_dir.mkdir(parents=True, exist_ok=True)
+    
+    # Get the class name if it exists
+    class_name = ""
+    if request.cls:
+        class_name = request.cls.__name__
+        cassette_name = f"{class_name}.{test_name}"
+    else:
+        cassette_name = f"{module_name}.{test_name}"
+    
+    # Get cassette path with yaml extension
+    cassette_path = str(cassette_dir / cassette_name)
+    if not cassette_path.endswith('.yaml'):
+        cassette_path += '.yaml'
+    
+    print(f"Using VCR cassette: {cassette_path} (mode: {VCR_RECORD_MODE})")
+    
+    # Create VCR instance with the same config as pytest-vcr would use
+    vcr_config = request.getfixturevalue('vcr_config')
+    vcr_obj = VCR(**vcr_config)
+    
+    # Create a cassette context
+    cassette = vcr_obj.use_cassette(cassette_path)
+    cassette.__enter__()
+    
+    # Add cleanup to ensure cassette is closed
+    request.addfinalizer(lambda: cassette.__exit__(None, None, None))
+    
+    return cassette
+
+
+@pytest.fixture(scope="session")
+def vcr_cassette_dir():
+    """VCR cassette directory fixture."""
+    return os.path.join(os.path.dirname(__file__), "cassettes/auto_vcr")

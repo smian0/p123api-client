@@ -246,6 +246,61 @@ To run a specific test module:
 python -m pytest tests/screen_run/test_screen_run_consolidated.py
 ```
 
+### VCR Testing
+
+The project uses VCR.py for testing API calls without making real network requests. VCR records API interactions and replays them for future test runs, which:
+
+- Makes tests faster and more reliable
+- Allows testing without API credentials
+- Prevents unnecessary API calls during testing 
+- Enables testing against fixed responses
+
+For detailed instructions on working with VCR, see the [VCR Workflow Guide](./docs/vcr_workflow.md).
+
+#### Environment-Controlled VCR
+
+You can control VCR behavior globally using environment variables:
+
+```bash
+# Disable VCR (use real API calls)
+export VCR_ENABLED=false
+
+# Or set specific recording mode
+export VCR_RECORD_MODE=once   # Record once then replay (default)
+export VCR_RECORD_MODE=none   # Never record, only replay
+export VCR_RECORD_MODE=all    # Always record
+export VCR_RECORD_MODE=new_episodes  # Record new interactions, replay existing
+```
+
+This is especially useful for CI environments where you might want to:
+- Use existing cassettes only (`VCR_RECORD_MODE=none`) 
+- Use real API calls to test against current data (`VCR_ENABLED=false`)
+
+#### Using Auto-VCR
+
+The project provides an `auto_vcr` fixture that automatically configures VCR based on environment variables:
+
+```python
+def test_my_api_call(auto_vcr):
+    # Test code here - VCR will be configured based on environment variables
+    api = ScreenRunAPI()
+    result = api.run_screen(...)
+    assert result is not None
+```
+
+#### Manual VCR Decorator
+
+For more control, you can still use the manual VCR decorator:
+
+```python
+import pytest
+
+@pytest.mark.vcr()
+def test_my_api_call():
+    # Test with VCR recording/playback
+    pass
+```
+
 ### Key Test Suites
 
 - **Screen Run Tests**: `tests/screen_run/test_screen_run_consolidated.py`
@@ -440,3 +495,53 @@ The cache system includes automatic size management, which will remove the oldes
 ## License
 
 [MIT License](./LICENSE)
+
+#### CI Configuration
+
+In CI environments, you can control VCR behavior globally using environment variables:
+
+```bash
+# Example GitHub Actions workflow configuration
+name: Tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev]"
+      
+      # Run tests with real API calls against current data
+      - name: Run integration tests with real API
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        env:
+          P123_API_ID: ${{ secrets.P123_API_ID }}
+          P123_API_KEY: ${{ secrets.P123_API_KEY }}
+          VCR_ENABLED: false  # Disable VCR to use real API calls
+        run: pytest tests/
+
+      # Run tests using only existing cassettes (no recording)
+      - name: Run tests with existing cassettes
+        if: github.event_name == 'pull_request'
+        env:
+          VCR_RECORD_MODE: none  # Only use existing cassettes
+        run: pytest tests/
+```
+
+This approach allows you to:
+- Use real API calls to test against current data (on main branch)
+- Use existing cassettes for pull requests (to avoid API calls and API credentials)

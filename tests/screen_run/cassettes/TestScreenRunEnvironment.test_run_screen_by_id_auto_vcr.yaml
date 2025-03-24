@@ -1,0 +1,122 @@
+interactions:
+- request:
+    body: '{"apiKey": "MASKED", "apiId": "MASKED"}'
+    headers:
+      Content-Type:
+      - application/json
+      content-length:
+      - MASKED
+    method: POST
+    uri: https://api.portfolio123.com/auth
+  response:
+    body:
+      string: '46147013980450960587564269836314704987'
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-length:
+      - '38'
+      content-type:
+      - text/plain;charset=UTF-8
+      date:
+      - Mon, 24 Mar 2025 17:40:01 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      x-content-type-options:
+      - nosniff
+      x-expires-in:
+      - '3600'
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+- request:
+    body: '{"screen": 309184}'
+    headers:
+      Content-Type:
+      - application/json
+      authorization:
+      - MASKED
+      content-length:
+      - MASKED
+    method: POST
+    uri: https://api.portfolio123.com/screen/run
+  response:
+    body:
+      string: '{"cost":2,"quotaRemaining":8849,"columns":["P123 UID","Ticker","Name","Last","Rank","MktCap","SectorCode","IndCode"],"rows":[[68351,"APP","AppLovin
+        Corp.",314.03,98.08,106783.31,"TECH","SOFTW"],[67393,"AFRM","Affirm Holdings,
+        Inc.",49.9,96.15,15755.19,"FINANCIAL","FINSPECIAL"],[54504,"ARGX","argenx
+        SE",615.02,94.23,37369.2,"HEALTHCARE","BIOPHARMASYS"],[67223,"UPST","Upstart
+        Holdings, Inc.",51.96,92.31,4856.69,"FINANCIAL","FINSOFTW"],[70322,"IOT","Samsara,
+        Inc.",40.16,90.38,22537.7,"TECH","SOFTW"],[120733,"RDDT","Reddit, Inc.",115.7,88.46,20862.56,"TECH","INTERNET"],[54148,"NTNX","Nutanix,
+        Inc.",73.04,86.54,19475.17,"TECH","SOFTW"],[69268,"WGS","GeneDx Holdings Corp.",104.39,84.62,2924.65,"HEALTHCARE","PATIENTCARE"],[53672,"ONC","BeiGene
+        Ltd.",251.98,82.69,24599.74,"HEALTHCARE","BIOPHARMANONSYS"],[121520,"WAY","Waystar
+        Holding Corp.",37.48,80.77,6450.62,"HEALTHCARE","HCARESUPPORT"],[3349,"EXEL","Exelixis,
+        Inc.",36.96,78.85,10412.81,"HEALTHCARE","BIOPHARMANONSYS"],[67173,"DASH","DoorDash,
+        Inc.",190.62,76.92,79998.83,"CONSUMERSVCE","HOSPITALITY"],[61009,"SPOT","Spotify
+        Technology SA",599.94,75.0,122294.41,"TECH","INTERNET"],[1460,"EAT","Brinker
+        International, Inc.",144.81,73.08,6429.56,"CONSUMERSVCE","HOSPITALITY"],[20781,"STRL","Sterling
+        Infrastructure, Inc.",126.63,71.15,3883.62,"INDUSTRIAL","FACIL"],[41458,"VRN","Veren,
+        Inc.",6.63,69.23,4056.34,"ENERGY","FOSSILFUEL"],[4540,"COHR","Coherent Corp.",68.24,67.31,10573.38,"TECH","COMPONENTS"],[1134,"BK","The
+        Bank of New York Mellon Corp.",83.55,65.38,59962.19,"FINANCIAL","INVESTSVCE"],[61691,"ESTC","Elastic
+        NV",97.21,63.46,10149.96,"TECH","SOFTW"],[67732,"EXE","Expand Energy Corp.",107.35,61.54,24880.5,"ENERGY","FOSSILFUEL"],[1877,"SCHW","The
+        Charles Schwab Corp.",78.39,59.62,139559.13,"FINANCIAL","INVESTSVCE"],[62136,"FUTU","Futu
+        Holdings Ltd.",106.36,57.69,9942.41,"FINANCIAL","INVESTSVCE"],[2148,"FIX","Comfort
+        Systems USA, Inc.",352.15,55.77,12522.78,"INDUSTRIAL","FACIL"],[68817,"DOCS","Doximity,
+        Inc.",62.99,53.85,11815.92,"HEALTHCARE","HCARESUPPORT"],[45099,"AR","Antero
+        Resources Corp.",40.77,51.92,12686.2,"ENERGY","FOSSILFUEL"],[54442,"OKTA","Okta,
+        Inc.",113.74,50.0,19729.23,"TECH","SOFTW"],[51328,"ITCI","Intra-Cellular Therapies,
+        Inc.",131.65,48.08,13986.5,"HEALTHCARE","BIOPHARMASYS"],[7222,"PGR","Progressive
+        Corp.",272.86,46.15,159895.95,"FINANCIAL","INSURANCE"],[54460,"CVNA","Carvana
+        Co.",190.95,44.23,25448.1,"CYCLICALS","AUTORETAIL"],[16326,"OVV","Ovintiv,
+        Inc.",41.46,42.31,10796.18,"ENERGY","FOSSILFUEL"],[1620,"CNQ","Canadian Natural
+        Resources Ltd.",30.33,40.38,63783.87,"ENERGY","FOSSILFUEL"],[9810,"ZION","Zions
+        Bancorporation NA",49.51,38.46,7321.09,"FINANCIAL","BANKSUSA"],[27715,"PRIM","Primoris
+        Services Corp.",63.62,36.54,3418.99,"INDUSTRIAL","FACIL"],[65452,"PLTR","Palantir
+        Technologies, Inc.",90.96,34.62,212736.78,"BIZSVCE","PROSVCE"],[26857,"MASI","Masimo
+        Corp.",165.82,32.69,8887.95,"HEALTHCARE","MEDDEVICESOTHER"],[121140,"RBRK","Rubrik,
+        Inc.",68.19,30.77,12940.2,"TECH","SOFTW"],[3258,"EQT","EQT Corp.",52.88,28.85,31562.49,"ENERGY","FOSSILFUEL"],[25224,"IBKR","Interactive
+        Brokers Group, Inc.",173.36,26.92,18879.72,"FINANCIAL","INVESTSVCE"],[67153,"SMR","NuScale
+        Power Corp.",18.13,25.0,2227.13,"INDUSTRIAL","ELECTREQUIP"],[6397,"NTRS","Northern
+        Trust Corp.",98.77,23.08,19355.93,"FINANCIAL","INVESTSVCE"],[53323,"LITE","Lumentum
+        Holdings, Inc.",66.61,21.15,4602.75,"TECH","COMPONENTS"],[4984,"JPM","JPMorgan
+        Chase & Co.",241.63,19.23,675989.02,"FINANCIAL","BANKSUSA"],[44342,"SFM","Sprouts
+        Farmers Market, Inc.",142.39,17.31,14132.92,"NONCYCLICAL","FOODDRINKRETAIL"],[6013,"MS","Morgan
+        Stanley",120.14,15.38,193023.37,"FINANCIAL","INVESTSVCE"],[116843,"NXT","NEXTracker,
+        Inc.",44.27,13.46,6361.07,"INDUSTRIAL","ELECTREQUIP"],[21013,"FHN","First
+        Horizon Corp. (Tennessee)",19.29,11.54,10113.37,"FINANCIAL","BANKSUSA"],[62549,"OPCH","Option
+        Care Health, Inc.",34.58,9.62,5749.31,"HEALTHCARE","PATIENTCARE"],[1779,"CLS","Celestica,
+        Inc.",95.95,7.69,11164.65,"TECH","ELECTRONICEQUIP"],[693,"APH","Amphenol Corp.",66.6,5.77,80539.38,"TECH","COMPONENTS"],[69605,"BROS","Dutch
+        Bros, Inc.",65.43,3.85,7552.72,"CONSUMERSVCE","HOSPITALITY"],[122305,"TEM","Tempus
+        AI, Inc.",51.35,1.92,8324.9,"HEALTHCARE","HCAREDIAGNOSTICS"],[121214,"NNE","NANO
+        Nuclear Energy, Inc.",30.19,0.0,1109.24,"INDUSTRIAL","ELECTREQUIP"]]}'
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      date:
+      - Mon, 24 Mar 2025 17:40:01 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      transfer-encoding:
+      - chunked
+      vary:
+      - accept-encoding
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+version: 1

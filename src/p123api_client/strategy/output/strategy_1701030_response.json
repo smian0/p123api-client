@@ -2,18 +2,18 @@
     "summary": {
         "generalInfo": {
             "name": "Small Cap Focus",
-            "mktVal": 10813194.5,
-            "cash": -101269.36,
+            "mktVal": 10797446.52,
+            "cash": 59.83,
             "noPos": 20,
-            "lastTrades": 2,
-            "lastTraded": "2025-03-17",
+            "lastTrades": 4,
+            "lastTraded": "2025-03-24",
             "start": "2007-01-01",
             "end": "2025-03-21",
             "sizingMethod": "Static Weight",
             "rebalPeriod": "Every Week",
             "rebalMode": "Automatic",
-            "nextRebal": "2025-03-24",
-            "rebalText": "Tomorrow",
+            "nextRebal": "2025-03-31",
+            "rebalText": "In 7 Days",
             "benchmarkId": 24136,
             "benchmark": "Russell 2000 (IWM:USA)",
             "universe": "Easy to Trade US",
@@ -25,11 +25,11 @@
             "benchReturn": 234.24,
             "activeReturn": 21292.15,
             "annualizedReturn": 34.3,
-            "annualTurnover": 261.21,
+            "annualTurnover": 261.33,
             "maxDrawdown": -59.21,
             "benchMaxDrawdown": -59.05,
             "overallWinners": 548,
-            "overallWinnersPct": 53.99,
+            "overallWinnersPct": 53.88,
             "sharpeRatio": 1.34,
             "benchCorrel": 0.79
         }
@@ -51,13 +51,13 @@
             "sector": "Finance"
         },
         {
-            "weight": 4.41,
+            "weight": 4.42,
             "ticker": "BTMD:USA",
             "name": "biote Corp.",
             "mktUid": 68423,
             "retPct": -17.04,
             "ret": -98009.11,
-            "rank": 98.38,
+            "rank": 99.15,
             "shares": 123624.0,
             "avgShareCost": 4.65,
             "currPrice": 3.86,
@@ -66,13 +66,28 @@
             "sector": "Healthcare"
         },
         {
-            "weight": 4.18,
+            "weight": 5.08,
+            "ticker": "CHCI:USA",
+            "name": "Comstock Holding Cos., Inc.",
+            "mktUid": 22330,
+            "retPct": -0.93,
+            "ret": -5173.69,
+            "rank": 99.84,
+            "shares": 70824.0,
+            "avgShareCost": 7.81,
+            "currPrice": 7.74,
+            "value": 548177.76,
+            "daysHeld": -3,
+            "sector": "Finance"
+        },
+        {
+            "weight": 4.19,
             "ticker": "ESP:USA",
             "name": "Espey Manufacturing & Electronics Corp.",
             "mktUid": 3291,
             "retPct": -11.11,
             "ret": -56503.67,
-            "rank": 99.42,
+            "rank": 99.68,
             "shares": 16950.0,
             "avgShareCost": 30.01,
             "currPrice": 26.68,
@@ -81,13 +96,13 @@
             "sector": "Industrials"
         },
         {
-            "weight": 4.76,
+            "weight": 4.77,
             "ticker": "FSTR:USA",
             "name": "L.B. Foster Co.",
             "mktUid": 5220,
             "retPct": -14.09,
             "ret": -84463.36,
-            "rank": 98.57,
+            "rank": 98.23,
             "shares": 25111.0,
             "avgShareCost": 23.87,
             "currPrice": 20.51,
@@ -96,13 +111,13 @@
             "sector": "Industrials"
         },
         {
-            "weight": 5.48,
+            "weight": 5.49,
             "ticker": "GCMG:USA",
             "name": "GCM Grosvenor, Inc.",
             "mktUid": 65741,
             "retPct": -5.55,
             "ret": -34817.88,
-            "rank": 99.81,
+            "rank": 99.55,
             "shares": 44490.0,
             "avgShareCost": 14.11,
             "currPrice": 13.33,
@@ -111,13 +126,13 @@
             "sector": "Finance"
         },
         {
-            "weight": 5.99,
+            "weight": 6.0,
             "ticker": "HNNA:USA",
             "name": "Hennessy Advisors, Inc.",
             "mktUid": 28687,
             "retPct": -13.82,
             "ret": -103858.44,
-            "rank": 99.84,
+            "rank": 99.92,
             "shares": 62297.0,
             "avgShareCost": 12.07,
             "currPrice": 10.4,
@@ -126,13 +141,13 @@
             "sector": "Finance"
         },
         {
-            "weight": 7.47,
+            "weight": 7.48,
             "ticker": "KMDA:USA",
             "name": "Kamada Ltd.",
             "mktUid": 44160,
             "retPct": 10.95,
             "ret": 79680.09,
-            "rank": 99.18,
+            "rank": 99.44,
             "shares": 120163.0,
             "avgShareCost": 6.06,
             "currPrice": 6.72,
@@ -147,7 +162,7 @@
             "mktUid": 23336,
             "retPct": -18.53,
             "ret": -116806.35,
-            "rank": 99.2,
+            "rank": 99.13,
             "shares": 33209.0,
             "avgShareCost": 18.98,
             "currPrice": 15.46,
@@ -156,13 +171,13 @@
             "sector": "Healthcare"
         },
         {
-            "weight": 5.65,
+            "weight": 5.66,
             "ticker": "LNKB:USA",
             "name": "LINKBANCORP, Inc.",
             "mktUid": 62108,
             "retPct": -5.07,
             "ret": -32651.07,
-            "rank": 99.89,
+            "rank": 99.87,
             "shares": 89633.0,
             "avgShareCost": 7.18,
             "currPrice": 6.82,
@@ -171,13 +186,13 @@
             "sector": "Finance"
         },
         {
-            "weight": 4.05,
+            "weight": 4.06,
             "ticker": "MAX:USA",
             "name": "MediaAlpha, Inc.",
             "mktUid": 65626,
             "retPct": -23.4,
             "ret": -133877.31,
-            "rank": 99.68,
+            "rank": 99.66,
             "shares": 45082.0,
             "avgShareCost": 12.69,
             "currPrice": 9.72,
@@ -186,13 +201,13 @@
             "sector": "Finance"
         },
         {
-            "weight": 4.73,
+            "weight": 4.74,
             "ticker": "MRBK:USA",
             "name": "Meridian Corp. (Pennsylvania)",
             "mktUid": 54989,
             "retPct": -17.67,
             "ret": -109907.15,
-            "rank": 99.87,
+            "rank": 97.96,
             "shares": 36673.0,
             "avgShareCost": 16.96,
             "currPrice": 13.96,
@@ -201,7 +216,7 @@
             "sector": "Finance"
         },
         {
-            "weight": 3.66,
+            "weight": 3.67,
             "ticker": "MSB:USA",
             "name": "Mesabi Trust",
             "mktUid": 5803,
@@ -216,13 +231,28 @@
             "sector": "Non-Energy Materials"
         },
         {
-            "weight": 4.2,
+            "weight": 5.1,
+            "ticker": "NEXN:USA",
+            "name": "Nexxen International Ltd.",
+            "mktUid": 142585,
+            "retPct": -0.46,
+            "ret": -2521.62,
+            "rank": 99.81,
+            "shares": 76297.0,
+            "avgShareCost": 7.25,
+            "currPrice": 7.22,
+            "value": 550864.34,
+            "daysHeld": -3,
+            "sector": "Business Services"
+        },
+        {
+            "weight": 4.21,
             "ticker": "PAYS:USA",
             "name": "PaySign, Inc.",
             "mktUid": 61466,
             "retPct": -38.37,
             "ret": -283015.44,
-            "rank": 97.67,
+            "rank": 97.62,
             "shares": 194302.0,
             "avgShareCost": 3.8,
             "currPrice": 2.34,
@@ -231,13 +261,13 @@
             "sector": "Finance"
         },
         {
-            "weight": 6.33,
+            "weight": 6.34,
             "ticker": "SII:USA",
             "name": "Sprott, Inc.",
             "mktUid": 58379,
             "retPct": 2.42,
             "ret": 16182.7,
-            "rank": 98.44,
+            "rank": 98.04,
             "shares": 15429.0,
             "avgShareCost": 43.3,
             "currPrice": 44.35,
@@ -246,28 +276,13 @@
             "sector": "Finance"
         },
         {
-            "weight": 8.18,
-            "ticker": "SNWV:USA",
-            "name": "SANUWAVE Health, Inc.",
-            "mktUid": 29481,
-            "retPct": 20.17,
-            "ret": 148524.65,
-            "rank": 99.79,
-            "shares": 23524.0,
-            "avgShareCost": 31.3,
-            "currPrice": 37.61,
-            "value": 884737.64,
-            "daysHeld": 4,
-            "sector": "Healthcare"
-        },
-        {
-            "weight": 4.97,
+            "weight": 4.98,
             "ticker": "STRT:USA",
             "name": "STRATTEC Security Corp.",
             "mktUid": 8360,
             "retPct": -17.13,
             "ret": -111209.82,
-            "rank": 99.58,
+            "rank": 99.47,
             "shares": 12604.0,
             "avgShareCost": 51.49,
             "currPrice": 42.67,
@@ -282,7 +297,7 @@
             "mktUid": 116918,
             "retPct": -1.48,
             "ret": -5920.06,
-            "rank": 99.1,
+            "rank": 99.71,
             "shares": 34444.0,
             "avgShareCost": 11.62,
             "currPrice": 11.45,
@@ -291,13 +306,13 @@
             "sector": "Finance"
         },
         {
-            "weight": 5.39,
+            "weight": 5.4,
             "ticker": "SWKH:USA",
             "name": "SWK Holdings Corp.",
             "mktUid": 5086,
             "retPct": -0.82,
             "ret": -4822.14,
-            "rank": 99.52,
+            "rank": 97.91,
             "shares": 33804.0,
             "avgShareCost": 17.39,
             "currPrice": 17.25,
@@ -306,34 +321,19 @@
             "sector": "Finance"
         },
         {
-            "weight": 5.19,
+            "weight": 5.2,
             "ticker": "TGS:USA",
             "name": "Transportadora de Gas del Sur SA",
             "mktUid": 8895,
             "retPct": 1.16,
             "ret": 6421.64,
-            "rank": 99.92,
+            "rank": 99.89,
             "shares": 20381.0,
             "avgShareCost": 27.24,
             "currPrice": 27.56,
             "value": 561700.36,
             "daysHeld": 25,
             "sector": "Energy"
-        },
-        {
-            "weight": 3.06,
-            "ticker": "UG:USA",
-            "name": "United-Guardian, Inc.",
-            "mktUid": 9158,
-            "retPct": -23.58,
-            "ret": -102278.3,
-            "rank": 98.81,
-            "shares": 34483.0,
-            "avgShareCost": 12.58,
-            "currPrice": 9.61,
-            "value": 331381.63,
-            "daysHeld": 214,
-            "sector": "Non-Energy Materials"
         }
     ],
     "stats": {
@@ -4097,40 +4097,40 @@
             "parameters": {
                 "startingCapital": 50000.0,
                 "totalCashAdded": 0.0,
-                "endingMarketValue": 10813194.5,
+                "endingMarketValue": 10797446.52,
                 "startDate": "2007-01-01",
                 "endDate": "2025-03-24",
                 "daysSinceInception": 6654
             },
             "summary": {
-                "totalBuyShortTrades": 1015,
-                "totalSellCoverTrades": 995,
-                "averageAnnualTurnover": 261.21,
-                "totalTradingCost": 1777205.8,
-                "realizedWinners": 54.57,
-                "unrealizedWinners": 25.0,
-                "overallWinners": 53.99
+                "totalBuyShortTrades": 1017,
+                "totalSellCoverTrades": 997,
+                "averageAnnualTurnover": 261.33,
+                "totalTradingCost": 1792953.78,
+                "realizedWinners": 54.56,
+                "unrealizedWinners": 20.0,
+                "overallWinners": 53.88
             },
             "realized": {
                 "trades": {
-                    "all": 995,
-                    "winners": 543,
-                    "losers": 452
+                    "all": 997,
+                    "winners": 544,
+                    "losers": 453
                 },
                 "avgReturn": {
-                    "all": 13.26,
-                    "winners": 37.44,
-                    "losers": -15.8
+                    "all": 13.22,
+                    "winners": 37.41,
+                    "losers": -15.82
                 },
                 "avgDaysHeld": {
-                    "all": 129.89,
-                    "winners": 155.74,
-                    "losers": 98.84
+                    "all": 129.85,
+                    "winners": 155.47,
+                    "losers": 99.1
                 },
                 "totalAmount": {
-                    "all": 10383806.24,
-                    "winners": 20895928.87,
-                    "losers": -10512122.63
+                    "all": 10421999.92,
+                    "winners": 21041888.82,
+                    "losers": -10619888.9
                 },
                 "biggestAmount": {
                     "winners": 810174.02,
@@ -4144,30 +4144,30 @@
             "unrealized": {
                 "trades": {
                     "all": 20,
-                    "winners": 5,
-                    "losers": 15
+                    "winners": 4,
+                    "losers": 16
                 },
                 "avgReturn": {
-                    "all": -8.33,
-                    "winners": 8.41,
-                    "losers": -13.91
+                    "all": -8.23,
+                    "winners": 5.46,
+                    "losers": -11.65
                 },
                 "avgDaysHeld": {
-                    "all": 97.55,
-                    "winners": 47.2,
-                    "losers": 114.33
+                    "all": 86.35,
+                    "winners": 58.0,
+                    "losers": 93.44
                 },
                 "totalAmount": {
-                    "all": -998270.26,
-                    "winners": 283637.82,
-                    "losers": -1281908.08
+                    "all": -1052211.92,
+                    "winners": 135113.17,
+                    "losers": -1187325.09
                 },
                 "biggestAmount": {
-                    "winners": 148524.65,
+                    "winners": 79680.09,
                     "losers": -283015.44
                 },
                 "biggestPct": {
-                    "winners": 20.17,
+                    "winners": 10.95,
                     "losers": -38.37
                 }
             }

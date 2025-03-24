@@ -1,0 +1,79 @@
+interactions:
+- request:
+    body: '{"apiKey": "MASKED", "apiId": "MASKED"}'
+    headers:
+      Content-Type:
+      - application/json
+      content-length:
+      - MASKED
+    method: POST
+    uri: https://api.portfolio123.com/auth
+  response:
+    body:
+      string: '80905680397710613687183799306703380624'
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-length:
+      - '38'
+      content-type:
+      - text/plain;charset=UTF-8
+      date:
+      - Mon, 24 Mar 2025 17:54:59 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      x-content-type-options:
+      - nosniff
+      x-expires-in:
+      - '3600'
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+- request:
+    body: '{"startDt": "2020-01-01", "endDt": "2020-12-31", "rebalFreq": "Every 4
+      Weeks", "pitMethod": "Prelim", "transPrice": 4, "riskStatsPeriod": "Monthly",
+      "screen": {"type": "stock", "universe": "SP500", "maxNumHoldings": 50, "method":
+      "long", "currency": "USD", "benchmark": "SPY", "ranking": "ApiRankingSystem",
+      "rules": [{"formula": "(Close() > 0)"}]}}'
+    headers:
+      Content-Type:
+      - application/json
+      authorization:
+      - MASKED
+      content-length:
+      - MASKED
+    method: POST
+    uri: https://api.portfolio123.com/screen/backtest
+  response:
+    body:
+      string: 'ERROR: Invalid criteria in Rule 1. Error near '')'': Close - Missing
+        operands'
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-length:
+      - '75'
+      content-type:
+      - text/plain;charset=UTF-8
+      date:
+      - Mon, 24 Mar 2025 17:54:59 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 409
+      message: ''
+version: 1

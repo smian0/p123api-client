@@ -1,0 +1,170 @@
+interactions:
+- request:
+    body: '{"startDt": "2022-01-01", "endDt": "2022-12-31", "rankingSystem": "ApiRankingSystem",
+      "pitMethod": "Prelim", "precision": 4, "universe": "SP500", "transType": "long",
+      "rankingMethod": 4, "numBuckets": 20, "minPrice": 1.0, "minLiquidity": 100000.0,
+      "maxReturn": 200.0, "rebalFreq": "Every Week", "slippage": 0.25, "benchmark":
+      "SPY", "outputType": "ann"}'
+    headers:
+      Content-Type:
+      - application/json
+      authorization:
+      - MASKED
+      content-length:
+      - MASKED
+    method: POST
+    uri: https://api.portfolio123.com/rank/performance
+  response:
+    body:
+      string: '{"cost":3,"quotaRemaining":8828,"benchmarkAnnRet":-19.0473,"bucketAnnRet":[-17.8212,-26.3661,-19.5848,-27.9858,-22.6316,-19.4783,-15.9549,-17.7762,-14.6984,-21.1432,-16.4599,-19.0678,-17.6738,-9.6992,-10.3476,-12.8036,-10.3779,-11.4446,-5.7991,-1.7345]}'
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      date:
+      - Mon, 24 Mar 2025 17:54:48 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      transfer-encoding:
+      - chunked
+      vary:
+      - accept-encoding
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+- request:
+    body: '{"startDt": "2022-01-01", "endDt": "2022-12-31", "rankingSystem": "ApiRankingSystem",
+      "pitMethod": "Prelim", "precision": 4, "universe": "SP500", "transType": "long",
+      "rankingMethod": 4, "numBuckets": 20, "minPrice": 1.0, "minLiquidity": 100000.0,
+      "maxReturn": 200.0, "rebalFreq": "Every Week", "slippage": 0.25, "benchmark":
+      "SPY", "outputType": "ann"}'
+    headers:
+      Content-Type:
+      - application/json
+      authorization:
+      - MASKED
+      content-length:
+      - MASKED
+    method: POST
+    uri: https://api.portfolio123.com/rank/performance
+  response:
+    body:
+      string: '{"cost":3,"quotaRemaining":8825,"benchmarkAnnRet":-19.0473,"bucketAnnRet":[-17.8212,-26.3661,-19.5848,-27.9858,-22.6316,-19.4783,-15.9549,-17.7762,-14.6984,-21.1432,-16.4599,-19.0678,-17.6738,-9.6992,-10.3476,-12.8036,-10.3779,-11.4446,-5.7991,-1.7345]}'
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      date:
+      - Mon, 24 Mar 2025 17:54:49 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      transfer-encoding:
+      - chunked
+      vary:
+      - accept-encoding
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+- request:
+    body: '{"startDt": "2022-01-01", "endDt": "2022-12-31", "rankingSystem": "ApiRankingSystem",
+      "pitMethod": "Prelim", "precision": 4, "universe": "SP500", "transType": "long",
+      "rankingMethod": 4, "numBuckets": 20, "minPrice": 1.0, "minLiquidity": 100000.0,
+      "maxReturn": 200.0, "rebalFreq": "Every Week", "slippage": 0.25, "benchmark":
+      "SPY", "outputType": "ann"}'
+    headers:
+      Content-Type:
+      - application/json
+      authorization:
+      - MASKED
+      content-length:
+      - MASKED
+    method: POST
+    uri: https://api.portfolio123.com/rank/performance
+  response:
+    body:
+      string: '{"cost":3,"quotaRemaining":8822,"benchmarkAnnRet":-19.0473,"bucketAnnRet":[-17.8212,-26.3661,-19.5848,-27.9858,-22.6316,-19.4783,-15.9549,-17.7762,-14.6984,-21.1432,-16.4599,-19.0678,-17.6738,-9.6992,-10.3476,-12.8036,-10.3779,-11.4446,-5.7991,-1.7345]}'
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      date:
+      - Mon, 24 Mar 2025 17:54:50 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      transfer-encoding:
+      - chunked
+      vary:
+      - accept-encoding
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+- request:
+    body: '{"startDt": "2022-01-01", "endDt": "2022-12-31", "rankingSystem": "ApiRankingSystem",
+      "pitMethod": "Prelim", "precision": 4, "universe": "SP500", "transType": "long",
+      "rankingMethod": 4, "numBuckets": 20, "minPrice": 1.0, "minLiquidity": 100000.0,
+      "maxReturn": 200.0, "rebalFreq": "Every Week", "slippage": 0.25, "benchmark":
+      "SPY", "outputType": "ann"}'
+    headers:
+      Content-Type:
+      - application/json
+      authorization:
+      - MASKED
+      content-length:
+      - MASKED
+    method: POST
+    uri: https://api.portfolio123.com/rank/performance
+  response:
+    body:
+      string: '{"cost":3,"quotaRemaining":8819,"benchmarkAnnRet":-19.0473,"bucketAnnRet":[-17.8212,-26.3661,-19.5848,-27.9858,-22.6316,-19.4783,-15.9549,-17.7762,-14.6984,-21.1432,-16.4599,-19.0678,-17.6738,-9.6992,-10.3476,-12.8036,-10.3779,-11.4446,-5.7991,-1.7345]}'
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      date:
+      - Mon, 24 Mar 2025 17:54:51 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      transfer-encoding:
+      - chunked
+      vary:
+      - accept-encoding
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+version: 1
