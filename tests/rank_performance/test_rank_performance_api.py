@@ -142,7 +142,7 @@ class TestRankPerformanceAPI:
         else:
             pytest.fail("The response DataFrame is empty.")
 
-    @pytest.mark.vcr()
+    @pytest.mark.vcr(record_mode="new_episodes")
     def test_run_rank_performance_from_xml(self):
         """Test running rank performance from an XML file."""
         xml_file_path = (
@@ -152,9 +152,32 @@ class TestRankPerformanceAPI:
         # Verify the XML file exists
         if not xml_file_path.exists():
             pytest.skip(f"XML file not found: {xml_file_path}")
-
+        
+        # First, we need to update the ApiRankingSystem with the XML content
+        # Import the RankUpdateAPI
+        from p123api_client.rank_update.rank_update_api import RankUpdateAPI
+        
+        # Create a RankUpdateAPI instance with the same credentials
+        rank_update_api = RankUpdateAPI(
+            api_id=self.api_id,
+            api_key=self.api_key
+        )
+        
+        # Read the XML content
+        with open(xml_file_path, "r") as f:
+            xml_content = f.read()
+        
+        # Update the ApiRankingSystem with the XML content
+        try:
+            update_response = rank_update_api.update_rank(xml_content)
+            assert update_response.status == "success", "Failed to update ApiRankingSystem"
+            logging.info("Successfully updated ApiRankingSystem with XML content")
+        except Exception as e:
+            pytest.fail(f"Failed to update ApiRankingSystem: {e}")
+            
+        # Now create the rank performance request
+        # After updating the ApiRankingSystem, we can now use it for the rank performance test
         request = RankPerformanceAPIRequest(
-            xml_file_path=str(xml_file_path),  # This will be used by _update_rank
             start_dt=date(2022, 1, 1),
             end_dt=date(2022, 12, 31),
             pit_method=PitMethod.PRELIM,

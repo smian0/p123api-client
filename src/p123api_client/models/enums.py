@@ -6,18 +6,20 @@ from enum import Enum
 
 
 class RankType(str, Enum):
-    """Type of ranking (Higher/Lower)"""
+    """Type of ranking (Higher/Lower/Full)"""
 
     HIGHER = "Higher"
     LOWER = "Lower"
+    FULL = "Full"
 
 
 class Scope(str, Enum):
-    """Scope of the ranking (Universe/Industry/Sector)"""
+    """Scope of the ranking (Universe/Industry/Sector/Full)"""
 
     UNIVERSE = "Universe"
     SECTOR = "Sector"
     INDUSTRY = "Industry"
+    FULL = "Full"
 
 
 class PitMethod(str, Enum):
@@ -60,10 +62,11 @@ class OutputFormat(str, Enum):
 
 
 class ScreenType(str, Enum):
-    """Type of screen (stock/ETF)"""
+    """Type of screen (stock/ETF/formula)"""
 
     STOCK = "stock"
     ETF = "etf"
+    FORMULA = "formula"
 
 
 class ScreenMethod(str, Enum):
@@ -71,6 +74,7 @@ class ScreenMethod(str, Enum):
 
     INTERSECTION = "intersection"
     UNION = "union"
+    SCREEN = "screen"
     # Legacy values maintained for backward compatibility
     LONG = "long"
     SHORT = "short"

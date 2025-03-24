@@ -2,18 +2,18 @@
     "summary": {
         "generalInfo": {
             "name": "Small Cap Focus",
-            "mktVal": 11239036.81,
-            "cash": -118116.1,
+            "mktVal": 10813194.5,
+            "cash": -101269.36,
             "noPos": 20,
-            "lastTrades": 3,
-            "lastTraded": "2024-12-23",
+            "lastTrades": 2,
+            "lastTraded": "2025-03-17",
             "start": "2007-01-01",
-            "end": "2024-12-25",
+            "end": "2025-03-21",
             "sizingMethod": "Static Weight",
             "rebalPeriod": "Every Week",
-            "rebalMode": "Manual",
-            "nextRebal": "2024-12-30",
-            "rebalText": "In 5 Days",
+            "rebalMode": "Automatic",
+            "nextRebal": "2025-03-24",
+            "rebalText": "Tomorrow",
             "benchmarkId": 24136,
             "benchmark": "Russell 2000 (IWM:USA)",
             "universe": "Easy to Trade US",
@@ -21,318 +21,318 @@
             "rankingSystem": "Small and Micro Cap Focus"
         },
         "quickStats": {
-            "totalReturn": 22378.07,
-            "benchReturn": 265.56,
-            "activeReturn": 22112.51,
-            "annualizedReturn": 35.11,
-            "annualTurnover": 263.22,
+            "totalReturn": 21526.39,
+            "benchReturn": 234.24,
+            "activeReturn": 21292.15,
+            "annualizedReturn": 34.3,
+            "annualTurnover": 261.21,
             "maxDrawdown": -59.21,
             "benchMaxDrawdown": -59.05,
-            "overallWinners": 545,
-            "overallWinnersPct": 54.45,
-            "sharpeRatio": 1.37,
+            "overallWinners": 548,
+            "overallWinnersPct": 53.99,
+            "sharpeRatio": 1.34,
             "benchCorrel": 0.79
         }
     },
     "holdings": [
         {
-            "weight": 4.99,
-            "ticker": "BSVN:USA",
-            "name": "Bank7 Corp.",
-            "mktUid": 61615,
-            "retPct": 30.34,
-            "ret": 130531.17,
-            "rank": 97.86,
-            "shares": 11675.0,
-            "avgShareCost": 36.85,
-            "currPrice": 48.03,
-            "value": 560750.25,
-            "daysHeld": 163,
+            "weight": 4.45,
+            "ticker": "AAMI:USA",
+            "name": "Acadian Asset Management, Inc.",
+            "mktUid": 52367,
+            "retPct": 7.33,
+            "ret": 32828.74,
+            "rank": 99.97,
+            "shares": 18833.0,
+            "avgShareCost": 23.79,
+            "currPrice": 25.53,
+            "value": 480806.49,
+            "daysHeld": 11,
             "sector": "Finance"
         },
         {
-            "weight": 3.0,
-            "ticker": "DDI:USA",
-            "name": "DoubleDown Interactive Co., Ltd.",
-            "mktUid": 69497,
-            "retPct": -24.69,
-            "ret": -110433.91,
-            "rank": 99.5,
-            "shares": 31772.0,
-            "avgShareCost": 14.08,
-            "currPrice": 10.6,
-            "value": 336789.55,
-            "daysHeld": 128,
-            "sector": "Technology"
-        },
-        {
-            "weight": 10.92,
-            "ticker": "ELMD:USA",
-            "name": "Electromed, Inc.",
-            "mktUid": 31198,
-            "retPct": 189.85,
-            "ret": 803526.93,
-            "rank": 99.82,
-            "shares": 41473.0,
-            "avgShareCost": 10.21,
-            "currPrice": 29.58,
-            "value": 1226771.34,
-            "daysHeld": 477,
+            "weight": 4.41,
+            "ticker": "BTMD:USA",
+            "name": "biote Corp.",
+            "mktUid": 68423,
+            "retPct": -17.04,
+            "ret": -98009.11,
+            "rank": 98.38,
+            "shares": 123624.0,
+            "avgShareCost": 4.65,
+            "currPrice": 3.86,
+            "value": 477188.64,
+            "daysHeld": 25,
             "sector": "Healthcare"
         },
         {
-            "weight": 4.34,
+            "weight": 4.18,
             "ticker": "ESP:USA",
             "name": "Espey Manufacturing & Electronics Corp.",
             "mktUid": 3291,
-            "retPct": -4.23,
-            "ret": -21508.7,
-            "rank": 98.69,
+            "retPct": -11.11,
+            "ret": -56503.67,
+            "rank": 99.42,
             "shares": 16950.0,
             "avgShareCost": 30.01,
-            "currPrice": 28.74,
-            "value": 487220.97,
-            "daysHeld": 86,
+            "currPrice": 26.68,
+            "value": 452226.0,
+            "daysHeld": 172,
             "sector": "Industrials"
         },
         {
-            "weight": 4.19,
-            "ticker": "FSI:USA",
-            "name": "Flexible Solutions International, Inc.",
-            "mktUid": 18394,
-            "retPct": -18.76,
-            "ret": -108784.52,
-            "rank": 98.38,
-            "shares": 132297.0,
-            "avgShareCost": 4.38,
-            "currPrice": 3.56,
-            "value": 470977.32,
-            "daysHeld": 44,
-            "sector": "Non-Energy Materials"
-        },
-        {
-            "weight": 6.11,
+            "weight": 4.76,
             "ticker": "FSTR:USA",
             "name": "L.B. Foster Co.",
             "mktUid": 5220,
-            "retPct": 14.48,
-            "ret": 86793.66,
-            "rank": 99.74,
+            "retPct": -14.09,
+            "ret": -84463.36,
+            "rank": 98.57,
             "shares": 25111.0,
             "avgShareCost": 23.87,
-            "currPrice": 27.33,
-            "value": 686283.63,
-            "daysHeld": 44,
+            "currPrice": 20.51,
+            "value": 515026.61,
+            "daysHeld": 130,
             "sector": "Industrials"
         },
         {
-            "weight": 5.77,
-            "ticker": "GB:USA",
-            "name": "Global Blue Group Holding AG",
-            "mktUid": 65263,
-            "retPct": 21.55,
-            "ret": 114965.39,
-            "rank": 99.37,
-            "shares": 97513.0,
-            "avgShareCost": 5.47,
-            "currPrice": 6.65,
-            "value": 648461.45,
-            "daysHeld": 93,
+            "weight": 5.48,
+            "ticker": "GCMG:USA",
+            "name": "GCM Grosvenor, Inc.",
+            "mktUid": 65741,
+            "retPct": -5.55,
+            "ret": -34817.88,
+            "rank": 99.81,
+            "shares": 44490.0,
+            "avgShareCost": 14.11,
+            "currPrice": 13.33,
+            "value": 593051.7,
+            "daysHeld": 31,
             "sector": "Finance"
         },
         {
-            "weight": 3.78,
-            "ticker": "ISSC:USA",
-            "name": "Innovative Solutions & Support, Inc.",
-            "mktUid": 4701,
-            "retPct": 1.19,
-            "ret": 4978.25,
-            "rank": 99.61,
-            "shares": 50695.0,
-            "avgShareCost": 8.28,
-            "currPrice": 8.38,
-            "value": 424824.1,
-            "daysHeld": 289,
-            "sector": "Industrials"
-        },
-        {
-            "weight": 5.75,
-            "ticker": "KINS:USA",
-            "name": "Kingstone Cos., Inc.",
-            "mktUid": 2622,
-            "retPct": 32.39,
-            "ret": 158087.56,
-            "rank": 99.63,
-            "shares": 41605.0,
-            "avgShareCost": 11.73,
-            "currPrice": 15.53,
-            "value": 646125.65,
-            "daysHeld": 128,
+            "weight": 5.99,
+            "ticker": "HNNA:USA",
+            "name": "Hennessy Advisors, Inc.",
+            "mktUid": 28687,
+            "retPct": -13.82,
+            "ret": -103858.44,
+            "rank": 99.84,
+            "shares": 62297.0,
+            "avgShareCost": 12.07,
+            "currPrice": 10.4,
+            "value": 647888.8,
+            "daysHeld": 81,
             "sector": "Finance"
         },
         {
-            "weight": 6.47,
+            "weight": 7.47,
             "ticker": "KMDA:USA",
             "name": "Kamada Ltd.",
             "mktUid": 44160,
-            "retPct": -0.11,
-            "ret": -829.12,
-            "rank": 98.88,
+            "retPct": 10.95,
+            "ret": 79680.09,
+            "rank": 99.18,
             "shares": 120163.0,
             "avgShareCost": 6.06,
-            "currPrice": 6.05,
-            "value": 726986.15,
-            "daysHeld": 51,
+            "currPrice": 6.72,
+            "value": 807495.36,
+            "daysHeld": 137,
             "sector": "Healthcare"
+        },
+        {
+            "weight": 4.75,
+            "ticker": "LFVN:USA",
+            "name": "LifeVantage Corp.",
+            "mktUid": 23336,
+            "retPct": -18.53,
+            "ret": -116806.35,
+            "rank": 99.2,
+            "shares": 33209.0,
+            "avgShareCost": 18.98,
+            "currPrice": 15.46,
+            "value": 513411.14,
+            "daysHeld": 31,
+            "sector": "Healthcare"
+        },
+        {
+            "weight": 5.65,
+            "ticker": "LNKB:USA",
+            "name": "LINKBANCORP, Inc.",
+            "mktUid": 62108,
+            "retPct": -5.07,
+            "ret": -32651.07,
+            "rank": 99.89,
+            "shares": 89633.0,
+            "avgShareCost": 7.18,
+            "currPrice": 6.82,
+            "value": 611297.06,
+            "daysHeld": 46,
+            "sector": "Finance"
         },
         {
             "weight": 4.05,
-            "ticker": "LGCY:USA",
-            "name": "Legacy Education, Inc.",
-            "mktUid": 140532,
-            "retPct": -0.95,
-            "ret": -4365.49,
-            "rank": 99.97,
-            "shares": 54774.0,
-            "avgShareCost": 8.4,
-            "currPrice": 8.32,
-            "value": 455719.68,
-            "daysHeld": 2,
-            "sector": "Consumer Non-Cyclicals"
-        },
-        {
-            "weight": 5.7,
-            "ticker": "LQDT:USA",
-            "name": "Liquidity Services, Inc.",
-            "mktUid": 23414,
-            "retPct": 55.65,
-            "ret": 229047.61,
-            "rank": 99.42,
-            "shares": 20197.0,
-            "avgShareCost": 20.38,
-            "currPrice": 31.72,
-            "value": 640648.84,
-            "daysHeld": 163,
-            "sector": "Consumer Cyclicals"
-        },
-        {
-            "weight": 4.36,
             "ticker": "MAX:USA",
             "name": "MediaAlpha, Inc.",
             "mktUid": 65626,
-            "retPct": -14.42,
-            "ret": -82483.83,
-            "rank": 99.71,
+            "retPct": -23.4,
+            "ret": -133877.31,
+            "rank": 99.68,
             "shares": 45082.0,
             "avgShareCost": 12.69,
-            "currPrice": 10.86,
-            "value": 489590.52,
-            "daysHeld": 44,
+            "currPrice": 9.72,
+            "value": 438197.04,
+            "daysHeld": 130,
             "sector": "Finance"
         },
         {
-            "weight": 3.67,
+            "weight": 4.73,
+            "ticker": "MRBK:USA",
+            "name": "Meridian Corp. (Pennsylvania)",
+            "mktUid": 54989,
+            "retPct": -17.67,
+            "ret": -109907.15,
+            "rank": 99.87,
+            "shares": 36673.0,
+            "avgShareCost": 16.96,
+            "currPrice": 13.96,
+            "value": 511955.08,
+            "daysHeld": 31,
+            "sector": "Finance"
+        },
+        {
+            "weight": 3.66,
             "ticker": "MSB:USA",
             "name": "Mesabi Trust",
             "mktUid": 5803,
-            "retPct": 3.24,
-            "ret": 12965.67,
+            "retPct": -0.94,
+            "ret": -3767.98,
             "rank": 99.95,
             "shares": 14551.0,
             "avgShareCost": 27.47,
-            "currPrice": 28.36,
-            "value": 412666.36,
-            "daysHeld": 2,
+            "currPrice": 27.21,
+            "value": 395932.71,
+            "daysHeld": 88,
             "sector": "Non-Energy Materials"
         },
         {
-            "weight": 5.26,
+            "weight": 4.2,
             "ticker": "PAYS:USA",
             "name": "PaySign, Inc.",
             "mktUid": 61466,
-            "retPct": -19.93,
-            "ret": -147004.04,
-            "rank": 99.29,
+            "retPct": -38.37,
+            "ret": -283015.44,
+            "rank": 97.67,
             "shares": 194302.0,
             "avgShareCost": 3.8,
-            "currPrice": 3.04,
-            "value": 590678.08,
-            "daysHeld": 79,
+            "currPrice": 2.34,
+            "value": 454666.68,
+            "daysHeld": 165,
             "sector": "Finance"
         },
         {
-            "weight": 7.93,
-            "ticker": "RDVT:USA",
-            "name": "Red Violet, Inc.",
-            "mktUid": 60966,
-            "retPct": 74.96,
-            "ret": 382033.75,
-            "rank": 97.96,
-            "shares": 23753.0,
-            "avgShareCost": 21.46,
-            "currPrice": 37.54,
-            "value": 891687.62,
-            "daysHeld": 198,
-            "sector": "Technology"
+            "weight": 6.33,
+            "ticker": "SII:USA",
+            "name": "Sprott, Inc.",
+            "mktUid": 58379,
+            "retPct": 2.42,
+            "ret": 16182.7,
+            "rank": 98.44,
+            "shares": 15429.0,
+            "avgShareCost": 43.3,
+            "currPrice": 44.35,
+            "value": 684276.15,
+            "daysHeld": 59,
+            "sector": "Finance"
         },
         {
-            "weight": 3.62,
-            "ticker": "RIGL:USA",
-            "name": "Rigel Pharmaceuticals, Inc.",
-            "mktUid": 7577,
-            "retPct": -33.28,
-            "ret": -203159.34,
-            "rank": 99.4,
-            "shares": 24775.0,
-            "avgShareCost": 24.64,
-            "currPrice": 16.44,
-            "value": 407301.0,
-            "daysHeld": 44,
+            "weight": 8.18,
+            "ticker": "SNWV:USA",
+            "name": "SANUWAVE Health, Inc.",
+            "mktUid": 29481,
+            "retPct": 20.17,
+            "ret": 148524.65,
+            "rank": 99.79,
+            "shares": 23524.0,
+            "avgShareCost": 31.3,
+            "currPrice": 37.61,
+            "value": 884737.64,
+            "daysHeld": 4,
             "sector": "Healthcare"
         },
         {
-            "weight": 3.25,
+            "weight": 4.97,
+            "ticker": "STRT:USA",
+            "name": "STRATTEC Security Corp.",
+            "mktUid": 8360,
+            "retPct": -17.13,
+            "ret": -111209.82,
+            "rank": 99.58,
+            "shares": 12604.0,
+            "avgShareCost": 51.49,
+            "currPrice": 42.67,
+            "value": 537812.68,
+            "daysHeld": 31,
+            "sector": "Consumer Cyclicals"
+        },
+        {
+            "weight": 3.65,
             "ticker": "STRW:USA",
             "name": "Strawberry Fields REIT, Inc.",
             "mktUid": 116918,
-            "retPct": -8.62,
-            "ret": -34508.58,
-            "rank": 99.9,
+            "retPct": -1.48,
+            "ret": -5920.06,
+            "rank": 99.1,
             "shares": 34444.0,
             "avgShareCost": 11.62,
-            "currPrice": 10.62,
-            "value": 365795.28,
-            "daysHeld": 107,
+            "currPrice": 11.45,
+            "value": 394383.8,
+            "daysHeld": 193,
             "sector": "Finance"
         },
         {
-            "weight": 4.82,
+            "weight": 5.39,
             "ticker": "SWKH:USA",
             "name": "SWK Holdings Corp.",
             "mktUid": 5086,
-            "retPct": -7.83,
-            "ret": -46063.02,
-            "rank": 99.84,
+            "retPct": -0.82,
+            "ret": -4822.14,
+            "rank": 99.52,
             "shares": 33804.0,
             "avgShareCost": 17.39,
-            "currPrice": 16.03,
-            "value": 541878.12,
-            "daysHeld": 261,
+            "currPrice": 17.25,
+            "value": 583119.0,
+            "daysHeld": 347,
             "sector": "Finance"
         },
         {
-            "weight": 2.96,
+            "weight": 5.19,
+            "ticker": "TGS:USA",
+            "name": "Transportadora de Gas del Sur SA",
+            "mktUid": 8895,
+            "retPct": 1.16,
+            "ret": 6421.64,
+            "rank": 99.92,
+            "shares": 20381.0,
+            "avgShareCost": 27.24,
+            "currPrice": 27.56,
+            "value": 561700.36,
+            "daysHeld": 25,
+            "sector": "Energy"
+        },
+        {
+            "weight": 3.06,
             "ticker": "UG:USA",
             "name": "United-Guardian, Inc.",
             "mktUid": 9158,
-            "retPct": -23.27,
-            "ret": -100898.98,
-            "rank": 98.8,
+            "retPct": -23.58,
+            "ret": -102278.3,
+            "rank": 98.81,
             "shares": 34483.0,
             "avgShareCost": 12.58,
-            "currPrice": 9.65,
-            "value": 332760.95,
-            "daysHeld": 128,
+            "currPrice": 9.61,
+            "value": 331381.63,
+            "daysHeld": 214,
             "sector": "Non-Energy Materials"
         }
     ],
@@ -340,36 +340,36 @@
         "perf": {
             "returnPct": {
                 "total": {
-                    "model": 22378.07,
-                    "bench": 265.56
+                    "model": 21526.39,
+                    "bench": 234.24
                 },
                 "annualized": {
-                    "model": 35.11,
-                    "bench": 7.47
+                    "model": 34.3,
+                    "bench": 6.84
                 },
                 "yearToDate": {
-                    "model": 1.21,
-                    "bench": 12.61
+                    "model": -4.29,
+                    "bench": -7.56
                 },
                 "monthToDate": {
-                    "model": -5.25,
-                    "bench": -7.37
+                    "model": -5.14,
+                    "bench": -4.85
                 },
                 "period4Week": {
-                    "model": -4.88,
-                    "bench": -7.01
+                    "model": -7.39,
+                    "bench": -6.22
                 },
                 "period13Week": {
-                    "model": 9.26,
-                    "bench": 2.92
+                    "model": -3.2,
+                    "bench": -7.96
                 },
                 "period1Year": {
-                    "model": -0.24,
-                    "bench": 10.74
+                    "model": 3.7,
+                    "bench": -0.87
                 },
                 "period3Year": {
-                    "model": 21.6,
-                    "bench": 4.8
+                    "model": 8.51,
+                    "bench": 2.54
                 }
             },
             "monthly": {
@@ -391,10 +391,10 @@
                         0.0,
                         1.0,
                         5.0,
-                        14.0,
-                        42.0,
+                        15.0,
+                        43.0,
                         87.0,
-                        51.0,
+                        52.0,
                         14.0,
                         1.0,
                         0.0,
@@ -404,9 +404,9 @@
                         0.0,
                         2.0,
                         0.0,
-                        29.0,
-                        52.0,
-                        98.0,
+                        30.0,
+                        53.0,
+                        99.0,
                         28.0,
                         5.0,
                         1.0,
@@ -631,7 +631,10 @@
                         "2024-09-01",
                         "2024-10-01",
                         "2024-11-01",
-                        "2024-12-01"
+                        "2024-12-01",
+                        "2025-01-01",
+                        "2025-02-01",
+                        "2025-03-01"
                     ],
                     "model": [
                         5.83,
@@ -849,7 +852,10 @@
                         8.13,
                         4.73,
                         5.87,
-                        -5.25
+                        -4.76,
+                        8.52,
+                        -7.02,
+                        -5.14
                     ],
                     "bench": [
                         1.69,
@@ -1067,7 +1073,10 @@
                         0.71,
                         -1.42,
                         11.07,
-                        -7.37
+                        -8.37,
+                        2.5,
+                        -5.22,
+                        -4.85
                     ]
                 }
             },
@@ -1132,7 +1141,8 @@
                         "2021-01-01",
                         "2022-01-01",
                         "2023-01-01",
-                        "2024-01-01"
+                        "2024-01-01",
+                        "2025-01-01"
                     ],
                     "model": [
                         37.42,
@@ -1152,7 +1162,8 @@
                         58.64,
                         -10.86,
                         28.58,
-                        1.21
+                        1.73,
+                        -4.29
                     ],
                     "bench": [
                         -1.76,
@@ -1172,7 +1183,8 @@
                         14.54,
                         -20.48,
                         16.83,
-                        12.61
+                        11.38,
+                        -7.56
                     ]
                 }
             },
@@ -1195,10 +1207,10 @@
                         1.0,
                         2.0,
                         1.0,
-                        38.0,
-                        307.0,
-                        533.0,
-                        53.0,
+                        39.0,
+                        313.0,
+                        537.0,
+                        54.0,
                         3.0,
                         1.0,
                         0.0,
@@ -1209,8 +1221,8 @@
                         3.0,
                         5.0,
                         36.0,
-                        372.0,
-                        471.0,
+                        380.0,
+                        475.0,
                         44.0,
                         5.0,
                         2.0,
@@ -2158,7 +2170,19 @@
                         "2024-11-30",
                         "2024-12-07",
                         "2024-12-14",
-                        "2024-12-21"
+                        "2024-12-21",
+                        "2024-12-28",
+                        "2025-01-04",
+                        "2025-01-11",
+                        "2025-01-18",
+                        "2025-01-25",
+                        "2025-02-01",
+                        "2025-02-08",
+                        "2025-02-15",
+                        "2025-02-22",
+                        "2025-03-01",
+                        "2025-03-08",
+                        "2025-03-15"
                     ],
                     "model": [
                         -1.13,
@@ -3099,7 +3123,19 @@
                         -3.18,
                         -0.93,
                         -1.82,
-                        0.61
+                        0.64,
+                        2.55,
+                        -2.38,
+                        8.87,
+                        0.99,
+                        -0.92,
+                        1.51,
+                        -2.37,
+                        -3.9,
+                        -2.37,
+                        -6.03,
+                        -0.03,
+                        0.97
                     ],
                     "bench": [
                         -1.67,
@@ -4040,7 +4076,19 @@
                         -1.22,
                         -2.45,
                         -4.5,
-                        0.66
+                        0.21,
+                        0.92,
+                        -3.39,
+                        3.98,
+                        1.43,
+                        -0.97,
+                        -0.21,
+                        -0.01,
+                        -3.62,
+                        -1.45,
+                        -4.05,
+                        -1.49,
+                        0.67
                     ]
                 }
             }
@@ -4049,43 +4097,43 @@
             "parameters": {
                 "startingCapital": 50000.0,
                 "totalCashAdded": 0.0,
-                "endingMarketValue": 11239036.81,
+                "endingMarketValue": 10813194.5,
                 "startDate": "2007-01-01",
-                "endDate": "2024-12-26",
-                "daysSinceInception": 6568
+                "endDate": "2025-03-24",
+                "daysSinceInception": 6654
             },
             "summary": {
-                "totalBuyShortTrades": 1001,
-                "totalSellCoverTrades": 981,
-                "averageAnnualTurnover": 263.22,
-                "totalTradingCost": 1698173.11,
-                "realizedWinners": 54.64,
-                "unrealizedWinners": 45.0,
-                "overallWinners": 54.45
+                "totalBuyShortTrades": 1015,
+                "totalSellCoverTrades": 995,
+                "averageAnnualTurnover": 261.21,
+                "totalTradingCost": 1777205.8,
+                "realizedWinners": 54.57,
+                "unrealizedWinners": 25.0,
+                "overallWinners": 53.99
             },
             "realized": {
                 "trades": {
-                    "all": 981,
-                    "winners": 536,
-                    "losers": 445
+                    "all": 995,
+                    "winners": 543,
+                    "losers": 452
                 },
                 "avgReturn": {
-                    "all": 7.38,
-                    "winners": 32.77,
-                    "losers": -15.75
+                    "all": 13.26,
+                    "winners": 37.44,
+                    "losers": -15.8
                 },
                 "avgDaysHeld": {
-                    "all": 129.4,
-                    "winners": 154.86,
-                    "losers": 98.74
+                    "all": 129.89,
+                    "winners": 155.74,
+                    "losers": 98.84
                 },
                 "totalAmount": {
-                    "all": 8906555.19,
-                    "winners": 18850086.96,
-                    "losers": -9943531.77
+                    "all": 10383806.24,
+                    "winners": 20895928.87,
+                    "losers": -10512122.63
                 },
                 "biggestAmount": {
-                    "winners": 602273.72,
+                    "winners": 810174.02,
                     "losers": -311882.73
                 },
                 "biggestPct": {
@@ -4096,31 +4144,31 @@
             "unrealized": {
                 "trades": {
                     "all": 20,
-                    "winners": 9,
-                    "losers": 11
+                    "winners": 5,
+                    "losers": 15
                 },
                 "avgReturn": {
-                    "all": 10.34,
-                    "winners": 45.62,
-                    "losers": -14.18
+                    "all": -8.33,
+                    "winners": 8.41,
+                    "losers": -13.91
                 },
                 "avgDaysHeld": {
-                    "all": 126.55,
-                    "winners": 173.0,
-                    "losers": 88.55
+                    "all": 97.55,
+                    "winners": 47.2,
+                    "losers": 114.33
                 },
                 "totalAmount": {
-                    "all": 1062890.46,
-                    "winners": 1922929.99,
-                    "losers": -860039.53
+                    "all": -998270.26,
+                    "winners": 283637.82,
+                    "losers": -1281908.08
                 },
                 "biggestAmount": {
-                    "winners": 803526.93,
-                    "losers": -203159.34
+                    "winners": 148524.65,
+                    "losers": -283015.44
                 },
                 "biggestPct": {
-                    "winners": 189.85,
-                    "losers": -33.28
+                    "winners": 20.17,
+                    "losers": -38.37
                 }
             }
         },
@@ -4128,74 +4176,74 @@
             "daily": {
                 "trailing3Year": {
                     "totalReturn": {
-                        "model": 18.8,
-                        "bench": 3.83
+                        "model": 8.51,
+                        "bench": 2.54
                     },
                     "annualizedReturn": {
-                        "model": 5.92,
-                        "bench": 1.26
+                        "model": 2.76,
+                        "bench": 0.84
                     },
                     "maxDrawdown": {
                         "model": -21.48,
-                        "bench": -26.92
+                        "bench": -22.38
                     },
                     "periodSamples": {
-                        "model": 781.0,
-                        "bench": 781.0
+                        "model": 782.0,
+                        "bench": 782.0
                     },
                     "standardDeviation": {
-                        "model": 21.38,
-                        "bench": 22.81
+                        "model": 21.28,
+                        "bench": 22.18
                     },
                     "sharpeRatio": {
-                        "model": 0.23,
-                        "bench": 0.04
+                        "model": 0.09,
+                        "bench": 0.02
                     },
                     "sortinoRatio": {
-                        "model": 0.33,
-                        "bench": 0.06
+                        "model": 0.12,
+                        "bench": 0.03
                     },
                     "benchCorrel": {
-                        "model": 0.7
+                        "model": 0.71
                     },
                     "rSquared": {
                         "model": 0.5
                     },
                     "beta": {
-                        "model": 0.66
+                        "model": 0.68
                     },
                     "alpha": {
-                        "model": 4.46
+                        "model": 1.61
                     }
                 },
                 "sinceInception": {
                     "totalReturn": {
-                        "model": 22378.07,
-                        "bench": 265.56
+                        "model": 21526.39,
+                        "bench": 234.24
                     },
                     "annualizedReturn": {
-                        "model": 35.14,
-                        "bench": 7.47
+                        "model": 34.33,
+                        "bench": 6.85
                     },
                     "maxDrawdown": {
                         "model": -59.21,
                         "bench": -59.05
                     },
                     "periodSamples": {
-                        "model": 4691.0,
-                        "bench": 4691.0
+                        "model": 4753.0,
+                        "bench": 4753.0
                     },
                     "standardDeviation": {
-                        "model": 22.73,
-                        "bench": 24.47
+                        "model": 22.74,
+                        "bench": 24.4
                     },
                     "sharpeRatio": {
-                        "model": 1.35,
-                        "bench": 0.37
+                        "model": 1.33,
+                        "bench": 0.35
                     },
                     "sortinoRatio": {
-                        "model": 1.81,
-                        "bench": 0.51
+                        "model": 1.78,
+                        "bench": 0.48
                     },
                     "benchCorrel": {
                         "model": 0.75
@@ -4207,167 +4255,167 @@
                         "model": 0.7
                     },
                     "alpha": {
-                        "model": 27.7
+                        "model": 27.42
                     }
                 }
             },
             "weekly": {
                 "trailing3Year": {
                     "totalReturn": {
-                        "model": 18.8,
-                        "bench": 3.83
+                        "model": 8.51,
+                        "bench": 2.54
                     },
                     "annualizedReturn": {
-                        "model": 5.92,
-                        "bench": 1.26
+                        "model": 2.76,
+                        "bench": 0.84
                     },
                     "maxDrawdown": {
                         "model": -21.48,
-                        "bench": -26.92
+                        "bench": -22.38
                     },
                     "periodSamples": {
                         "model": 155.0,
                         "bench": 155.0
                     },
                     "standardDeviation": {
-                        "model": 21.07,
-                        "bench": 22.71
+                        "model": 21.27,
+                        "bench": 22.33
                     },
                     "sharpeRatio": {
-                        "model": 0.14,
-                        "bench": -0.01
+                        "model": 0.0,
+                        "bench": -0.05
                     },
                     "sortinoRatio": {
-                        "model": 0.19,
-                        "bench": -0.02
+                        "model": 0.01,
+                        "bench": -0.08
                     },
                     "benchCorrel": {
-                        "model": 0.69
+                        "model": 0.68
                     },
                     "rSquared": {
                         "model": 0.47
                     },
                     "beta": {
-                        "model": 0.64
+                        "model": 0.65
                     },
                     "alpha": {
-                        "model": 3.07
+                        "model": 0.89
                     }
                 },
                 "sinceInception": {
                     "totalReturn": {
-                        "model": 22378.07,
-                        "bench": 265.56
+                        "model": 21526.39,
+                        "bench": 234.24
                     },
                     "annualizedReturn": {
-                        "model": 35.14,
-                        "bench": 7.47
+                        "model": 34.33,
+                        "bench": 6.85
                     },
                     "maxDrawdown": {
                         "model": -59.21,
                         "bench": -59.05
                     },
                     "periodSamples": {
-                        "model": 937.0,
-                        "bench": 937.0
+                        "model": 949.0,
+                        "bench": 949.0
                     },
                     "standardDeviation": {
-                        "model": 23.59,
-                        "bench": 23.78
+                        "model": 23.63,
+                        "bench": 23.71
                     },
                     "sharpeRatio": {
-                        "model": 1.34,
-                        "bench": 0.37
+                        "model": 1.31,
+                        "bench": 0.34
                     },
                     "sortinoRatio": {
-                        "model": 1.79,
-                        "bench": 0.51
+                        "model": 1.75,
+                        "bench": 0.47
                     },
                     "benchCorrel": {
                         "model": 0.78
                     },
                     "rSquared": {
-                        "model": 0.6
+                        "model": 0.61
                     },
                     "beta": {
-                        "model": 0.77
+                        "model": 0.78
                     },
                     "alpha": {
-                        "model": 28.17
+                        "model": 27.94
                     }
                 }
             },
             "monthly": {
                 "trailing3Year": {
                     "totalReturn": {
-                        "model": 18.8,
-                        "bench": 3.83
+                        "model": 8.51,
+                        "bench": 2.54
                     },
                     "annualizedReturn": {
-                        "model": 5.92,
-                        "bench": 1.26
+                        "model": 2.76,
+                        "bench": 0.84
                     },
                     "maxDrawdown": {
                         "model": -21.48,
-                        "bench": -26.92
+                        "bench": -22.38
                     },
                     "periodSamples": {
                         "model": 35.0,
                         "bench": 35.0
                     },
                     "standardDeviation": {
-                        "model": 22.57,
-                        "bench": 23.52
+                        "model": 22.63,
+                        "bench": 23.62
                     },
                     "sharpeRatio": {
-                        "model": 0.23,
-                        "bench": 0.11
+                        "model": 0.1,
+                        "bench": 0.04
                     },
                     "sortinoRatio": {
-                        "model": 0.37,
-                        "bench": 0.17
+                        "model": 0.16,
+                        "bench": 0.07
                     },
                     "benchCorrel": {
-                        "model": 0.73
+                        "model": 0.74
                     },
                     "rSquared": {
-                        "model": 0.53
+                        "model": 0.55
                     },
                     "beta": {
-                        "model": 0.7
+                        "model": 0.71
                     },
                     "alpha": {
-                        "model": 3.35
+                        "model": 1.51
                     }
                 },
                 "sinceInception": {
                     "totalReturn": {
-                        "model": 22378.07,
-                        "bench": 265.56
+                        "model": 21526.39,
+                        "bench": 234.24
                     },
                     "annualizedReturn": {
-                        "model": 35.14,
-                        "bench": 7.47
+                        "model": 34.33,
+                        "bench": 6.85
                     },
                     "maxDrawdown": {
                         "model": -59.21,
                         "bench": -59.05
                     },
                     "periodSamples": {
-                        "model": 214.0,
-                        "bench": 214.0
+                        "model": 217.0,
+                        "bench": 217.0
                     },
                     "standardDeviation": {
-                        "model": 23.5,
-                        "bench": 20.7
+                        "model": 23.55,
+                        "bench": 20.72
                     },
                     "sharpeRatio": {
-                        "model": 1.37,
-                        "bench": 0.41
+                        "model": 1.34,
+                        "bench": 0.37
                     },
                     "sortinoRatio": {
-                        "model": 1.85,
-                        "bench": 0.55
+                        "model": 1.81,
+                        "bench": 0.5
                     },
                     "benchCorrel": {
                         "model": 0.79
@@ -4376,7 +4424,7 @@
                         "model": 0.63
                     },
                     "beta": {
-                        "model": 0.9
+                        "model": 0.91
                     },
                     "alpha": {
                         "model": 27.47
@@ -4386,44 +4434,44 @@
             "yearly": {
                 "sinceInception": {
                     "totalReturn": {
-                        "model": 22378.07,
-                        "bench": 265.56
+                        "model": 21526.39,
+                        "bench": 234.24
                     },
                     "annualizedReturn": {
-                        "model": 35.14,
-                        "bench": 7.47
+                        "model": 34.33,
+                        "bench": 6.85
                     },
                     "maxDrawdown": {
                         "model": -59.21,
                         "bench": -59.05
                     },
                     "periodSamples": {
-                        "model": 16.0,
-                        "bench": 16.0
+                        "model": 17.0,
+                        "bench": 17.0
                     },
                     "standardDeviation": {
-                        "model": 45.09,
-                        "bench": 19.7
+                        "model": 44.86,
+                        "bench": 19.08
                     },
                     "sharpeRatio": {
-                        "model": 0.96,
-                        "bench": 0.44
+                        "model": 0.9,
+                        "bench": 0.45
                     },
                     "sortinoRatio": {
-                        "model": 1.43,
-                        "bench": 0.55
+                        "model": 1.36,
+                        "bench": 0.56
                     },
                     "benchCorrel": {
-                        "model": 0.89
+                        "model": 0.87
                     },
                     "rSquared": {
-                        "model": 0.79
+                        "model": 0.75
                     },
                     "beta": {
-                        "model": 2.02
+                        "model": 2.04
                     },
                     "alpha": {
-                        "model": 25.76
+                        "model": 23.16
                     }
                 }
             }

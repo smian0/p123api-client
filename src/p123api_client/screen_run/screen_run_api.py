@@ -128,4 +128,55 @@ class ScreenRunAPI(APIClient[ScreenRunResponse]):
             universe=universe,
             rules=[formula],
             as_dataframe=as_dataframe
-        ) 
+        )
+        
+    def run_screen_by_id(
+        self,
+        screen_id: int,
+        as_of_date: Optional[date] = None,
+        end_date: Optional[date] = None,
+        vendor: Optional[str] = None,
+        pit_method: Optional[str] = None,
+        precision: Optional[int] = None,
+        max_results: Optional[int] = None,
+        as_dataframe: bool = True,
+    ) -> ScreenRunResponse | pd.DataFrame:
+        """Run a screen by its ID.
+        
+        Args:
+            screen_id: ID of the screen to run
+            as_of_date: Optional specific date to run screen for (default: today)
+            end_date: Optional end date for historical screening
+            vendor: Optional data vendor specification
+            pit_method: Optional point-in-time method ("Prelim" or "Complete")
+            precision: Optional result precision
+            max_results: Optional maximum number of results
+            as_dataframe: Whether to return results as pandas DataFrame (default: True)
+            
+        Returns:
+            ScreenRunResponse object or pandas DataFrame with results
+        """
+        # Build parameters dictionary
+        params = {"screen": screen_id}
+        
+        # Add optional parameters if specified
+        if as_of_date:
+            params["asOfDt"] = as_of_date
+        if end_date:
+            params["endDt"] = end_date
+        if vendor:
+            params["vendor"] = vendor
+        if pit_method:
+            params["pitMethod"] = pit_method
+        if precision:
+            params["precision"] = precision
+        
+        # Handle max_results by wrapping screen_id in a dict if needed
+        if max_results is not None:
+            params["screen"] = {
+                "id": screen_id,
+                "maxResults": max_results
+            }
+            
+        # Make API request
+        return self.make_request("screen_run", params, as_dataframe) 

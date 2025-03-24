@@ -19,8 +19,12 @@ class BaseTestCase(unittest.TestCase):
 
         # Load test configuration
         config_path = os.path.join(os.path.dirname(__file__), "common", "api_config.yaml")
-        with open(config_path) as file:
-            cls.config = yaml.safe_load(file)
+        try:
+            with open(config_path) as file:
+                cls.config = yaml.safe_load(file)
+        except FileNotFoundError:
+            import pytest
+            pytest.skip(f"Config file not found: {config_path}")
 
         # Load test settings
         cls.settings = Settings(testing=True)
@@ -45,3 +49,7 @@ class BaseTestCase(unittest.TestCase):
         except Exception as e:
             self.logger.error(f"Test {self._testMethodName} failed: {e}")
             raise
+
+
+# Alias for backward compatibility
+BaseTest = BaseTestCase

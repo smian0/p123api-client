@@ -20,9 +20,9 @@ class Settings:
             testing: If True, will look for .env.test in tests directory
         """
         if testing:
-            # Look for test env file
+            # Look for test env file in project root
             package_root = Path(__file__).parent.parent.parent.parent
-            env_path = package_root / "tests" / ".env.test"
+            env_path = package_root / ".env.test"
         elif env_file:
             env_path = Path(env_file)
         else:

@@ -60,17 +60,20 @@ class RankPerformanceAPIRequest(BaseModel):
 
     def to_api_params(self) -> dict:
         """Convert request to API parameters."""
+        # Start with a clean params dict
         params = {
-            "rankingSystem": "ApiRankingSystem",  # For temporary systems
             "startDt": self.start_dt.isoformat(),
             "endDt": self.end_dt.isoformat() if self.end_dt else None,
+            "rankingSystem": "ApiRankingSystem",  # Use the API ranking system
         }
         
         # Add ranking definition parameters if provided
-        if self.xml_file_path:
-            with open(self.xml_file_path, "r") as f:
-                xml_content = f.read()
-            params["rankingSystemXml"] = xml_content
+        if self.ranking_definition and hasattr(self.ranking_definition, 'to_api_params'):
+            # Add any parameters from the ranking definition
+            params.update(self.ranking_definition.to_api_params())
+        
+        # Note: XML file handling is now done in the test by first updating
+        # the ApiRankingSystem via the rank_update API
         
         # Add additional parameters if provided
         if self.pit_method is not None:

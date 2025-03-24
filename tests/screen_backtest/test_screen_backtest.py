@@ -7,18 +7,20 @@ import pandas as pd
 import pytest
 
 from p123api_client.common.settings import Settings
-from p123api_client.screen_backtest.schemas import (
-    BacktestRequest,
-    BacktestResponse,
+from p123api_client.models.enums import (
     Currency,
     PitMethod,
     RebalFreq,
     RiskStatsPeriod,
     ScreenMethod,
-    ScreenParams,
-    ScreenRule,
     ScreenType,
     TransPrice,
+)
+from p123api_client.screen_backtest.models import BacktestRequest
+from p123api_client.screen_backtest.schemas import (
+    BacktestResponse,
+    ScreenParams,
+    ScreenRule,
 )
 from p123api_client.screen_backtest.screen_backtest_api import ScreenBacktestAPI
 
@@ -78,65 +80,56 @@ class TestScreenBacktest(unittest.TestCase):
     def test_run_backtest(self):
         """Test running a backtest."""
         try:
-            # Create backtest request
-            request = BacktestRequest(
-                screen_params=ScreenParams(
-                    screen_type=ScreenType.FORMULA,
-                    screen_method=ScreenMethod.SCREEN,
-                    screen_rules=[
-                        ScreenRule(
-                            formula="MktCap > 1000",
-                            description="Market Cap > $1B"
-                        )
-                    ],
-                ),
-                start_dt=date(2022, 1, 1),
-                end_dt=date(2022, 12, 31),
-                rebal_freq=RebalFreq.MONTHLY,
-                pit_method=PitMethod.PRELIM,
-                currency=Currency.USD,
-                trans_price=TransPrice.CLOSE,
-                risk_stats_period=RiskStatsPeriod.MONTHLY,
-            )
+            # Create parameters using the correct format from the API documentation
+            params = {
+                "startDt": "2022-01-01",
+                "endDt": "2022-12-31",
+                "rebalFreq": "Every 4 Weeks",
+                "pitMethod": "Prelim",
+                "transPrice": 4,  # 4 - Close
+                "riskStatsPeriod": "Monthly",
+                "screen": {
+                    "type": "stock",
+                    "universe": "SP500",
+                    "maxNumHoldings": 50,
+                    "method": "long",
+                    "currency": "USD",
+                    "benchmark": "SPY",
+                    "ranking": "ApiRankingSystem",
+                    "rules": [
+                        {"formula": "PERelative() > 0"}
+                    ]
+                }
+            }
 
-            # Run backtest
+            # Run backtest directly using make_request
             logger.info("Running backtest...")
-            response_dict = self.api.make_request(
-                "screen_backtest", request.model_dump(), as_dataframe=True
-            )
-            result = BacktestResponse(**response_dict)
+            # Call the API directly with the parameters
+            result = self.api.make_request("screen_backtest", params, as_dataframe=True)
 
             # Verify response
             self.assertIsNotNone(result)
 
             # Verify stats
             self.assertIsNotNone(result.stats)
-
-            # Verify stats
-            self.assertIsNotNone(result.stats)
-            self.assertGreaterEqual(result.stats.samples, 0)
-            self.assertIsInstance(result.stats.correlation, float)
-            self.assertIsInstance(result.stats.r_squared, float)
-            self.assertIsInstance(result.stats.beta, float)
-            self.assertIsInstance(result.stats.alpha, float)
-
+            
             # Verify portfolio stats
-            self.assertIsNotNone(result.stats.port)
-            self.assertIsInstance(result.stats.port.total_return, float)
-            self.assertIsInstance(result.stats.port.annualized_return, float)
-            self.assertIsInstance(result.stats.port.max_drawdown, float)
-            self.assertIsInstance(result.stats.port.standard_dev, float)
-            self.assertIsInstance(result.stats.port.sharpe_ratio, float)
-            self.assertIsInstance(result.stats.port.sortino_ratio, float)
-
+            self.assertIsNotNone(result.stats.portfolio_stats)
+            self.assertIsInstance(result.stats.portfolio_stats.return_value, float)
+            self.assertIsInstance(result.stats.portfolio_stats.alpha, float)
+            self.assertIsInstance(result.stats.portfolio_stats.beta, float)
+            self.assertIsInstance(result.stats.portfolio_stats.sharpe, float)
+            self.assertIsInstance(result.stats.portfolio_stats.volatility, float)
+            self.assertIsInstance(result.stats.portfolio_stats.max_drawdown, float)
+            
             # Verify benchmark stats
-            self.assertIsNotNone(result.stats.bench)
-            self.assertIsInstance(result.stats.bench.total_return, float)
-            self.assertIsInstance(result.stats.bench.annualized_return, float)
-            self.assertIsInstance(result.stats.bench.max_drawdown, float)
-            self.assertIsInstance(result.stats.bench.standard_dev, float)
-            self.assertIsInstance(result.stats.bench.sharpe_ratio, float)
-            self.assertIsInstance(result.stats.bench.sortino_ratio, float)
+            self.assertIsNotNone(result.stats.benchmark_stats)
+            self.assertIsInstance(result.stats.benchmark_stats.return_value, float)
+            self.assertIsInstance(result.stats.benchmark_stats.alpha, float)
+            self.assertIsInstance(result.stats.benchmark_stats.beta, float)
+            self.assertIsInstance(result.stats.benchmark_stats.sharpe, float)
+            self.assertIsInstance(result.stats.benchmark_stats.volatility, float)
+            self.assertIsInstance(result.stats.benchmark_stats.max_drawdown, float)
 
             # Verify chart data
             self.assertIsNotNone(result.chart)

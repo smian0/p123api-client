@@ -1,0 +1,6 @@
+# API Configuration for tests
+api_id: 144
+api_key: 3fe5623ae6f44972fbb4b49ca437ba66
+base_url: https://api.portfolio123.com/v1
+rate_limit: 60
+request_timeout: 30

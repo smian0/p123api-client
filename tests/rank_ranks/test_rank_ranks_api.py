@@ -18,16 +18,13 @@ def rank_ranks_api(api_credentials: dict[str, str]) -> RankRanksAPI:
 @pytest.mark.vcr()
 def test_get_ranks(rank_ranks_api):
     """Test getting ranks."""
-    # Create request
-    request = RankRanksRequest(
-        ranking_system="Test Ranking System",
-        as_of_dt=date(2020, 1, 1),
-        universe="Test Universe",
-        pit_method=PitMethod.PRELIM,
-        precision=4,
-    )
-
-    # Get ranks
+    # Use the sample request from the schemas file
+    from p123api_client.rank_ranks.schemas import sample_rank_ranks_request
+    
+    # Create a copy of the sample request to avoid modifying the original
+    request = RankRanksRequest(**sample_rank_ranks_request.model_dump())
+    
+    # Get ranks using the sample request
     response_df = rank_ranks_api.get_ranks(request)
 
     # Verify response

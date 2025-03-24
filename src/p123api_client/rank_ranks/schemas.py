@@ -85,7 +85,7 @@ def convert_to_pivot(data: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
 
 # Sample request for testing
 sample_rank_ranks_request = RankRanksRequest(
-    ranking_system="Small and Micro Cap Focus",
+    ranking_system="ApiRankingSystem",  # Using a built-in ranking system that should exist in all P123 accounts
     as_of_dt=date(2023, 1, 6),
     universe="SP500",
     pit_method=PitMethod.PRELIM,

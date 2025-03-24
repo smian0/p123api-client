@@ -19,7 +19,7 @@ interactions:
       content-type:
       - text/plain;charset=UTF-8
       date:
-      - Mon, 30 Dec 2024 03:02:41 GMT
+      - Sun, 23 Mar 2025 21:52:43 GMT
       expires:
       - '0'
       pragma:
@@ -36,9 +36,11 @@ interactions:
       code: 200
       message: ''
 - request:
-    body: '{"nodes": "<RankingSystem RankType=\"Higher\"><StockFormula Weight=\"1\"
-      RankType=\"Higher\" Name=\"Close(0)\" Description=\"\" Scope=\"Universe\"><Formula>Close(0)</Formula></StockFormula></RankingSystem>",
-      "type": "stock"}'
+    body: '{"startDt": "2020-01-01", "endDt": "2020-12-31", "pitMethod": "Prelim",
+      "screen": {"type": "stock", "method": "long", "universe": "SP500", "maxNumHoldings":
+      50, "benchmark": "SPY", "currency": "USD", "factors": [{"factor": "PE", "weight":
+      0.4, "direction": "ASC"}, {"factor": "PB", "weight": 0.3, "direction": "ASC"},
+      {"factor": "ROE", "weight": 0.3, "direction": "DESC"}], "ranking": "ApiRankingSystem"}}'
     headers:
       Content-Type:
       - application/json
@@ -47,23 +49,23 @@ interactions:
       content-length:
       - MASKED
     method: POST
-    uri: https://api.portfolio123.com/rank
+    uri: https://api.portfolio123.com/screen/backtest
   response:
     body:
-      string: '{"cost": 1, "quotaRemaining": 6740}'
+      string: Unrecognized parameter <factors>
     headers:
       cache-control:
       - no-cache, no-store, max-age=0, must-revalidate
+      content-length:
+      - '32'
       content-type:
-      - application/json
+      - text/plain;charset=UTF-8
       date:
-      - Mon, 30 Dec 2024 03:02:41 GMT
+      - Sun, 23 Mar 2025 21:52:43 GMT
       expires:
       - '0'
       pragma:
       - no-cache
-      transfer-encoding:
-      - chunked
       x-content-type-options:
       - nosniff
       x-frame-options:
@@ -71,7 +73,7 @@ interactions:
       x-xss-protection:
       - 1; mode=block
     status:
-      code: 200
+      code: 400
       message: ''
 - request:
     body: '{"apiKey": "MASKED", "apiId": "MASKED"}'
@@ -93,7 +95,7 @@ interactions:
       content-type:
       - text/plain;charset=UTF-8
       date:
-      - Mon, 30 Dec 2024 03:02:43 GMT
+      - Sun, 23 Mar 2025 22:07:49 GMT
       expires:
       - '0'
       pragma:
@@ -110,12 +112,11 @@ interactions:
       code: 200
       message: ''
 - request:
-    body: '{"startDt": "2022-01-01", "endDt": "2022-12-31", "pitMethod": "Prelim",
-      "precision": 2, "transPrice": 4, "slippage": 0.001, "longWeight": 100.0, "rankTolerance":
-      7, "rebalFreq": "Every Week", "riskStatsPeriod": "Monthly", "screen": {"type":
-      "stock", "universe": "01 SmallCap Bulls Rank US", "maxNumHoldings": 25, "method":
-      "long", "currency": "USD", "benchmark": "spy", "ranking": "ApiRankingSystem",
-      "rules": [{"formula": "Invalid(Formula"}]}}'
+    body: '{"startDt": "2020-01-01", "endDt": "2020-12-31", "rebalFreq": "Every 4
+      Weeks", "pitMethod": "Prelim", "transPrice": 4, "riskStatsPeriod": "Monthly",
+      "screen": {"type": "stock", "universe": "SP500", "maxNumHoldings": 50, "method":
+      "long", "currency": "USD", "benchmark": "SPY", "ranking": "ApiRankingSystem",
+      "rules": [{"formula": "Close > 0"}]}}'
     headers:
       Content-Type:
       - application/json
@@ -127,17 +128,17 @@ interactions:
     uri: https://api.portfolio123.com/screen/backtest
   response:
     body:
-      string: 'ERROR: Invalid criteria in Rule 1. Error near ''Invalid'': Invalid
-        command ''Invalid'''
+      string: 'ERROR: Invalid criteria in Rule 1. Error near ''Close'': Missing left
+        parenthesis'
     headers:
       cache-control:
       - no-cache, no-store, max-age=0, must-revalidate
       content-length:
-      - '82'
+      - '79'
       content-type:
       - text/plain;charset=UTF-8
       date:
-      - Mon, 30 Dec 2024 03:02:43 GMT
+      - Sun, 23 Mar 2025 22:07:49 GMT
       expires:
       - '0'
       pragma:

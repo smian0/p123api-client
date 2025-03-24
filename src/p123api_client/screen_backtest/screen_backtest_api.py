@@ -5,7 +5,8 @@ from datetime import date
 from typing import Any
 
 from ..common.api_client import APIClient
-from .schemas import BacktestRequest, BacktestResponse
+from .schemas import BacktestResponse
+from .models import BacktestRequest
 
 logger = logging.getLogger(__name__)
 
@@ -46,14 +47,11 @@ class ScreenBacktestAPI(APIClient[BacktestResponse]):
         Returns:
             BacktestResponse object with results
         """
-        request = BacktestRequest(
-            start_date=start_date,
-            end_date=end_date,
-            formula=formula
-        )
-
+        # Convert dates to ISO format strings using the correct parameter names
         params = {
-            **request.model_dump(),
+            "startDt": start_date.isoformat(),
+            "endDt": end_date.isoformat(),
+            "formula": formula,
             **kwargs
         }
-        return self.make_request("backtest", params)
+        return self.make_request("screen_backtest", params)

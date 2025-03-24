@@ -57,7 +57,7 @@ logs/
 .idea/
 .history
 .ai-templates
-tests/**/test_output
-tests/**/output
+**tests/**/test_output
+**tests/**/output
 
 .env.test

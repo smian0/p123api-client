@@ -72,16 +72,20 @@ class CachedScreenRunAPI(ScreenRunAPI):
         self,
         api_id: Optional[str] = None,
         api_key: Optional[str] = None,
+        cache_config: Optional[CacheConfig] = None
     ):
         """Initialize with caching support.
         
         Args:
             api_id: Portfolio123 API ID (from P123_API_ID env var if None)
             api_key: Portfolio123 API key (from P123_API_KEY env var if None)
+            cache_config: Optional cache configuration
         """
         super().__init__(api_id=api_id, api_key=api_key)
-        # Use default cache configuration for simplicity
-        self.cache_manager = CacheManager(CacheConfig())
+        # Initialize the cache manager with provided or default config
+        self.cache_manager = CacheManager(cache_config or CacheConfig())
+        # Initialize logger
+        self.logger = logger
     
     @cached_api_call("screen_run")
     def run_screen(
@@ -142,8 +146,8 @@ class CachedScreenRunAPI(ScreenRunAPI):
         universe: str, 
         formula: str, 
         as_dataframe: bool = True,
-        bypass_cache: bool = False,
-    ) -> ScreenRunResponse | pd.DataFrame:
+        bypass_cache: bool = False
+    ) -> Union[ScreenRunResponse, pd.DataFrame]:
         """Run a simple screen with a single formula.
         
         Convenience method for quick, simple screens.
@@ -152,14 +156,146 @@ class CachedScreenRunAPI(ScreenRunAPI):
             universe: Universe to screen (e.g., "SP500")
             formula: Single screen formula
             as_dataframe: Whether to return as DataFrame (default: True)
-            bypass_cache: Whether to bypass the cache and force a fresh API call
+            bypass_cache: Whether to bypass the cache (default: False)
             
         Returns:
             Screen results as ScreenRunResponse or DataFrame
         """
-        # The decorator will handle caching, we just call the parent method
-        return super().run_simple_screen(
+        return self.run_screen(
             universe=universe,
-            formula=formula,
-            as_dataframe=as_dataframe
+            rules=[formula],
+            as_dataframe=as_dataframe,
+            bypass_cache=bypass_cache
         )
+        
+    def run_screen_by_id(
+        self,
+        screen_id: int,
+        as_of_date: Optional[date] = None,
+        end_date: Optional[date] = None,
+        vendor: Optional[str] = None,
+        pit_method: Optional[str] = None,
+        precision: Optional[int] = None,
+        max_results: Optional[int] = None,
+        as_dataframe: bool = True,
+        bypass_cache: bool = False,
+    ) -> Union[ScreenRunResponse, pd.DataFrame]:
+        """Run a screen by its ID with caching support.
+        
+        Args:
+            screen_id: ID of the screen to run
+            as_of_date: Optional specific date to run screen for (default: today)
+            end_date: Optional end date for historical screening
+            vendor: Optional data vendor specification
+            pit_method: Optional point-in-time method ("Prelim" or "Complete")
+            precision: Optional result precision
+            max_results: Optional maximum number of results
+            as_dataframe: Whether to return results as pandas DataFrame (default: True)
+            bypass_cache: Whether to bypass the cache (default: False)
+            
+        Returns:
+            ScreenRunResponse object or pandas DataFrame with results
+        """
+        self.logger.debug(f"run_screen_by_id() called - screen_id: {screen_id}")
+        self.logger.debug(f"Caching parameters - bypass_cache: {bypass_cache}, as_dataframe: {as_dataframe}")
+        
+        # Check cache first if not bypassed
+        cached_response = None
+        if not bypass_cache and self.cache_manager.config.enabled:
+            # Build parameters dictionary
+            params = {"screen": screen_id}
+            
+            # Add optional parameters if specified
+            if as_of_date:
+                params["asOfDt"] = as_of_date
+            if end_date:
+                params["endDt"] = end_date
+            if vendor:
+                params["vendor"] = vendor
+            if pit_method:
+                params["pitMethod"] = pit_method
+            if precision:
+                params["precision"] = precision
+            if max_results is not None:
+                params["screen"] = {
+                    "id": screen_id,
+                    "maxResults": max_results
+                }
+                
+            # Normalize parameters for consistent cache key generation
+            cache_params = normalize_params(params)
+            self.logger.debug(f"Cache key params: {cache_params}")
+            
+            # Try to get from cache
+            cached_response = self.cache_manager.get("screen_run", cache_params, bypass_cache)
+            
+            if cached_response is not None:
+                self.logger.debug("Cache hit for screen run by ID")
+                # Deserialize from cached dictionary to ScreenRunResponse
+                if isinstance(cached_response, dict):
+                    response = ScreenRunResponse(**cached_response)
+                    
+                    # Convert to DataFrame if requested
+                    if as_dataframe:
+                        self.logger.debug("Converting cached response to DataFrame")
+                        df = pd.DataFrame(response.rows, columns=response.columns)
+                        df.attrs["cost"] = response.cost
+                        df.attrs["quota_remaining"] = response.quotaRemaining
+                        return df
+                    
+                    return response
+                
+                # If already the right format, just return it
+                return cached_response
+        
+        # If we get here, it's a cache miss or bypass - call super implementation
+        response = super().run_screen_by_id(
+            screen_id=screen_id,
+            as_of_date=as_of_date,
+            end_date=end_date,
+            vendor=vendor,
+            pit_method=pit_method,
+            precision=precision,
+            max_results=max_results,
+            as_dataframe=False  # Always get the object first, we'll convert later
+        )
+        
+        # Store in cache if not bypassed
+        if not bypass_cache and isinstance(response, ScreenRunResponse):
+            # Normalize parameters for consistent cache key generation
+            params = {"screen": screen_id}
+            
+            # Add optional parameters if specified
+            if as_of_date:
+                params["asOfDt"] = as_of_date
+            if end_date:
+                params["endDt"] = end_date
+            if vendor:
+                params["vendor"] = vendor
+            if pit_method:
+                params["pitMethod"] = pit_method
+            if precision:
+                params["precision"] = precision
+            if max_results is not None:
+                params["screen"] = {
+                    "id": screen_id,
+                    "maxResults": max_results
+                }
+                
+            cache_params = normalize_params(params)
+            self.logger.debug("Storing response in cache")
+            
+            # Convert to dictionary for caching
+            cache_data = response.model_dump()
+            result = self.cache_manager.put("screen_run", cache_params, cache_data)
+            self.logger.debug(f"Cache storage result: {result}")
+        
+        # Convert to DataFrame if requested
+        if as_dataframe and isinstance(response, ScreenRunResponse):
+            self.logger.debug("Converting response to DataFrame")
+            df = pd.DataFrame(response.rows, columns=response.columns)
+            df.attrs["cost"] = response.cost
+            df.attrs["quota_remaining"] = response.quotaRemaining
+            return df
+            
+        return response
