@@ -1,0 +1,80 @@
+interactions:
+- request:
+    body: '{"apiKey": "MASKED", "apiId": "MASKED"}'
+    headers:
+      Content-Type:
+      - application/json
+      content-length:
+      - MASKED
+    method: POST
+    uri: https://api.portfolio123.com/auth
+  response:
+    body:
+      string: '89852918545769897647667986373093323659'
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-length:
+      - '38'
+      content-type:
+      - text/plain;charset=UTF-8
+      date:
+      - Tue, 25 Mar 2025 20:28:39 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      x-content-type-options:
+      - nosniff
+      x-expires-in:
+      - '3600'
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+- request:
+    body: '{"startDt": "2022-01-01", "endDt": "2022-12-31", "rankingSystem": "ApiRankingSystem",
+      "pitMethod": "Prelim", "precision": 4, "universe": "SP500", "transType": "long",
+      "rankingMethod": 4, "numBuckets": 20, "minPrice": 1.0, "minLiquidity": 100000.0,
+      "maxReturn": 200.0, "rebalFreq": "Every Week", "slippage": 0.25, "benchmark":
+      "SPY", "outputType": "ann"}'
+    headers:
+      Content-Type:
+      - application/json
+      authorization:
+      - MASKED
+      content-length:
+      - MASKED
+    method: POST
+    uri: https://api.portfolio123.com/rank/performance
+  response:
+    body:
+      string: '{"cost":3,"quotaRemaining":8492,"benchmarkAnnRet":-19.0473,"bucketAnnRet":[-17.8212,-26.3661,-19.6912,-27.8996,-22.7859,-19.3227,-15.9549,-17.7762,-14.6381,-21.2144,-16.4599,-19.0678,-17.9485,-9.4029,-10.3476,-12.6878,-10.7439,-11.2165,-5.7991,-1.7345]}'
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      date:
+      - Tue, 25 Mar 2025 20:28:39 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      transfer-encoding:
+      - chunked
+      vary:
+      - accept-encoding
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+version: 1

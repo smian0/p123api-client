@@ -29,6 +29,7 @@ def cached_rank_performance_api_cls(request):
 class TestCachedRankPerformanceAPI:
     """Test class for CachedRankPerformanceAPI."""
 
+    @pytest.mark.vcr()
     def test_run_rank_performance_single_cached(self):
         """Test running rank performance for a single factor with caching."""
         # Create a test factor
@@ -88,6 +89,7 @@ class TestCachedRankPerformanceAPI:
         assert response_df3 is not None
         assert isinstance(response_df3, pd.DataFrame)
 
+    @pytest.mark.vcr()
     def test_cache_persistence(self):
         """Test that cache persists across API instances."""
         # Create a test factor
