@@ -43,6 +43,7 @@ jobs:
         env:
           VCR_ENABLED: "true"
           VCR_RECORD_MODE: "none"
+          CI: "true"
       
       # If tests fail because cassettes are missing or outdated, we provide a helpful error message
       - name: Handle cassette-related failures

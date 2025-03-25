@@ -39,7 +39,13 @@ class APIClient(Generic[ResponseT]):
         self.api_key = api_key or os.getenv("P123_API_KEY")
         self.base_url = "https://api.portfolio123.com/rest"
 
-        if not self.api_id or not self.api_key:
+        # In CI, use dummy values if not provided (tests use VCR cassettes)
+        ci_env = os.getenv("CI", "").lower() == "true"
+        if (not self.api_id or not self.api_key) and ci_env:
+            logger.debug("Running in CI environment with missing credentials, using dummy values for tests")
+            self.api_id = self.api_id or "dummy_api_id_for_ci"
+            self.api_key = self.api_key or "dummy_api_key_for_ci"
+        elif not self.api_id or not self.api_key:
             raise ValueError(
                 "API credentials must be provided either through constructor arguments "
                 "or environment variables (P123_API_ID, P123_API_KEY)"
