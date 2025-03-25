@@ -54,44 +54,6 @@ jobs:
           path: htmlcov/
           retention-days: 14
 
-      # Generate coverage badge
-      - name: Create Coverage Badge
-        uses: schneegans/dynamic-badges-action@v1.6.0
-        with:
-          auth: ${{ secrets.GIST_SECRET }}
-          gistID: ${{ secrets.GIST_ID || 'none' }}
-          filename: p123api-client-coverage.json
-          label: coverage
-          message: "${{ env.COVERAGE_PERCENT }}%"
-          color: ${{ env.COVERAGE_COLOR }}
-          namedLogo: python
-        if: github.ref == 'refs/heads/main' && env.GIST_ID != ''
-        env:
-          COVERAGE_PERCENT: ${{ steps.extract-coverage.outputs.coverage }}
-          COVERAGE_COLOR: ${{ steps.extract-coverage.outputs.color }}
-      
-      # Extract coverage percentage for badge
-      - name: Extract Coverage Percentage
-        id: extract-coverage
-        run: |
-          source .venv/bin/activate
-          COVERAGE=$(python -c "import xml.etree.ElementTree as ET; tree = ET.parse('coverage.xml'); root = tree.getroot(); print(root.attrib['line-rate'])")
-          COVERAGE_PCT=$(python -c "print(round(float('${COVERAGE}') * 100))")
-          echo "coverage=${COVERAGE_PCT}" >> $GITHUB_OUTPUT
-          if (( ${COVERAGE_PCT} >= 80 )); then
-            echo "color=brightgreen" >> $GITHUB_OUTPUT
-          elif (( ${COVERAGE_PCT} >= 70 )); then
-            echo "color=green" >> $GITHUB_OUTPUT
-          elif (( ${COVERAGE_PCT} >= 60 )); then
-            echo "color=yellowgreen" >> $GITHUB_OUTPUT
-          elif (( ${COVERAGE_PCT} >= 50 )); then
-            echo "color=yellow" >> $GITHUB_OUTPUT
-          elif (( ${COVERAGE_PCT} >= 40 )); then
-            echo "color=orange" >> $GITHUB_OUTPUT
-          else
-            echo "color=red" >> $GITHUB_OUTPUT
-          fi
-      
       # If tests fail because cassettes are missing or outdated, we provide a helpful error message
       - name: Handle cassette-related failures
         if: failure()
@@ -100,3 +62,12 @@ jobs:
           echo "::warning::To update cassettes, run locally with: VCR_RECORD_MODE=all pytest tests/"
           echo "::warning::Then commit the updated cassette files"
           exit 1 
+
+      # Upload coverage to Codecov
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v5.4.0
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./coverage.xml
+          fail_ci_if_error: false
+          verbose: true 
