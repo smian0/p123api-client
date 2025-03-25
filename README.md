@@ -1,5 +1,7 @@
 # P123 API Client
 
+[![codecov](https://codecov.io/gh/smian0/p123api-client/branch/main/graph/badge.svg)](https://codecov.io/gh/smian0/p123api-client)
+
 A Python client library for interacting with the Portfolio123 (P123) API.
 
 ## Features
@@ -236,9 +238,22 @@ To run all tests:
 python -m pytest
 ```
 
-For test coverage report:
+### Coverage Reports
+
+For a basic test coverage report:
 ```bash
 python -m pytest --cov=p123api_client
+```
+
+For a more detailed HTML coverage report:
+```bash
+python -m pytest --cov=p123api_client --cov-report=html
+```
+This creates a directory `htmlcov` with an interactive HTML report. Open `htmlcov/index.html` in your browser to explore the coverage results.
+
+For XML coverage report (used by CI tools):
+```bash
+python -m pytest --cov=p123api_client --cov-report=xml
 ```
 
 To run a specific test module:

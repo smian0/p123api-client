@@ -28,6 +28,7 @@ test = [
     "vcrpy",
     "pytest>=7.4.0",
     "pytest-vcr>=1.0.2",
+    "pytest-cov>=4.1.0",
     "ruff>=0.3.0",
     "mypy>=1.8.0",
     "types-requests>=2.31.0",

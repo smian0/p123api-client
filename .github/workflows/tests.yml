@@ -28,6 +28,7 @@ jobs:
           uv venv .venv
           source .venv/bin/activate
           uv pip install -e ".[test]"
+          uv pip install pytest-cov codecov
       
       - name: Run quality checks
         run: |
@@ -39,11 +40,17 @@ jobs:
         run: |
           echo "Running tests in CI with VCR_RECORD_MODE=none (using existing cassettes only)"
           source .venv/bin/activate
-          python -m pytest tests/
+          python -m pytest tests/ --cov=p123api_client --cov-report=xml --cov-report=term
         env:
           VCR_ENABLED: "true"
           VCR_RECORD_MODE: "none"
           CI: "true"
+      
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          file: ./coverage.xml
+          fail_ci_if_error: false
       
       # If tests fail because cassettes are missing or outdated, we provide a helpful error message
       - name: Handle cassette-related failures
