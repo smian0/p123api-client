@@ -1,6 +1,7 @@
 # P123 API Client
 
-[![codecov](https://codecov.io/gh/smian0/p123api-client/branch/main/graph/badge.svg)](https://codecov.io/gh/smian0/p123api-client)
+[![Coverage](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/smian0/gist-id-placeholder/raw/p123api-client-coverage.json)](https://github.com/smian0/p123api-client/actions/workflows/tests.yml)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/smian0/p123api-client/tests.yml?branch=main&label=tests)](https://github.com/smian0/p123api-client/actions/workflows/tests.yml)
 
 A Python client library for interacting with the Portfolio123 (P123) API.
 
