@@ -1,4 +1,5 @@
 """Rank ranks API schemas."""
+
 from __future__ import annotations
 
 from datetime import date
@@ -53,9 +54,7 @@ class RankRanksResponse(BaseModel):
     finalStmt: list[bool] | None = Field(None, description="List of final statement flags")
     ranks: list[float] = Field(..., description="List of rank values")
     nodes: dict | None = Field(None, description="Node details for composite or factor ranks")
-    additionalData: list[list[float]] | None = Field(
-        None, description="Additional formula results"
-    )
+    additionalData: list[list[float]] | None = Field(None, description="Additional formula results")
     figi: list[str] | None = Field(None, description="List of FIGI identifiers")
     data: dict[str, Any] | None = None
     step_count: int = 0

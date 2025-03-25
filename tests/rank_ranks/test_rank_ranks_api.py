@@ -1,10 +1,8 @@
 """Test rank ranks API."""
-from datetime import date
 
 import pandas as pd
 import pytest
 
-from p123api_client.models.enums import PitMethod
 from p123api_client.rank_ranks.rank_ranks_api import RankRanksAPI
 from p123api_client.rank_ranks.schemas import RankRanksRequest
 
@@ -20,10 +18,10 @@ def test_get_ranks(rank_ranks_api):
     """Test getting ranks."""
     # Use the sample request from the schemas file
     from p123api_client.rank_ranks.schemas import sample_rank_ranks_request
-    
+
     # Create a copy of the sample request to avoid modifying the original
     request = RankRanksRequest(**sample_rank_ranks_request.model_dump())
-    
+
     # Get ranks using the sample request
     response_df = rank_ranks_api.get_ranks(request)
 
@@ -35,6 +33,5 @@ def test_get_ranks(rank_ranks_api):
     required_columns = ["ticker", "rank"]
     for col in required_columns:
         assert col in response_df.columns, (
-            f"Column {col} not found. Available columns: "
-            f"{response_df.columns.tolist()}"
+            f"Column {col} not found. Available columns: {response_df.columns.tolist()}"
         )

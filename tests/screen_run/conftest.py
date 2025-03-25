@@ -1,8 +1,9 @@
 """Test configuration for screen run tests."""
 
-import pytest
 import re
 from pathlib import Path
+
+import pytest
 
 from ..vcr_patch import patch_vcr_response
 
@@ -39,12 +40,12 @@ def before_record_request(request):
     # Mask authorization headers
     if "authorization" in request.headers:
         request.headers["authorization"] = "MASKED"
-    
+
     # Mask other sensitive headers
     for header in ["x-api-key", "api-key"]:
         if header in request.headers:
             request.headers[header] = "MASKED"
-    
+
     # Mask body if it's a string and contains sensitive data
     if request.body:
         try:
@@ -54,7 +55,7 @@ def before_record_request(request):
         except (UnicodeDecodeError, AttributeError):
             # Not a UTF-8 string or not a bytes object
             pass
-    
+
     return request
 
 
@@ -69,7 +70,7 @@ def before_record_response(response):
         except (UnicodeDecodeError, AttributeError):
             # Not a UTF-8 string or not a bytes object
             pass
-    
+
     return response
 
 
@@ -105,4 +106,4 @@ def vcr_config():
 def vcr_cassette_dir(request):
     """VCR cassette directory fixture."""
     # Use the cassettes directory in the same directory as the test file
-    return str(CASSETTE_DIR) 
+    return str(CASSETTE_DIR)

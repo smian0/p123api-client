@@ -75,9 +75,7 @@ class RankRanksAPI(APIClient):
 
         return converted_params
 
-    def get_ranks(
-        self, params: RankRanksRequest, output_path: str | None = None
-    ) -> pd.DataFrame:
+    def get_ranks(self, params: RankRanksRequest, output_path: str | None = None) -> pd.DataFrame:
         """
         Get ranks for a ranking system with specified parameters and optionally save to CSV
 

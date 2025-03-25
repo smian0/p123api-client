@@ -1,4 +1,5 @@
 """Client module for Portfolio123 API."""
+
 from __future__ import annotations
 
 import os
@@ -11,6 +12,7 @@ class APICredentials(TypedDict):
     api_id: str
     api_key: str
 
+
 def get_credentials() -> APICredentials:
     """Get API credentials from environment.
 
@@ -21,9 +23,7 @@ def get_credentials() -> APICredentials:
     api_key = os.environ.get("P123_API_KEY")
 
     if not api_id or not api_key:
-        raise ValueError(
-            "Missing required environment variables: P123_API_ID, P123_API_KEY"
-        )
+        raise ValueError("Missing required environment variables: P123_API_ID, P123_API_KEY")
 
     return {"api_id": api_id, "api_key": api_key}
 

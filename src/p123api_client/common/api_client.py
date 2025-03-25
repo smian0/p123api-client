@@ -1,4 +1,5 @@
 """Base API client module."""
+
 from __future__ import annotations
 
 import logging
@@ -13,6 +14,7 @@ from pydantic import BaseModel
 logger = logging.getLogger(__name__)
 
 ResponseT = TypeVar("ResponseT", bound=BaseModel)
+
 
 class APIClient(Generic[ResponseT]):
     """Base API client for P123 API interactions."""
@@ -78,18 +80,24 @@ class APIClient(Generic[ResponseT]):
 
             # Log the exact parameters being sent to the API
             import json
+
             logging.info(f"API request to {method} with params: {json.dumps(params, default=str)}")
-            
+
             # Remove any 'factors' parameter that might be causing issues
             if method == "screen_backtest" and "factors" in params:
                 logging.warning("Removing 'factors' parameter from request")
                 del params["factors"]
-                
+
             # Also check if it's nested in the screen object
-            if method == "screen_backtest" and "screen" in params and isinstance(params["screen"], dict) and "factors" in params["screen"]:
+            if (
+                method == "screen_backtest"
+                and "screen" in params
+                and isinstance(params["screen"], dict)
+                and "factors" in params["screen"]
+            ):
                 logging.warning("Removing 'factors' parameter from screen object")
                 del params["screen"]["factors"]
-            
+
             # Make the API call
             if method == "rank_update":
                 # For rank_update, we need to pass the XML content in the correct format

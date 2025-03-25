@@ -24,6 +24,7 @@ class BaseTestCase(unittest.TestCase):
                 cls.config = yaml.safe_load(file)
         except FileNotFoundError:
             import pytest
+
             pytest.skip(f"Config file not found: {config_path}")
 
         # Load test settings

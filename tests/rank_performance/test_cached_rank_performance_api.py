@@ -2,7 +2,6 @@
 
 import logging
 from datetime import date
-from pathlib import Path
 
 import pandas as pd
 import pytest
@@ -74,7 +73,7 @@ class TestCachedRankPerformanceAPI:
 
         # Second call - should be a cache hit
         response_df2 = self.cached_rank_performance_api.run_rank_performance([request])
-        
+
         # Verify the second response matches the first
         assert response_df2 is not None
         assert isinstance(response_df2, pd.DataFrame)
@@ -84,7 +83,7 @@ class TestCachedRankPerformanceAPI:
         response_df3 = self.cached_rank_performance_api.run_rank_performance(
             [request], bypass_cache=True
         )
-        
+
         # Verify the response
         assert response_df3 is not None
         assert isinstance(response_df3, pd.DataFrame)
@@ -114,7 +113,7 @@ class TestCachedRankPerformanceAPI:
         # Second call with a new API instance - should be a cache hit
         api2 = CachedRankPerformanceAPI()
         response_df2 = api2.run_rank_performance([request])
-        
+
         # Verify the second response matches the first
         assert response_df2 is not None
         assert isinstance(response_df2, pd.DataFrame)

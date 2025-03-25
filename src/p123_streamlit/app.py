@@ -251,12 +251,7 @@ with tab1:
                         yaxis_title="Return",
                         yaxis_tickformat=".2f",
                         showlegend=True,
-                        legend={
-                            "yanchor": "top",
-                            "y": 0.99,
-                            "xanchor": "left",
-                            "x": 0.01
-                        },
+                        legend={"yanchor": "top", "y": 0.99, "xanchor": "left", "x": 0.01},
                     )
 
                     st.plotly_chart(fig, use_container_width=True)

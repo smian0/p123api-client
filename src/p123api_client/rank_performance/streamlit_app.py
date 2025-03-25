@@ -1,4 +1,5 @@
 """Streamlit app for rank performance visualization."""
+
 from datetime import date
 
 import plotly.graph_objects as go
@@ -55,4 +56,3 @@ def plot_bucket_returns(
     )
 
     return fig
-

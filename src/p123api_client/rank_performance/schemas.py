@@ -1,4 +1,5 @@
 """Rank performance schemas."""
+
 from datetime import date
 
 from pydantic import BaseModel, Field
@@ -37,12 +38,9 @@ class RankPerformanceAPIRequest(BaseModel):
     )
     ranking_definition: RankingDefinition | None = Field(
         None,
-        description=(
-            "Ranking system definition. "
-            "Required if xml_file_path not provided."
-        ),
+        description=("Ranking system definition. Required if xml_file_path not provided."),
     )
-    
+
     # Additional parameters for rank performance API
     pit_method: PitMethod | None = None
     precision: int | None = None
@@ -66,15 +64,15 @@ class RankPerformanceAPIRequest(BaseModel):
             "endDt": self.end_dt.isoformat() if self.end_dt else None,
             "rankingSystem": "ApiRankingSystem",  # Use the API ranking system
         }
-        
+
         # Add ranking definition parameters if provided
-        if self.ranking_definition and hasattr(self.ranking_definition, 'to_api_params'):
+        if self.ranking_definition and hasattr(self.ranking_definition, "to_api_params"):
             # Add any parameters from the ranking definition
             params.update(self.ranking_definition.to_api_params())
-        
+
         # Note: XML file handling is now done in the test by first updating
         # the ApiRankingSystem via the rank_update API
-        
+
         # Add additional parameters if provided
         if self.pit_method is not None:
             params["pitMethod"] = self.pit_method.value
@@ -102,7 +100,7 @@ class RankPerformanceAPIRequest(BaseModel):
             params["benchmark"] = self.benchmark
         if self.output_type is not None:
             params["outputType"] = self.output_type
-            
+
         return params
 
 

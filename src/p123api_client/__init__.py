@@ -3,10 +3,10 @@
 # Re-export main classes for easier imports
 from p123api import ClientException
 
-from .client import Client, get_credentials
-from .screen_run import ScreenRunAPI, CachedScreenRunAPI
-from .rank_performance import RankPerformanceAPI, CachedRankPerformanceAPI
 from .cache import CacheConfig, cached_api_call
+from .client import Client, get_credentials
+from .rank_performance import CachedRankPerformanceAPI, RankPerformanceAPI
+from .screen_run import CachedScreenRunAPI, ScreenRunAPI
 
 __all__ = [
     "Client",

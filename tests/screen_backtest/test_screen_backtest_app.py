@@ -1,14 +1,12 @@
 """Test screen backtest app."""
-import pytest
+
 import logging
 import os
-import pandas as pd
 from pathlib import Path
-from datetime import date
+
+import pytest
 from dotenv import load_dotenv
 
-from p123api_client.models.enums import PitMethod, Currency
-from p123api_client.screen_backtest.models import BacktestRequest
 from p123api_client.screen_backtest.screen_backtest_app import ScreenBacktestApp
 
 from ..base import BaseTest
@@ -28,23 +26,20 @@ class TestScreenBacktestApp(BaseTest):
     def test_single_factor_screen_backtest(self):
         """Test single factor screen backtest."""
         # Create any necessary test directories
-        test_data_dir = os.path.join(os.path.dirname(__file__), 'test_input')
+        test_data_dir = os.path.join(os.path.dirname(__file__), "test_input")
         os.makedirs(test_data_dir, exist_ok=True)
-        
+
         # Get API credentials from environment variables
         api_id = os.getenv("P123_API_ID")
         api_key = os.getenv("P123_API_KEY")
-        
+
         # Skip test if credentials are not available
         if not api_id or not api_key:
             pytest.skip("API credentials not available in .env.test file")
-            
+
         # Initialize the app with API credentials
-        app = ScreenBacktestApp(
-            api_id=api_id,
-            api_key=api_key
-        )
-        
+        app = ScreenBacktestApp(api_id=api_id, api_key=api_key)
+
         # Create a test that uses the correct parameter format based on the API documentation
         params = {
             "startDt": "2020-01-01",  # Use string format for dates
@@ -61,12 +56,10 @@ class TestScreenBacktestApp(BaseTest):
                 "currency": "USD",
                 "benchmark": "SPY",
                 "ranking": "ApiRankingSystem",
-                "rules": [
-                    {"formula": "PERelative() > 0"}
-                ]
-            }
+                "rules": [{"formula": "PERelative() > 0"}],
+            },
         }
-        
+
         try:
             # Call the API directly with the parameters
             result = app.api.make_request("screen_backtest", params)

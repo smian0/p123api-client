@@ -14,18 +14,18 @@ def detect_format(file_path: Path) -> str:
     ext = file_path.suffix.lower()
 
     # First check extension
-    if ext == '.xml':
-        return 'xml'
-    elif ext == '.tsv':
-        return 'tsv'
+    if ext == ".xml":
+        return "xml"
+    elif ext == ".tsv":
+        return "tsv"
 
     # If no clear extension, try to detect from content
-    if content.strip().startswith('<?xml'):
-        return 'xml'
-    elif '\t' in content:
-        return 'tsv'
+    if content.strip().startswith("<?xml"):
+        return "xml"
+    elif "\t" in content:
+        return "tsv"
 
-    raise ValueError(f'Could not detect format of file: {file_path}')
+    raise ValueError(f"Could not detect format of file: {file_path}")
 
 
 def get_output_filename(input_path: str, detected_format: str) -> str:
@@ -40,7 +40,7 @@ def xml_to_tsv(tree: ET.ElementTree) -> list[dict[str, str]]:
     root = tree.getroot()
     rows = []
 
-    for rank in root.findall('.//Rank'):
+    for rank in root.findall(".//Rank"):
         row: dict[str, str] = {}
         for attr in rank.attrib:
             value = rank.get(attr)
@@ -53,11 +53,11 @@ def xml_to_tsv(tree: ET.ElementTree) -> list[dict[str, str]]:
 
 def tsv_to_xml(rows: list[dict[str, str]]) -> ET.ElementTree:
     """Convert TSV data to XML format."""
-    root = ET.Element('RankingSystem')
-    ranks = ET.SubElement(root, 'Ranks')
+    root = ET.Element("RankingSystem")
+    ranks = ET.SubElement(root, "Ranks")
 
     for row in rows:
-        rank = ET.SubElement(ranks, 'Rank')
+        rank = ET.SubElement(ranks, "Rank")
         for key, value in row.items():
             rank.set(key, value)
 

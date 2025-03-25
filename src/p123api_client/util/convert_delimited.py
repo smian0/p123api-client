@@ -1,4 +1,5 @@
 """Convert delimited files module."""
+
 from __future__ import annotations
 
 import argparse
@@ -86,9 +87,7 @@ def main() -> None:
     """Run the converter from command line."""
     parser = argparse.ArgumentParser(description="Convert between CSV and TSV")
     parser.add_argument("input_file", help="Input file path")
-    parser.add_argument(
-        "-o", "--output", help="Output file path (optional)", default=None
-    )
+    parser.add_argument("-o", "--output", help="Output file path (optional)", default=None)
     args = parser.parse_args()
 
     try:

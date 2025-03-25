@@ -1,11 +1,8 @@
 """Common test configuration and fixtures."""
 
+import os
 import re
 from pathlib import Path
-import os
-import json
-import logging
-from datetime import datetime, date
 
 import pytest
 
@@ -41,10 +38,11 @@ SENSITIVE_PATTERNS = [
 
 # Additional patterns for URLs containing sensitive data
 URL_PATTERNS = [
-    (re.compile(r'(token=)[^&]*'), r'\1MASKED'),
-    (re.compile(r'(api_key=)[^&]*'), r'\1MASKED'),
-    (re.compile(r'(apiKey=)[^&]*'), r'\1MASKED'),
+    (re.compile(r"(token=)[^&]*"), r"\1MASKED"),
+    (re.compile(r"(api_key=)[^&]*"), r"\1MASKED"),
+    (re.compile(r"(apiKey=)[^&]*"), r"\1MASKED"),
 ]
+
 
 def before_record_request(request):
     """Mask sensitive data in request URLs and headers before recording."""
@@ -52,14 +50,16 @@ def before_record_request(request):
         request.uri = pattern.sub(replacement, request.uri)
     return request
 
+
 def before_record_response(response):
     """Mask sensitive data in responses before recording."""
-    if response.get('body', {}).get('string'):
-        body_str = response['body']['string'].decode('utf-8')
+    if response.get("body", {}).get("string"):
+        body_str = response["body"]["string"].decode("utf-8")
         for pattern, replacement in SENSITIVE_PATTERNS:
             body_str = pattern.sub(replacement, body_str)
-        response['body']['string'] = body_str.encode('utf-8')
+        response["body"]["string"] = body_str.encode("utf-8")
     return response
+
 
 # Base VCR configuration
 VCR_CONFIG = {
@@ -93,7 +93,7 @@ VCR_CONFIG = {
 @pytest.fixture(scope="session")
 def vcr_config():
     """VCR configuration fixture.
-    
+
     This configuration can be controlled via environment variables:
     - VCR_ENABLED: Set to "false" to disable VCR completely (default: "true")
     - VCR_RECORD_MODE: Set to control recording mode (default: "once")
@@ -101,19 +101,19 @@ def vcr_config():
         - "none": Never record, replay only
         - "new_episodes": Record new interactions, replay existing ones
         - "all": Always record
-    
+
     Usage in CI environments:
-    
+
     To run tests with real API calls (e.g., on main branch):
     ```
     VCR_ENABLED=false pytest tests/
     ```
-    
+
     To run tests using only existing cassettes (e.g., on pull requests):
     ```
     VCR_RECORD_MODE=none pytest tests/
     ```
-    
+
     To update cassettes with new API responses:
     ```
     VCR_RECORD_MODE=all pytest tests/
@@ -125,7 +125,7 @@ def vcr_config():
             "record_mode": "none",
             "ignore_hosts": ["api.portfolio123.com"],  # Ignore all P123 API calls
         }
-    
+
     return {
         "filter_headers": [
             ("authorization", "MASKED"),
@@ -185,12 +185,12 @@ def rank_update_api(api_credentials):
 @pytest.fixture
 def screen_run_api(api_credentials):
     """Create a screen run API client for testing."""
-    api_id = api_credentials.get("api_id") 
+    api_id = api_credentials.get("api_id")
     api_key = api_credentials.get("api_key")
-    
+
     if not api_id or not api_key:
         pytest.skip("Missing API credentials for screen run tests")
-        
+
     return ScreenRunAPI(api_id=api_id, api_key=api_key)
 
 
@@ -303,14 +303,14 @@ def pytest_sessionfinish(session):
 @pytest.fixture
 def auto_vcr(request):
     """Automatically apply VCR to tests based on environment variables.
-    
+
     Usage:
     ```
     def test_something(auto_vcr):
         # VCR will be auto-configured based on environment variables
         # Test code here...
     ```
-    
+
     With this fixture, you don't need to manually specify @pytest.mark.vcr()
     for each test, and VCR behavior can be controlled globally.
     """
@@ -318,20 +318,19 @@ def auto_vcr(request):
         # Skip VCR if disabled
         print(f"VCR is disabled by environment variable VCR_ENABLED={VCR_ENABLED}")
         return None
-    
-    import vcr as vcrpy
+
     from vcr.config import VCR
-    
+
     # Get test name for cassette
     test_name = request.node.name
     module_path = Path(request.module.__file__)
-    module_name = request.module.__name__.split('.')[-1]
-    
+    module_name = request.module.__name__.split(".")[-1]
+
     # Determine the cassette directory
     # VCR pattern: {directory of test module}/cassettes/{test_module}
     cassette_dir = module_path.parent / "cassettes"
     cassette_dir.mkdir(parents=True, exist_ok=True)
-    
+
     # Get the class name if it exists
     class_name = ""
     if request.cls:
@@ -339,25 +338,25 @@ def auto_vcr(request):
         cassette_name = f"{class_name}.{test_name}"
     else:
         cassette_name = f"{module_name}.{test_name}"
-    
+
     # Get cassette path with yaml extension
     cassette_path = str(cassette_dir / cassette_name)
-    if not cassette_path.endswith('.yaml'):
-        cassette_path += '.yaml'
-    
+    if not cassette_path.endswith(".yaml"):
+        cassette_path += ".yaml"
+
     print(f"Using VCR cassette: {cassette_path} (mode: {VCR_RECORD_MODE})")
-    
+
     # Create VCR instance with the same config as pytest-vcr would use
-    vcr_config = request.getfixturevalue('vcr_config')
+    vcr_config = request.getfixturevalue("vcr_config")
     vcr_obj = VCR(**vcr_config)
-    
+
     # Create a cassette context
     cassette = vcr_obj.use_cassette(cassette_path)
     cassette.__enter__()
-    
+
     # Add cleanup to ensure cassette is closed
     request.addfinalizer(lambda: cassette.__exit__(None, None, None))
-    
+
     return cassette
 
 

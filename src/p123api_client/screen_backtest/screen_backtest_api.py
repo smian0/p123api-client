@@ -6,7 +6,6 @@ from typing import Any
 
 from ..common.api_client import APIClient
 from .schemas import BacktestResponse
-from .models import BacktestRequest
 
 logger = logging.getLogger(__name__)
 
@@ -15,10 +14,7 @@ class ScreenBacktestAPI(APIClient[BacktestResponse]):
     """API client for screen backtest endpoints."""
 
     def make_request(
-        self,
-        method: str,
-        params: dict[str, Any],
-        as_dataframe: bool = False
+        self, method: str, params: dict[str, Any], as_dataframe: bool = False
     ) -> BacktestResponse:
         """Make HTTP request to API.
 
@@ -30,11 +26,7 @@ class ScreenBacktestAPI(APIClient[BacktestResponse]):
         return raw_response
 
     def run_backtest(
-        self,
-        start_date: date,
-        end_date: date,
-        formula: str,
-        **kwargs: Any
+        self, start_date: date, end_date: date, formula: str, **kwargs: Any
     ) -> BacktestResponse:
         """Run a backtest for a screen.
 
@@ -52,6 +44,6 @@ class ScreenBacktestAPI(APIClient[BacktestResponse]):
             "startDt": start_date.isoformat(),
             "endDt": end_date.isoformat(),
             "formula": formula,
-            **kwargs
+            **kwargs,
         }
         return self.make_request("screen_backtest", params)

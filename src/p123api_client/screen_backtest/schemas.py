@@ -1,4 +1,5 @@
 """Screen backtest specific schemas."""
+
 from __future__ import annotations
 
 from collections.abc import Callable, Generator
@@ -9,17 +10,14 @@ from pydantic import BaseModel, Field, field_validator
 
 from ..models.enums import (
     Currency,
-    PitMethod,
-    RebalFreq,
-    RiskStatsPeriod,
     ScreenMethod,
     ScreenType,
-    TransPrice,
 )
 
 
 class ScreenRule(BaseModel):
     """A single screen rule"""
+
     formula: str = Field(..., description="Rule formula")
 
     @classmethod
@@ -39,12 +37,14 @@ class ScreenRule(BaseModel):
 
 class RankingDefinition(BaseModel):
     """Ranking definition for a screen"""
+
     formula: str = Field(..., description="Formula to rank on")
     lowerIsBetter: bool = Field(False, description="Whether lower values are better")
 
 
 class ScreenParams(BaseModel):
     """Screen parameters for backtest"""
+
     type: ScreenType = Field(..., description="Screen type (stock/etf)")
     universe: str = Field(..., description="Universe to screen")
     maxNumHoldings: int = Field(..., description="Maximum number of holdings")
@@ -59,8 +59,10 @@ class ScreenParams(BaseModel):
     def validate_rules(cls, v: list[str | dict[str, Any] | ScreenRule]) -> list[ScreenRule]:
         if isinstance(v, list):
             return [
-                ScreenRule(formula=r) if isinstance(r, str)
-                else ScreenRule(**r) if isinstance(r, dict)
+                ScreenRule(formula=r)
+                if isinstance(r, str)
+                else ScreenRule(**r)
+                if isinstance(r, dict)
                 else r
                 for r in v
             ]
@@ -69,6 +71,7 @@ class ScreenParams(BaseModel):
 
 class BacktestRequest(BaseModel):
     """Backtest request model."""
+
     start_date: date
     end_date: date
     formula: str
@@ -93,6 +96,7 @@ class BacktestRequest(BaseModel):
 
 class PortfolioStats(BaseModel):
     """Portfolio statistics."""
+
     return_value: float = Field(default=0.0)
     alpha: float = Field(default=0.0)
     beta: float = Field(default=0.0)
@@ -103,12 +107,14 @@ class PortfolioStats(BaseModel):
 
 class BacktestStats(BaseModel):
     """Backtest statistics."""
+
     portfolio_stats: PortfolioStats = Field(default_factory=PortfolioStats)
     benchmark_stats: PortfolioStats = Field(default_factory=PortfolioStats)
 
 
 class ChartData(BaseModel):
     """Time series data for charts"""
+
     dates: list[str] = Field(default_factory=list, description="Date strings")
     screenReturns: list[float] = Field(default_factory=list, description="Strategy returns")
     benchReturns: list[float] = Field(default_factory=list, description="Benchmark returns")
@@ -118,19 +124,17 @@ class ChartData(BaseModel):
 
 class BacktestResults(BaseModel):
     """Detailed backtest results"""
+
     columns: list[str] = Field(default_factory=list, description="Column names")
     rows: list[list[str | float | int]] = Field(default_factory=list, description="Data rows")
     average: list[float | None] = Field(default_factory=list, description="Average values")
-    upMarkets: list[float | None] = Field(
-        default_factory=list, description="Up market values"
-    )
-    downMarkets: list[float | None] = Field(
-        default_factory=list, description="Down market values"
-    )
+    upMarkets: list[float | None] = Field(default_factory=list, description="Up market values")
+    downMarkets: list[float | None] = Field(default_factory=list, description="Down market values")
 
 
 class BacktestResponse(BaseModel):
     """Complete backtest response"""
+
     cost: int = Field(0, description="API cost")
     quotaRemaining: int = Field(0, description="Remaining API quota")
     stats: BacktestStats = Field(default_factory=BacktestStats, description="Backtest statistics")

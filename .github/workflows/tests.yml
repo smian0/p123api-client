@@ -14,10 +14,10 @@ jobs:
         python-version: ["3.10"]
         
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4.2.2
       
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5.5.0
         with:
           python-version: ${{ matrix.python-version }}
       
@@ -29,22 +29,20 @@ jobs:
           source .venv/bin/activate
           uv pip install -e ".[test]"
       
-      - name: Lint with ruff
+      - name: Run quality checks
         run: |
-          ruff check src tests
-          
-      - name: Type check with mypy
-        run: |
-          mypy src tests
+          source .venv/bin/activate
+          make quality
       
       # CI Always uses existing cassettes - never makes real API calls
       - name: Run tests with existing cassettes
-        env:
-          VCR_ENABLED: true
-          VCR_RECORD_MODE: none  # Only use existing cassettes
         run: |
           echo "Running tests in CI with VCR_RECORD_MODE=none (using existing cassettes only)"
+          source .venv/bin/activate
           python -m pytest tests/
+        env:
+          VCR_ENABLED: "true"
+          VCR_RECORD_MODE: "none"
       
       # If tests fail because cassettes are missing or outdated, we provide a helpful error message
       - name: Handle cassette-related failures

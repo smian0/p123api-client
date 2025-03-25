@@ -1,4 +1,5 @@
 """Models for rank performance functionality."""
+
 from __future__ import annotations
 
 from datetime import date
@@ -12,6 +13,7 @@ from p123api_client.screen_backtest.schemas import RankingDefinition, RunRankSte
 
 class RankResponse(BaseModel):
     """Response from rank performance endpoint."""
+
     data: dict[str, Any] | None = None
     description: str | None = None
     message: str | None = None
@@ -99,6 +101,7 @@ class RankPerformanceAPIRequest:
 
 class RankPerformanceRequest(BaseModel):
     """Request for rank performance endpoint."""
+
     ranking_definition: str | None = None
     xml_file_path: str | None = None
 

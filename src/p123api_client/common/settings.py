@@ -30,18 +30,26 @@ class Settings:
             package_root = Path(__file__).parent.parent.parent
             env_path = package_root / ".env"
 
-        if not env_path.exists():
-            raise FileNotFoundError(f"Environment file not found at {env_path}")
-
-        load_dotenv(env_path)
+        # Load from env file if it exists, otherwise use environment variables
+        if env_path.exists():
+            load_dotenv(env_path)
+        else:
+            # In CI environments, .env may not exist
+            print(f"Environment file not found at {env_path}, falling back to environment variables")
 
         # Load required settings
         self.api_id = os.getenv("P123_API_ID")
-        if not self.api_id:
-            raise ValueError("P123_API_ID environment variable is required")
-
         self.api_key = os.getenv("P123_API_KEY")
-        if not self.api_key:
+        
+        # In CI, use dummy values if not provided (tests use VCR cassettes)
+        ci_env = os.getenv("CI", "").lower() == "true"
+        if (not self.api_id or not self.api_key) and ci_env:
+            print("Running in CI environment with missing credentials, using dummy values for tests")
+            self.api_id = self.api_id or "dummy_api_id_for_ci"
+            self.api_key = self.api_key or "dummy_api_key_for_ci"
+        elif not self.api_id:
+            raise ValueError("P123_API_ID environment variable is required")
+        elif not self.api_key:
             raise ValueError("P123_API_KEY environment variable is required")
 
         # Load optional settings with defaults

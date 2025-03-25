@@ -1,4 +1,5 @@
 """Rank performance API module."""
+
 import logging
 from typing import Any
 
@@ -78,31 +79,31 @@ class RankPerformanceAPI(APIClient):
         # Convert results to DataFrame
         if not all_results:
             return pd.DataFrame()
-        
+
         # Create a list to store the data for each result
         data_rows = []
-        
+
         for result in all_results:
             # Extract data from the response
             response_data = result.response
-            
+
             # Create a base row with metadata
             row = {
-                'benchmark_ann_ret': response_data.get('benchmarkAnnRet', None),
+                "benchmark_ann_ret": response_data.get("benchmarkAnnRet", None),
             }
-            
+
             # Add bucket returns
-            bucket_returns = response_data.get('bucketAnnRet', [])
+            bucket_returns = response_data.get("bucketAnnRet", [])
             for i, ret in enumerate(bucket_returns, 1):
-                row[f'bucket_ann_ret_{i}'] = ret
-                
+                row[f"bucket_ann_ret_{i}"] = ret
+
             # Add any additional metadata from the request
             if result.request.ranking_definition:
-                row['description'] = result.request.ranking_definition.description
+                row["description"] = result.request.ranking_definition.description
             elif result.request.xml_file_path:
-                row['xml_file'] = result.request.xml_file_path
-                
+                row["xml_file"] = result.request.xml_file_path
+
             data_rows.append(row)
-        
+
         # Create DataFrame from the collected data
         return pd.DataFrame(data_rows)

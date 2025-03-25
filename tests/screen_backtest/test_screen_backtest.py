@@ -18,7 +18,6 @@ from p123api_client.models.enums import (
 )
 from p123api_client.screen_backtest.models import BacktestRequest
 from p123api_client.screen_backtest.schemas import (
-    BacktestResponse,
     ScreenParams,
     ScreenRule,
 )
@@ -96,10 +95,8 @@ class TestScreenBacktest(unittest.TestCase):
                     "currency": "USD",
                     "benchmark": "SPY",
                     "ranking": "ApiRankingSystem",
-                    "rules": [
-                        {"formula": "PERelative() > 0"}
-                    ]
-                }
+                    "rules": [{"formula": "PERelative() > 0"}],
+                },
             }
 
             # Run backtest directly using make_request
@@ -112,7 +109,7 @@ class TestScreenBacktest(unittest.TestCase):
 
             # Verify stats
             self.assertIsNotNone(result.stats)
-            
+
             # Verify portfolio stats
             self.assertIsNotNone(result.stats.portfolio_stats)
             self.assertIsInstance(result.stats.portfolio_stats.return_value, float)
@@ -121,7 +118,7 @@ class TestScreenBacktest(unittest.TestCase):
             self.assertIsInstance(result.stats.portfolio_stats.sharpe, float)
             self.assertIsInstance(result.stats.portfolio_stats.volatility, float)
             self.assertIsInstance(result.stats.portfolio_stats.max_drawdown, float)
-            
+
             # Verify benchmark stats
             self.assertIsNotNone(result.stats.benchmark_stats)
             self.assertIsInstance(result.stats.benchmark_stats.return_value, float)
