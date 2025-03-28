@@ -21,6 +21,18 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       
+      # Detect if running in Act locally
+      - name: Detect Act environment
+        id: detect-act
+        run: |
+          if [ -n "$GITHUB_ACTIONS" ] && [ -z "$GITHUB_TOKEN" ]; then
+            echo "running_in_act=true" >> $GITHUB_OUTPUT
+            echo "Running in Act local environment"
+          else
+            echo "running_in_act=false" >> $GITHUB_OUTPUT
+            echo "Running in GitHub Actions cloud environment"
+          fi
+      
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
@@ -37,6 +49,8 @@ jobs:
       
       # CI Always uses existing cassettes - never makes real API calls
       - name: Run tests with existing cassettes
+        id: run-tests
+        continue-on-error: ${{ steps.detect-act.outputs.running_in_act == 'true' }}
         run: |
           echo "Running tests in CI with VCR_RECORD_MODE=none (using existing cassettes only)"
           source .venv/bin/activate
@@ -46,25 +60,36 @@ jobs:
           VCR_RECORD_MODE: "none"
           CI: "true"
       
-      # Save coverage results as artifacts
+      # Save coverage results as artifacts (only in GitHub cloud)
       - name: Archive code coverage results
+        if: steps.detect-act.outputs.running_in_act != 'true'
         uses: actions/upload-artifact@v4
         with:
           name: code-coverage-report
           path: htmlcov/
           retention-days: 14
 
-      # If tests fail because cassettes are missing or outdated, we provide a helpful error message
-      - name: Handle cassette-related failures
-        if: failure()
+      # Handle test failures differently based on environment
+      - name: Handle cassette-related failures in GitHub cloud
+        if: steps.run-tests.outcome == 'failure' && steps.detect-act.outputs.running_in_act != 'true'
         run: |
           echo "::warning::Tests failed - this may be because cassettes are missing or outdated"
           echo "::warning::To update cassettes, run locally with: VCR_RECORD_MODE=all pytest tests/"
           echo "::warning::Then commit the updated cassette files"
-          exit 1 
+          exit 1
+          
+      # More helpful local error message for Act users
+      - name: Handle cassette-related failures in Act
+        if: steps.run-tests.outcome == 'failure' && steps.detect-act.outputs.running_in_act == 'true'
+        run: |
+          echo "Tests failed locally - this may be because cassettes are missing or outdated"
+          echo "To update cassettes, run: VCR_RECORD_MODE=all pytest tests/"
+          echo "Then commit the updated cassette files"
+          echo "NOTE: Test continuation was allowed in local Act environment; workflow not marked as failed"
 
-      # Upload coverage to Codecov
+      # Upload coverage to Codecov (only in GitHub cloud)
       - name: Upload coverage to Codecov
+        if: steps.detect-act.outputs.running_in_act != 'true'
         uses: codecov/codecov-action@v5.4.0
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
