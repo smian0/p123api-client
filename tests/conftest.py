@@ -20,8 +20,28 @@ from p123api_client.strategy.strategy_api import StrategyAPI
 
 from .vcr_patch import patch_vcr_response
 
+# Import visual test hooks
+
 # Apply VCR patch
 patch_vcr_response()
+
+
+# Add command line option for displaying test failures
+def pytest_addoption(parser):
+    """Add custom command line options for visual test output."""
+    parser.addoption(
+        "--show-failures",
+        action="store_true",
+        default=False,
+        help="Run tests that demonstrate failure formatting",
+    )
+    parser.addoption(
+        "--visual-output",
+        action="store_true",
+        default=False,
+        help="Enable rich visual output formatting for tests",
+    )
+
 
 # VCR configuration from environment variables
 VCR_RECORD_MODE = os.environ.get("VCR_RECORD_MODE", "once")
@@ -364,3 +384,10 @@ def auto_vcr(request):
 def vcr_cassette_dir():
     """VCR cassette directory fixture."""
     return os.path.join(os.path.dirname(__file__), "cassettes/auto_vcr")
+
+
+# Configure pytest to access command line options directly
+@pytest.fixture(scope="session")
+def config():
+    """Get the configuration from the pytest config object."""
+    return pytest.config

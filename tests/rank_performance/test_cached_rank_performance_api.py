@@ -86,7 +86,7 @@ class TestCachedRankPerformanceAPI:
         # which isn't in the cassette
         is_ci = os.getenv("CI", "").lower() == "true"
         vcr_record_mode = os.getenv("VCR_RECORD_MODE", "").lower()
-        
+
         if not (is_ci and vcr_record_mode == "none"):
             # Third call with bypass_cache=True - should be a cache miss
             response_df3 = self.cached_rank_performance_api.run_rank_performance(
@@ -104,10 +104,10 @@ class TestCachedRankPerformanceAPI:
         # multiple API instances which might not be in the cassette
         is_ci = os.getenv("CI", "").lower() == "true"
         vcr_record_mode = os.getenv("VCR_RECORD_MODE", "").lower()
-        
+
         if is_ci and vcr_record_mode == "none":
             pytest.skip("Skipping test_cache_persistence in CI with VCR_RECORD_MODE=none")
-            
+
         # Create a test factor
         factor = Factor(
             rank_type=RankType.HIGHER, formula="Close(0)", description="Cache Persistence Test"

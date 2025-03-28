@@ -1,0 +1,77 @@
+interactions:
+- request:
+    body: '{"apiKey": "MASKED", "apiId": "MASKED"}'
+    headers:
+      Content-Type:
+      - application/json
+      content-length:
+      - MASKED
+    method: POST
+    uri: https://api.portfolio123.com/auth
+  response:
+    body:
+      string: '48482988312333499158670293999845964171'
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-length:
+      - '38'
+      content-type:
+      - text/plain;charset=UTF-8
+      date:
+      - Fri, 28 Mar 2025 00:51:08 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      x-content-type-options:
+      - nosniff
+      x-expires-in:
+      - '3600'
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+- request:
+    body: '{"startDt": "2022-01-01", "endDt": "2022-12-31", "rankingSystem": "ApiRankingSystem",
+      "universe": "SP500", "numBuckets": 20}'
+    headers:
+      Content-Type:
+      - application/json
+      authorization:
+      - MASKED
+      content-length:
+      - MASKED
+    method: POST
+    uri: https://api.portfolio123.com/rank/performance
+  response:
+    body:
+      string: '{"cost":3,"quotaRemaining":8265,"benchmarkAnnRet":-19.05,"bucketAnnRet":[-20.52,-18.06,-20.27,-19.43,-14.94,-16.8,-12.76,-15.01,-6.35,-12.88,-15.88,-12.47,-11.81,0.75,-2.62,-11.9,-0.41,-13.04,-1.87,-0.87]}'
+    headers:
+      cache-control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      content-type:
+      - application/json
+      date:
+      - Fri, 28 Mar 2025 00:51:08 GMT
+      expires:
+      - '0'
+      pragma:
+      - no-cache
+      transfer-encoding:
+      - chunked
+      vary:
+      - accept-encoding
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-xss-protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: ''
+version: 1

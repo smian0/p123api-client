@@ -35,16 +35,20 @@ class Settings:
             load_dotenv(env_path)
         else:
             # In CI environments, .env may not exist
-            print(f"Environment file not found at {env_path}, falling back to environment variables")
+            print(
+                f"Environment file not found at {env_path}, falling back to environment variables"
+            )
 
         # Load required settings
         self.api_id = os.getenv("P123_API_ID")
         self.api_key = os.getenv("P123_API_KEY")
-        
+
         # In CI, use dummy values if not provided (tests use VCR cassettes)
         ci_env = os.getenv("CI", "").lower() == "true"
         if (not self.api_id or not self.api_key) and ci_env:
-            print("Running in CI environment with missing credentials, using dummy values for tests")
+            print(
+                "Running in CI environment with missing credentials, using dummy values for tests"
+            )
             self.api_id = self.api_id or "dummy_api_id_for_ci"
             self.api_key = self.api_key or "dummy_api_key_for_ci"
         elif not self.api_id:

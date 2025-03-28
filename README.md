@@ -17,7 +17,11 @@ A Python client library for interacting with the Portfolio123 (P123) API.
 ## Quick Start
 
 ```bash
+# Install with pip
 pip install p123api-client
+
+# Or with uv (recommended)
+uv pip install p123api-client
 ```
 
 Create a `.env` file with your API credentials:
@@ -121,7 +125,6 @@ Caching is implemented using SQLite for persistence and automatically handles:
 - Cache size management
 - Statistics tracking
 - Timezone handling
-```
 
 ### Environment Variables
 
@@ -211,11 +214,31 @@ The library provides the following API classes:
 
 ### Caching System
 
-The caching system has been simplified to use SQLite for storage with the following components:
+The caching system has been simplified to use SQLite for storage with sensible defaults. The system includes:
 
-1. **SQLite Storage** (`cache/storage.py`): Efficient SQLite-based storage with performance optimizations
-2. **Cache Manager** (`cache/manager.py`): Handles cache operations and statistics
-3. **Decorator-based Caching** (`cache/decorators.py`): Adds caching to API methods
+1. **SQLite Storage** (`cache/storage.py`): Optimized SQLite-based storage with performance enhancements including:
+   - WAL mode for better concurrency
+   - Optimized indexes for faster lookups
+   - Efficient datetime handling for expiration checks
+   - Improved statistics tracking
+   - Visual verification in tests
+
+2. **Cache Manager** (`cache/manager.py`): Manages cache operations with streamlined methods for:
+   - Getting and putting cache entries
+   - Handling cache statistics
+   - Managing cache size
+   - Supporting visual debugging
+
+3. **Decorator-based Caching** (`cache/decorators.py`): Adds caching to API methods via decorators
+
+The cache system supports:
+- Thread-safe database connections
+- JSON serialization for all data types
+- Automatic expiration handling based on P123 data refresh times
+- DataFrame storage and retrieval
+- Endpoint-based cache invalidation
+- Automatic cache size management
+- Visual verification and validation in tests
 
 For more detailed documentation, see:
 - [Project Guide](./docs/project_guide.md)
@@ -228,15 +251,54 @@ For more detailed documentation, see:
 
 See the [Contributing Guide](./CONTRIBUTING.md) for development setup and guidelines.
 
+The project uses a Makefile to simplify common development tasks:
+
+```bash
+make help              # Show available commands
+make install           # Install dependencies with uv
+make update            # Update dependencies
+make lint              # Run linting checks
+make format            # Format code
+make quality           # Run all code quality checks
+make test              # Run all tests with visual output
+make clean             # Clean up environment
+make dev-setup         # Setup development environment
+```
+
 ## Testing
 
 The project includes both unit tests and integration tests. Tests have been consolidated into comprehensive test suites for better coverage and reduced duplication.
 
 ### Running Tests
 
-To run all tests:
+To run all tests with default settings:
 ```bash
 python -m pytest
+```
+
+For more readable output with visual formatting:
+```bash
+make test
+```
+
+The project includes visual test output formatting that provides:
+- Color-coded test results and rich formatting
+- Clear categorization of tests by functionality
+- Visual separation between test categories
+- Summary tables with pass/fail status
+- Line number references for IDE navigation
+
+### Test Commands
+
+The project includes several Makefile targets for running tests:
+
+```bash
+make test              # Run all tests with visual output formatting
+make test-simple       # Run tests without visual formatting
+make test-ci           # Run tests in CI mode (using cassettes only)
+make test-specific     # Run specific test module with visual output
+make test-api          # Run API-related tests with visual output
+make test-cache        # Run cache-related tests with visual output
 ```
 
 ### Coverage Reports
@@ -340,11 +402,13 @@ The caching system has been simplified to use SQLite for storage with sensible d
    - Optimized indexes for faster lookups
    - Efficient datetime handling for expiration checks
    - Improved statistics tracking
+   - Visual verification in tests
 
 2. **Cache Manager** (`cache/manager.py`): Manages cache operations with streamlined methods for:
    - Getting and putting cache entries
    - Handling cache statistics
    - Managing cache size
+   - Supporting visual debugging
 
 3. **Decorator-based Caching** (`cache/decorators.py`): Adds caching to API methods via decorators
 
@@ -355,6 +419,7 @@ The cache system supports:
 - DataFrame storage and retrieval
 - Endpoint-based cache invalidation
 - Automatic cache size management
+- Visual verification and validation in tests
 
 ### Using Caching (Recommended)
 
@@ -457,15 +522,12 @@ class MyCustomAPI(ScreenRunAPI):
 
 ### APIs with Caching Support
 
-The following APIs support caching:
+The following APIs support caching by default when using the Cached version:
 
-| API | Base Class | Cached Class | Description |
-|-----|------------|--------------|-------------|
-| Screen Run | `ScreenRunAPI` | `CachedScreenRunAPI` | Run stock screens with optional ranking |
-| Rank Performance | `RankPerformanceAPI` | `CachedRankPerformanceAPI` | Analyze performance of ranking systems |
-```
-
-**Note:** This approach is only recommended for advanced users who need to create custom API methods with caching. For most use cases, simply using the `CachedScreenRunAPI` and `CachedRankPerformanceAPI` classes is sufficient.
+| Regular API | Cached API with Caching |
+|-------------|------------------------|
+| `ScreenRunAPI` | `CachedScreenRunAPI` |
+| `RankPerformanceAPI` | `CachedRankPerformanceAPI` |
 
 ### Cache Configuration
 
@@ -485,15 +547,6 @@ If you need to customize the cache location, you can use the `P123_CACHE_PATH` e
 export P123_CACHE_PATH=/path/to/custom/cache.db
 ```
 
-### APIs with Caching Support
-
-The following APIs support caching by default when using the Cached version:
-
-| Regular API | Cached API with Caching |
-|-------------|------------------------|
-| `ScreenRunAPI` | `CachedScreenRunAPI` |
-| `RankPerformanceAPI` | `CachedRankPerformanceAPI` |
-
 ### Disabling Caching for Specific Calls
 
 All API methods support caching by default. If you need to bypass the cache for a specific call, use the `bypass_cache` parameter:
@@ -508,11 +561,47 @@ fresh_result = api.run_simple_screen("SP500", "PRICE > 200", bypass_cache=True)
 
 The cache system includes automatic size management, which will remove the oldest entries when the cache exceeds the configured size limit (default: 100MB).
 
+## Visual Test Output
+
+The project includes enhanced visual test output formatting to improve the testing experience:
+
+### Features
+
+- **Rich Formatted Output**: Color-coded test results and clear visual organization
+- **Test Categorization**: Tests are automatically categorized by functionality
+- **Result Summaries**: Summary tables with pass/fail status for each test category
+- **IDE Navigation**: Line number references for jumping directly to test definitions
+- **Input/Output Visualization**: Formatted display of test inputs and outputs
+
+### Usage
+
+Run tests with visual formatting using the Makefile targets:
+
+```bash
+make test              # Run all tests with visual output
+make test-api          # Run API tests with visual output
+make test-cache        # Run cache tests with visual output
+```
+
+Or use pytest directly with the visual output flags:
+
+```bash
+pytest --visual-output -p no:sugar --capture=no tests/
+```
+
+### Implementation
+
+The visual test output is implemented using:
+
+1. **Test Hooks** (`tests/visual_test_hooks.py`): Pytest hooks for formatting and categorizing tests
+2. **Output Formatting** (`scripts/format_test_output.py`): Script for formatting test results with line numbers
+3. **Sample Tests** (`tests/sample_visual_test.py`): Demonstration of visual test features
+
 ## License
 
 [MIT License](./LICENSE)
 
-#### CI Configuration
+## CI Configuration
 
 In CI environments, you can control VCR behavior globally using environment variables:
 

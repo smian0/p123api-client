@@ -42,7 +42,9 @@ class APIClient(Generic[ResponseT]):
         # In CI, use dummy values if not provided (tests use VCR cassettes)
         ci_env = os.getenv("CI", "").lower() == "true"
         if (not self.api_id or not self.api_key) and ci_env:
-            logger.debug("Running in CI environment with missing credentials, using dummy values for tests")
+            logger.debug(
+                "Running in CI environment with missing credentials, using dummy values for tests"
+            )
             self.api_id = self.api_id or "dummy_api_id_for_ci"
             self.api_key = self.api_key or "dummy_api_key_for_ci"
         elif not self.api_id or not self.api_key:
